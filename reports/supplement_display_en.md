@@ -1,0 +1,1670 @@
+# Supplementary materials
+
+Sections S1–S8 report individual county deletions, the 45 conditional and paired configurations, source-bridge scenarios, original-cell checks, break searches, recovery confirmations, episode updating, screening sensitivity and product-price coverage. Conditional analyses use 1,999 repetitions. Section S9 adds six selected 9,999-draw precision checks, their count data and the common 50% alert threshold. N11 excludes Jianping; U10 excludes Jianping and Qingyuan through the update-rate branch; S6 is retained by the complete screen.
+
+## S1 Individual county-deletion references at L6
+
+| variant | N | above_benchmark_dates | observed | reference_mean | lo90 | hi90 | p |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| all12 | 12 | 174 | 0.17049808429118773 | 0.13339404376517755 | 0.11637931034482761 | 0.1513409961685823 | 0.0015 |
+| delete_210111000000 | 11 | 175 | 0.17870129870129867 | 0.14234935649643005 | 0.12467532467532473 | 0.16051948051948048 | 0.002 |
+| delete_210124000000 | 11 | 173 | 0.17551234892275352 | 0.12693551189677868 | 0.10924855491329472 | 0.14608512874408822 | 0.0005 |
+| delete_210283000000 | 11 | 175 | 0.17506493506493506 | 0.13338669334667339 | 0.11688311688311685 | 0.1511688311688313 | 0.001 |
+| delete_210423000000 | 11 | 177 | 0.16795069337442214 | 0.14249292083124251 | 0.12532100667693885 | 0.16076014381099119 | 0.01 |
+| delete_210682000000 | 11 | 170 | 0.17219251336898392 | 0.1242407299906638 | 0.1064171122994652 | 0.14385026737967915 | 0.0005 |
+| delete_210882000000 | 11 | 170 | 0.17754010695187164 | 0.13126777292389516 | 0.11497326203208559 | 0.14818181818181828 | 0.0005 |
+| delete_210922000000 | 11 | 173 | 0.15922228060956384 | 0.11825618537066747 | 0.10141881240147135 | 0.13662637940094577 | 0.0005 |
+| delete_211081000000 | 11 | 169 | 0.17697686928456158 | 0.1305214199353577 | 0.11135018827326523 | 0.15115653577192034 | 0.0005 |
+| delete_211121000000 | 11 | 169 | 0.17805271651425494 | 0.14651812189042343 | 0.12694997310381922 | 0.16675632060247447 | 0.0075 |
+| delete_211224000000 | 11 | 176 | 0.18181818181818177 | 0.1447846857312954 | 0.12758264462809918 | 0.16373966942148754 | 0.0015 |
+| delete_211282000000 | 11 | 173 | 0.1744613767735155 | 0.13357808699410137 | 0.11665790856542296 | 0.15186547556489763 | 0.001 |
+| delete_211322000000 | 11 | 183 | 0.12866368604073522 | 0.11530405043555067 | 0.09985096870342779 | 0.13065076999503236 | 0.0815 |
+
+Source: F1_F2_conditional_reference.csv.
+
+## S2 Conditional and paired results: all 45 configurations
+
+The conditional reference draws in S1 use NumPy PCG64; the 45 configurations below use PCG32 XSH-RR. Paired differences combine re-estimated benchmark means and one independent residual path per outer draw. The positive-difference fraction is not a p value. Fixed-reference envelopes are two-sided 90% intervals; fixed p values are one-sided upper-tail estimates including ties. With 1,999 repetitions, p≤0.0005 marks the tail-probability resolution boundary. The cohorts are Full12, N11 and U10, labelled all12, without_Jianping11 and without_Jianping_Qingyuan10 in the table.
+
+| Benchmark | Cohort | L | A≥1 dates | Observed mean H | Fixed reference mean | Fixed90% lower | Fixed90% upper | Fixed p | Paired mean D | Paired95% lower | Paired95% upper | D>0 fraction | Valid fixed/paired |
+|---|---|---:|---:|---:|---:|---:|---:|---|---:|---:|---:|---:|---|
+| B0 | all12 | 3 | 174 | 0.17049808429118773 | 0.1347575128560451 | 0.11973180076628352 | 0.14942528735632185 | ≤0.0005 | 0.026165439425535342 | 0.005554138321995465 | 0.046296296296296294 | 0.991495747873937 | 1999/1999 |
+| B0 | without_Jianping11 | 3 | 183 | 0.12866368604073522 | 0.1163699087497052 | 0.10332836562344759 | 0.12916045702930948 | 0.0625 | 0.0017219271560815338 | -0.020518107322231034 | 0.02152095673132647 | 0.5737868934467234 | 1999/1999 |
+| B0 | without_Jianping_Qingyuan10 | 3 | 185 | 0.11783783783783784 | 0.12030528777902486 | 0.10648648648648648 | 0.13297297297297297 | 0.6355 | -0.008752719943759618 | -0.02778282828282828 | 0.009551757112120488 | 0.16358179089544772 | 1999/1999 |
+| B0 | all12 | 6 | 174 | 0.17049808429118773 | 0.13383871054301133 | 0.11637931034482758 | 0.15229885057471265 | ≤0.0005 | 0.026630228668583732 | 0.0019954139340366884 | 0.0511864879955332 | 0.984992496248124 | 1999/1999 |
+| B0 | without_Jianping11 | 6 | 183 | 0.12866368604073522 | 0.1156738329423033 | 0.10034773969200199 | 0.13164431197218082 | 0.093 | 0.001891351455010449 | -0.022492970946579195 | 0.027029640859428092 | 0.5482741370685342 | 1999/1999 |
+| B0 | without_Jianping_Qingyuan10 | 6 | 185 | 0.11783783783783784 | 0.11970579884536864 | 0.10378378378378378 | 0.13675675675675675 | 0.578 | -0.007436542601241397 | -0.0291026455026455 | 0.01484470193019415 | 0.23911955977988994 | 1999/1999 |
+| B0 | all12 | 12 | 174 | 0.17049808429118773 | 0.12945169902959153 | 0.1096743295019157 | 0.1489463601532567 | ≤0.0005 | 0.02946114718184904 | 0.0023010797446958806 | 0.057648401826484015 | 0.9834917458729364 | 1999/1999 |
+| B0 | without_Jianping11 | 12 | 183 | 0.12866368604073522 | 0.11280801851497013 | 0.09587680079483359 | 0.13015399900645802 | 0.0685 | 0.003619199251518087 | -0.02214564111089561 | 0.036726810738668424 | 0.5417708854427213 | 1999/1999 |
+| B0 | without_Jianping_Qingyuan10 | 12 | 185 | 0.11783783783783784 | 0.11691629598583096 | 0.09891891891891892 | 0.13405405405405404 | 0.478 | -0.004211127566960924 | -0.02919700765244844 | 0.025458274856957758 | 0.3371685842921461 | 1999/1999 |
+| B1 | all12 | 3 | 153 | 0.19934640522875818 | 0.16573046872019886 | 0.15359477124183007 | 0.1781045751633987 | ≤0.0005 | 0.044331993778705586 | 0.018571508255243195 | 0.07844313725490194 | 0.9989994997498749 | 1999/1999 |
+| B1 | without_Jianping11 | 3 | 158 | 0.1616800920598389 | 0.13915645970280857 | 0.1283084004602992 | 0.15017261219792866 | 0.002 | 0.028452389515154698 | 0.0014521442930533852 | 0.07056384742951906 | 0.9809904952476238 | 1999/1999 |
+| B1 | without_Jianping_Qingyuan10 | 3 | 159 | 0.1540880503144654 | 0.13551524189767838 | 0.12452830188679245 | 0.1471698113207547 | 0.0075 | 0.021869796908477238 | -0.005454545454545455 | 0.07179892924911899 | 0.9194597298649325 | 1999/1999 |
+| B1 | all12 | 6 | 153 | 0.19934640522875818 | 0.16518744121516082 | 0.1514161220043573 | 0.17919389978213507 | ≤0.0005 | 0.046061519487857916 | 0.014106399450391698 | 0.08768115942028985 | 0.9979989994997499 | 1999/1999 |
+| B1 | without_Jianping11 | 6 | 158 | 0.1616800920598389 | 0.13862742648654613 | 0.12600690448791715 | 0.15132336018411968 | 0.003 | 0.030898432141971896 | -0.004263606459330143 | 0.08090611813474925 | 0.9474737368684342 | 1999/1999 |
+| B1 | without_Jianping_Qingyuan10 | 6 | 159 | 0.1540880503144654 | 0.13515153803316773 | 0.12264150943396226 | 0.14842767295597484 | 0.01 | 0.0255049440358293 | -0.00973042273042273 | 0.08359588068181817 | 0.8864432216108054 | 1999/1999 |
+| B1 | all12 | 12 | 153 | 0.19934640522875818 | 0.1633300310285859 | 0.14869281045751634 | 0.17919389978213507 | ≤0.0005 | 0.04920371482808588 | 0.013877865961199295 | 0.09692731702610122 | 0.9949974987493747 | 1999/1999 |
+| B1 | without_Jianping11 | 12 | 158 | 0.1616800920598389 | 0.13726080531635199 | 0.12428078250863062 | 0.15074798619102417 | 0.0025 | 0.03451008111880114 | -0.005182696459412781 | 0.09094794094794091 | 0.9399699849924963 | 1999/1999 |
+| B1 | without_Jianping_Qingyuan10 | 12 | 159 | 0.1540880503144654 | 0.13360988670435828 | 0.12012578616352201 | 0.1471698113207547 | 0.007 | 0.030284583558458658 | -0.009937086092715233 | 0.09500308641975308 | 0.8959479739869936 | 1999/1999 |
+| B2 | all12 | 3 | 70 | 0.24404761904761904 | 0.17481240620310148 | 0.15476190476190477 | 0.19523809523809524 | ≤0.0005 | 0.082681465022266 | 0.029273648648648648 | 0.13287705019114562 | 0.9984992496248124 | 1999/1999 |
+| B2 | without_Jianping11 | 3 | 73 | 0.21046077210460773 | 0.13955109559761217 | 0.11830635118306351 | 0.16064757160647572 | ≤0.0005 | 0.0880020357641733 | 0.03223246287762417 | 0.13209051788992204 | 0.9959979989994997 | 1999/1999 |
+| B2 | without_Jianping_Qingyuan10 | 3 | 79 | 0.24556962025316456 | 0.15329880129938378 | 0.13291139240506328 | 0.17341772151898735 | ≤0.0005 | 0.09409415799055458 | 0.03329710144927536 | 0.13507998099461513 | 0.9959979989994997 | 1999/1999 |
+| B2 | all12 | 6 | 70 | 0.24404761904761904 | 0.17278698873246157 | 0.1486904761904762 | 0.1976190476190476 | ≤0.0005 | 0.08580746704727675 | 0.03100498338870432 | 0.14062838203463204 | 1 | 1999/1999 |
+| B2 | without_Jianping11 | 6 | 73 | 0.21046077210460773 | 0.13616895620911287 | 0.1095890410958904 | 0.16201743462017423 | ≤0.0005 | 0.08897212215139949 | 0.021138585041517298 | 0.13695737727358281 | 0.9934967483741871 | 1999/1999 |
+| B2 | without_Jianping_Qingyuan10 | 6 | 79 | 0.24556962025316456 | 0.15046573919871317 | 0.12658227848101267 | 0.17341772151898735 | ≤0.0005 | 0.09420705507817921 | 0.02892857142857143 | 0.14 | 0.9944972486243121 | 1999/1999 |
+| B2 | all12 | 12 | 70 | 0.24404761904761904 | 0.16602348793444358 | 0.14047619047619048 | 0.19404761904761905 | ≤0.0005 | 0.09257675451287062 | 0.03873239436619718 | 0.15 | 1 | 1999/1999 |
+| B2 | without_Jianping11 | 12 | 73 | 0.21046077210460773 | 0.1284795573378219 | 0.10087173100871731 | 0.15828144458281432 | ≤0.0005 | 0.09383492939505475 | 0.032848958205812503 | 0.15757575757575756 | 0.9979989994997499 | 1999/1999 |
+| B2 | without_Jianping_Qingyuan10 | 12 | 79 | 0.24556962025316456 | 0.14403720847765683 | 0.1189873417721519 | 0.16974683544303784 | ≤0.0005 | 0.09739717424993519 | 0.04282696177062374 | 0.15152366360231528 | 0.9984992496248124 | 1999/1999 |
+| B3 | all12 | 3 | 202 | 0.1117986798679868 | 0.06577339825028042 | 0.056105610561056105 | 0.07549504950495049 | ≤0.0005 | 0.044653497417864264 | 0.026675632510681405 | 0.06395339901637222 | 1 | 1999/1999 |
+| B3 | without_Jianping11 | 3 | 204 | 0.04634581105169341 | 0.052862215421436085 | 0.044073083778966134 | 0.06149732620320856 | 0.897 | -0.0035669007833142737 | -0.020058415215616028 | 0.014282531194295879 | 0.3266633316658329 | 1999/1999 |
+| B3 | without_Jianping_Qingyuan10 | 3 | 202 | 0.03861386138613861 | 0.05140590097028695 | 0.043069306930693066 | 0.0599009900990099 | 0.9925 | -0.008895774010566673 | -0.026244150534456428 | 0.00980392156862745 | 0.16808404202101052 | 1999/1999 |
+| B3 | all12 | 6 | 202 | 0.1117986798679868 | 0.06442123702115098 | 0.052805280528052806 | 0.07508250825082509 | ≤0.0005 | 0.04793141770214067 | 0.026119402985074626 | 0.07148692810457516 | 1 | 1999/1999 |
+| B3 | without_Jianping11 | 6 | 204 | 0.04634581105169341 | 0.051980758650269986 | 0.040998217468805706 | 0.06194295900178253 | 0.8215 | -0.00022396458404371717 | -0.02125734961555857 | 0.0213903743315508 | 0.4752376188094047 | 1999/1999 |
+| B3 | without_Jianping_Qingyuan10 | 6 | 202 | 0.03861386138613861 | 0.05037617818810374 | 0.040594059405940595 | 0.0599009900990099 | 0.9745 | -0.004890849542463732 | -0.02647205882352941 | 0.01715686274509804 | 0.33166583291645824 | 1999/1999 |
+| B3 | all12 | 12 | 202 | 0.1117986798679868 | 0.06071682706039487 | 0.04909240924092409 | 0.07260726072607261 | ≤0.0005 | 0.052706072339000556 | 0.027369281045751634 | 0.07883986928104575 | 1 | 1999/1999 |
+| B3 | without_Jianping11 | 12 | 204 | 0.04634581105169341 | 0.048982378889979784 | 0.0374331550802139 | 0.06016042780748663 | 0.655 | 0.004840154446711287 | -0.020805065581184983 | 0.028966131907308377 | 0.6433216608304152 | 1999/1999 |
+| B3 | without_Jianping_Qingyuan10 | 12 | 202 | 0.03861386138613861 | 0.04737542038345903 | 0.03712871287128713 | 0.05742574257425743 | 0.929 | 0.000820831677813941 | -0.025 | 0.025980392156862746 | 0.5267633816908455 | 1999/1999 |
+| B4 | all12 | 3 | 172 | 0.1690891472868217 | 0.1266483532463911 | 0.11676356589147287 | 0.13619186046511622 | ≤0.0005 | 0.044035191313658 | 0.02582541423001949 | 0.06389150943396225 | 1 | 1999/1999 |
+| B4 | without_Jianping11 | 3 | 178 | 0.12461695607763024 | 0.10197872174084985 | 0.09397344228804903 | 0.10980592441266598 | ≤0.0005 | 0.023114510337412488 | 0.0042780748663101605 | 0.045454545454545456 | 0.992496248124062 | 1999/1999 |
+| B4 | without_Jianping_Qingyuan10 | 3 | 178 | 0.10955056179775281 | 0.10207997257055376 | 0.09382022471910112 | 0.11067415730337078 | 0.082 | 0.016496378276709356 | -0.003592074592074592 | 0.03879116000772052 | 0.9379689844922461 | 1999/1999 |
+| B4 | all12 | 6 | 172 | 0.1690891472868217 | 0.12656764428726028 | 0.11531007751937984 | 0.1375968992248062 | ≤0.0005 | 0.04401927337617099 | 0.020821886446886446 | 0.06886823575072078 | 1 | 1999/1999 |
+| B4 | without_Jianping11 | 6 | 178 | 0.12461695607763024 | 0.10194320858079688 | 0.09193054136874361 | 0.1118488253319714 | ≤0.0005 | 0.023108135656501175 | 0 | 0.05010482498784637 | 0.9734867433716858 | 1999/1999 |
+| B4 | without_Jianping_Qingyuan10 | 6 | 178 | 0.10955056179775281 | 0.10203753562174248 | 0.09213483146067415 | 0.11179775280898877 | 0.11 | 0.016255411463664358 | -0.006989247311827957 | 0.0453508988949365 | 0.8994497248624312 | 1999/1999 |
+| B4 | all12 | 12 | 172 | 0.1690891472868217 | 0.1267450585757997 | 0.1124031007751938 | 0.14001937984496124 | ≤0.0005 | 0.04427151417210775 | 0.015104166666666667 | 0.07904551024955436 | 0.9989994997498749 | 1999/1999 |
+| B4 | without_Jianping11 | 12 | 178 | 0.12461695607763024 | 0.10199200723957466 | 0.09090909090909091 | 0.11338100102145046 | ≤0.0005 | 0.023672698344203102 | -0.006366850321395776 | 0.060206509360742184 | 0.92096048024012 | 1999/1999 |
+| B4 | without_Jianping_Qingyuan10 | 12 | 178 | 0.10955056179775281 | 0.10237534497585755 | 0.09044943820224718 | 0.11348314606741573 | 0.162 | 0.01684740068556204 | -0.01324392047321722 | 0.05628762342863941 | 0.8379189594797398 | 1999/1999 |
+
+## S3 Source-bridge scenarios
+
+| scenario | scheme | region_id | region_name | valid_periods | pressure_periods | gap | gap_share |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| original | B0 | 210111000000 | Sujiatun District | 207 | 41 | 2.636929455032383 | 0.055466540812193606 |
+| original | B0 | 210124000000 | Faku County | 207 | 47 | 2.4170811365748337 | 0.05084213733983448 |
+| original | B0 | 210283000000 | Zhuanghe City | 205 | 53 | 2.4122941144140393 | 0.05074144463470964 |
+| original | B0 | 210423000000 | Qingyuan County | 207 | 67 | 3.2680323638952773 | 0.06874148648217852 |
+| original | B0 | 210682000000 | Fengcheng City | 207 | 34 | 1.8435044216985834 | 0.038777227448562185 |
+| original | B0 | 210882000000 | Dashiqiao City | 207 | 17 | 0.9314541792740385 | 0.01959268995641648 |
+| original | B0 | 210922000000 | Zhangwu County | 207 | 71 | 6.634569361107449 | 0.13955497047404947 |
+| original | B0 | 211081000000 | Dengta City | 207 | 11 | 0.13095280406555976 | 0.0027545291503008234 |
+| original | B0 | 211121000000 | Dawa County | 207 | 3 | 0.1754329284704017 | 0.0036901471399759835 |
+| original | B0 | 211224000000 | Changtu County | 207 | 41 | 1.6848445874777755 | 0.03543989426611031 |
+| original | B0 | 211282000000 | Kaiyuan City | 207 | 48 | 2.6971342081712666 | 0.05673291879234511 |
+| original | B0 | 211322000000 | Jianping County | 206 | 181 | 22.70867377397202 | 0.47766601350332344 |
+| original | B4 | 210111000000 | Sujiatun District | 207 | 52 | 4.423365246549835 | 0.08100823514553965 |
+| original | B4 | 210124000000 | Faku County | 207 | 50 | 3.989286205934583 | 0.07305863681170591 |
+| original | B4 | 210283000000 | Zhuanghe City | 205 | 47 | 3.1686242226299752 | 0.058029269980558885 |
+| original | B4 | 210423000000 | Qingyuan County | 207 | 68 | 3.9400160459867872 | 0.0721563173150687 |
+| original | B4 | 210682000000 | Fengcheng City | 207 | 38 | 1.976165222765012 | 0.03619091983802388 |
+| original | B4 | 210882000000 | Dashiqiao City | 207 | 17 | 0.8856085269807851 | 0.016218779097320054 |
+| original | B4 | 210922000000 | Zhangwu County | 207 | 58 | 7.051480747345254 | 0.1291387843115013 |
+| original | B4 | 211081000000 | Dengta City | 207 | 10 | 0.4541020441252197 | 0.008316293844208004 |
+| original | B4 | 211121000000 | Dawa County | 207 | 8 | 0.41228253045591423 | 0.007550423334274965 |
+| original | B4 | 211224000000 | Changtu County | 207 | 39 | 2.499421874004847 | 0.04577369120834342 |
+| original | B4 | 211282000000 | Kaiyuan City | 207 | 53 | 2.898986981802559 | 0.05309121133256933 |
+| original | B4 | 211322000000 | Jianping County | 206 | 168 | 22.90455634548456 | 0.4194674377808858 |
+| bridge_zero | B0 | 210111000000 | Sujiatun District | 207 | 41 | 2.636929455032383 | 0.05612257165181622 |
+| bridge_zero | B0 | 210124000000 | Faku County | 207 | 40 | 2.0898602617821314 | 0.044479131612836675 |
+| bridge_zero | B0 | 210283000000 | Zhuanghe City | 205 | 52 | 1.793506012017454 | 0.03817173397464916 |
+| bridge_zero | B0 | 210423000000 | Qingyuan County | 207 | 67 | 3.2680323638952773 | 0.06955452682025376 |
+| bridge_zero | B0 | 210682000000 | Fengcheng City | 207 | 32 | 1.7638441532119935 | 0.03754043161160773 |
+| bridge_zero | B0 | 210882000000 | Dashiqiao City | 207 | 17 | 0.9314541792740385 | 0.019824422612795652 |
+| bridge_zero | B0 | 210922000000 | Zhangwu County | 207 | 80 | 7.016414747263222 | 0.1493324892103738 |
+| bridge_zero | B0 | 211081000000 | Dengta City | 207 | 11 | 0.2190591008871099 | 0.004662301474184975 |
+| bridge_zero | B0 | 211121000000 | Dawa County | 207 | 3 | 0.1754329284704017 | 0.0037337923771067123 |
+| bridge_zero | B0 | 211224000000 | Changtu County | 207 | 41 | 1.6848445874777755 | 0.03585905982522197 |
+| bridge_zero | B0 | 211282000000 | Kaiyuan City | 207 | 48 | 2.6971342081712666 | 0.05740392772502046 |
+| bridge_zero | B0 | 211322000000 | Jianping County | 206 | 181 | 22.70867377397202 | 0.48331561110413296 |
+| bridge_zero | B4 | 210111000000 | Sujiatun District | 207 | 52 | 4.423365246549835 | 0.08188196894520397 |
+| bridge_zero | B4 | 210124000000 | Faku County | 207 | 40 | 3.454589549670395 | 0.06394873099054416 |
+| bridge_zero | B4 | 210283000000 | Zhuanghe City | 205 | 40 | 2.8304797083323106 | 0.05239568488233477 |
+| bridge_zero | B4 | 210423000000 | Qingyuan County | 207 | 68 | 3.9400160459867872 | 0.0729345766264117 |
+| bridge_zero | B4 | 210682000000 | Fengcheng City | 207 | 36 | 1.8755896121140405 | 0.034719486592895976 |
+| bridge_zero | B4 | 210882000000 | Dashiqiao City | 207 | 17 | 0.8856085269807851 | 0.016393710639294252 |
+| bridge_zero | B4 | 210922000000 | Zhangwu County | 207 | 64 | 7.380564079507403 | 0.1366233817629431 |
+| bridge_zero | B4 | 211081000000 | Dengta City | 207 | 10 | 0.5157764519003045 | 0.009547660901416455 |
+| bridge_zero | B4 | 211121000000 | Dawa County | 207 | 8 | 0.41228253045591423 | 0.007631860240745992 |
+| bridge_zero | B4 | 211224000000 | Changtu County | 207 | 39 | 2.499421874004847 | 0.04626739436176077 |
+| bridge_zero | B4 | 211282000000 | Kaiyuan City | 207 | 53 | 2.898986981802559 | 0.05366383935888107 |
+| bridge_zero | B4 | 211322000000 | Jianping County | 206 | 168 | 22.90455634548456 | 0.42399170469756764 |
+| bridge_NBS | B0 | 210111000000 | Sujiatun District | 207 | 41 | 2.6421690346252156 | 0.05612203886700002 |
+| bridge_NBS | B0 | 210124000000 | Faku County | 207 | 40 | 2.0921057958933442 | 0.04443820257232597 |
+| bridge_NBS | B0 | 210283000000 | Zhuanghe City | 205 | 52 | 1.8073534723699325 | 0.038389807954562115 |
+| bridge_NBS | B0 | 210423000000 | Qingyuan County | 207 | 67 | 3.2770145003401305 | 0.06960672566579336 |
+| bridge_NBS | B0 | 210682000000 | Fengcheng City | 207 | 32 | 1.7672124543788161 | 0.03753717674802845 |
+| bridge_NBS | B0 | 210882000000 | Dashiqiao City | 207 | 17 | 0.9314541792740385 | 0.019784921769572656 |
+| bridge_NBS | B0 | 210922000000 | Zhangwu County | 207 | 80 | 7.026145395078476 | 0.149241626777191 |
+| bridge_NBS | B0 | 211081000000 | Dengta City | 207 | 12 | 0.223044246192715 | 0.004737659737074269 |
+| bridge_NBS | B0 | 211121000000 | Dawa County | 207 | 3 | 0.1754329284704017 | 0.0037263526675022506 |
+| bridge_NBS | B0 | 211224000000 | Changtu County | 207 | 41 | 1.691206934126214 | 0.03592275136273959 |
+| bridge_NBS | B0 | 211282000000 | Kaiyuan City | 207 | 48 | 2.7027480434493016 | 0.05740879132045611 |
+| bridge_NBS | B0 | 211322000000 | Jianping County | 206 | 181 | 22.7431052970106 | 0.48308394455775433 |
+| bridge_NBS | B4 | 210111000000 | Sujiatun District | 207 | 52 | 4.426359292031456 | 0.0818220332809568 |
+| bridge_NBS | B4 | 210124000000 | Faku County | 207 | 40 | 3.456835083781608 | 0.06390020705755844 |
+| bridge_NBS | B4 | 210283000000 | Zhuanghe City | 205 | 40 | 2.8372163106659483 | 0.0524464446016627 |
+| bridge_NBS | B4 | 210423000000 | Qingyuan County | 207 | 68 | 3.9463783926352245 | 0.07294950158310679 |
+| bridge_NBS | B4 | 210682000000 | Fengcheng City | 207 | 37 | 1.8798959199716414 | 0.03475020810117315 |
+| bridge_NBS | B4 | 210882000000 | Dashiqiao City | 207 | 17 | 0.8856085269807851 | 0.01637063003425208 |
+| bridge_NBS | B4 | 210922000000 | Zhangwu County | 207 | 64 | 7.388049193211447 | 0.1365693941873522 |
+| bridge_NBS | B4 | 211081000000 | Dengta City | 207 | 10 | 0.5183962416967209 | 0.009582646085054995 |
+| bridge_NBS | B4 | 211121000000 | Dawa County | 207 | 8 | 0.4134052975115212 | 0.007641869938666324 |
+| bridge_NBS | B4 | 211224000000 | Changtu County | 207 | 39 | 2.505784220653287 | 0.046319863881427684 |
+| bridge_NBS | B4 | 211282000000 | Kaiyuan City | 207 | 53 | 2.9053493284509977 | 0.05370589546882939 |
+| bridge_NBS | B4 | 211322000000 | Jianping County | 206 | 168 | 22.934122544615516 | 0.4239413057799595 |
+
+The scenarios retain the county-specific price benchmarks and align new-source log prices either to zero boundary change or the observed national boundary change.
+
+## S4 Actual original HTML cell checks and subset coverage
+
+Nineteen selected original HTML pages supply 570 maize-purchase and domestic-urea cell checks across fifteen county columns. All checked county headers, products, specifications, units and numerical strings match the normalized observations. These pages contain seventeen commodity-specification rows and fifteen distinct commodity names. The selected-cell audit and the complete 610-response product inventory in S8e have different coverage. Domestic urea is labelled domestic; record-specific nitrogen content is outside the quotation fields.
+
+| Monitoring date | Archived county columns | Checked product cells | Verified fields | Result |
+|---|---:|---:|---|---|
+| 2019-11-15 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2019-11-25 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2019-12-05 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2021-01-05 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2021-01-15 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2021-01-25 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2021-02-05 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2021-07-25 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2021-08-05 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2021-08-15 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2021-08-25 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2021-09-05 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2021-10-05 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2021-11-05 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2022-08-15 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2022-08-25 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2022-09-05 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2024-01-25 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+| 2024-02-05 | 15 | 30 | county header, product/specification/unit, raw row/column and original value | PASS |
+
+Original HTML references, digests and complete 570 field checks are supplied in the companion inert JSON audit. Source IDs in the normalized table are retained separately from visible HTML fields; no unrecorded original request URL is inferred.
+
+## S5 Jianping break-search configurations and results
+
+| product | trend | HAC | block_length | valid_periods | calendar_periods | candidates | break_date | sup_Wald | delta | HAC_se | mean_before | mean_after | raw_p | bootstrap_repetitions | candidate_search_every_replicate | null_residual_mean | date_note | Holm_p |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| maize | True | 3 | 3 | 217 | 219 | 154 | 2019-12-05 | 54.29560694125557 | -0.15554027272495138 | 0.02110865248017894 | 0.010470020279939192 | -0.09248146724463949 | 0.0005 | 1999 | True | -1.5348705409564377e-18 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.001 |
+| maize | True | 6 | 6 | 217 | 219 | 154 | 2019-11-25 | 40.39026647553962 | -0.14606587948635444 | 0.022983195897190913 | 0.009160320646599577 | -0.09119280239503096 | 0.002 | 1999 | True | -1.5348705409564377e-18 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.004 |
+| maize | True | 12 | 12 | 217 | 219 | 154 | 2019-11-05 | 55.26833318696633 | -0.12759756005279982 | 0.017163434075906252 | 0.006421857776889474 | -0.08866667792162614 | 0.004 | 1999 | True | -1.5348705409564377e-18 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.008 |
+| maize | False | 3 | 3 | 217 | 219 | 154 | 2019-12-15 | 50.5655569423626 | -0.10085608660331323 | 0.01418321594434092 | 0.008576124321641492 | -0.09227996228167172 | 0.0005 | 1999 | True | 1.2278964327651502e-17 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.001 |
+| maize | False | 6 | 6 | 217 | 219 | 154 | 2019-10-15 | 40.5372364701328 | -0.0866647674177074 | 0.013611798349199759 | 0.0013589108848773845 | -0.08530585653283002 | 0.003 | 1999 | True | 1.2278964327651502e-17 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.003 |
+| maize | False | 12 | 12 | 217 | 219 | 154 | 2019-10-15 | 40.10972938677938 | -0.0866647674177074 | 0.013684146338706012 | 0.0013589108848773845 | -0.08530585653283002 | 0.016 | 1999 | True | 1.2278964327651502e-17 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.016 |
+| urea | True | 3 | 3 | 219 | 219 | 154 | 2021-01-25 | 35.05212313416583 | -0.18947807567735137 | 0.032003818671087834 | -0.07257118258032975 | -0.011157525006136147 | 0.0005 | 1999 | True | 0.0 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.001 |
+| urea | True | 6 | 6 | 219 | 219 | 154 | 2021-01-25 | 26.66601930735922 | -0.18947807567735137 | 0.03669271695691549 | -0.07257118258032975 | -0.011157525006136147 | 0.007 | 1999 | True | 0.0 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.007 |
+| urea | True | 12 | 12 | 219 | 219 | 154 | 2021-01-25 | 23.009208006546693 | -0.18947807567735137 | 0.0395010036416725 | -0.07257118258032975 | -0.011157525006136147 | 0.054 | 1999 | True | 0.0 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.054 |
+| urea | False | 3 | 3 | 219 | 219 | 154 | 2022-08-25 | 113.71237138559209 | 0.16221056618101848 | 0.015211613488687551 | -0.0805203184973428 | 0.08169024768367568 | 0.0005 | 1999 | True | 4.055609222375001e-18 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.001 |
+| urea | False | 6 | 6 | 219 | 219 | 154 | 2022-08-25 | 75.50181829652489 | 0.16221056618101848 | 0.01866811358965535 | -0.0805203184973428 | 0.08169024768367568 | 0.001 | 1999 | True | 4.055609222375001e-18 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.002 |
+| urea | False | 12 | 12 | 219 | 219 | 154 | 2022-08-25 | 54.41216957877408 | 0.16221056618101848 | 0.021990298202723975 | -0.0805203184973428 | 0.08169024768367568 | 0.0055 | 1999 | True | 4.055609222375001e-18 | break_date is first post-step observation; 2021-08 not a imposed candidate | 0.011 |
+
+These single-step sup-Wald searches compare the common-linear-trend and no-trend specifications across the reported HAC and block lengths.
+
+## S6 Recovery confirmations on the original calendar
+
+Confirmation is the third of three consecutive complete nonnegative aggregate dates after the first downcrossing, with source continuity. Missing planned slots interrupt confirmation. The confirming date is separate from strictly later dates. The ten-county cohort excludes Jianping and Qingyuan.
+
+| Cohort | Benchmark | Complete later dates | First downcrossing | Confirmation | Status | Strictly later A≥1 dates | With county pressure |
+|---|---|---:|---|---|---|---:|---:|
+| all12 | B0 | 204 | 2021-10-05 | 2021-12-25 | confirmed_recovery | 144 | 141 |
+| all12 | B1 | 204 | 2021-09-25 | 2022-09-05 | confirmed_recovery | 121 | 99 |
+| all12 | B2 | 204 | 2021-06-15 | 2023-09-15 | confirmed_recovery | 51 | 51 |
+| all12 | B3 | 204 | 2022-06-15 | 2022-07-25 | confirmed_recovery | 149 | 146 |
+| all12 | B4 | 204 | 2021-09-15 | 2022-01-25 | confirmed_recovery | 143 | 127 |
+| without_Jianping | B0 | 204 | 2021-10-05 | 2021-12-25 | confirmed_recovery | 153 | 90 |
+| without_Jianping | B1 | 204 | 2021-09-25 | 2022-09-05 | confirmed_recovery | 125 | 75 |
+| without_Jianping | B2 | 204 | 2021-06-15 | 2023-09-15 | confirmed_recovery | 53 | 53 |
+| without_Jianping | B3 | 204 | NA | NA | no_downcrossing | 0 | 0 |
+| without_Jianping | B4 | 204 | 2021-09-25 | 2022-01-25 | confirmed_recovery | 148 | 88 |
+| without_Jianping_Qingyuan10 | B0 | 204 | 2021-10-05 | 2021-12-25 | confirmed_recovery | 155 | 74 |
+| without_Jianping_Qingyuan10 | B1 | 204 | 2021-07-25 | 2021-08-25 | confirmed_recovery | 136 | 73 |
+| without_Jianping_Qingyuan10 | B2 | 204 | 2021-06-15 | 2023-07-25 | confirmed_recovery | 58 | 58 |
+| without_Jianping_Qingyuan10 | B3 | 204 | 2022-06-15 | 2022-07-25 | confirmed_recovery | 149 | 13 |
+| without_Jianping_Qingyuan10 | B4 | 204 | 2021-09-25 | 2022-01-25 | confirmed_recovery | 149 | 68 |
+
+## S7 Low-pressure episode groups and evaluated screening variants
+
+An internal update compares two adjacent observations already within the same low-pressure episode; it excludes the entry edge. Singletons have no internal denominator and their rate is NA. Pooled county/cohort rates are sums of updates divided by sums of length−1; the episode mean is secondary. Calendar spans are elapsed dates, not continuous trading time.
+
+| Cohort | Length group | Episodes | Zero-update episodes | Zero fraction | Median any-product update count |
+|---|---|---:|---:|---:|---:|
+| all12 | 1 | 19 | 19 | 1 | 0 |
+| all12 | 2-3 | 14 | 8 | 0.5714285714285714 | 0 |
+| all12 | 4-8 | 24 | 2 | 0.08333333333333333 | 2.5 |
+| all12 | >=9 | 17 | 1 | 0.058823529411764705 | 7 |
+| without_J | 1 | 19 | 19 | 1 | 0 |
+| without_J | 2-3 | 14 | 8 | 0.5714285714285714 | 0 |
+| without_J | 4-8 | 24 | 2 | 0.08333333333333333 | 2.5 |
+| without_J | >=9 | 14 | 1 | 0.07142857142857142 | 7 |
+| without_J_Q | 1 | 19 | 19 | 1 | 0 |
+| without_J_Q | 2-3 | 14 | 8 | 0.5714285714285714 | 0 |
+| without_J_Q | 4-8 | 21 | 2 | 0.09523809523809523 | 3 |
+| without_J_Q | >=9 | 12 | 0 | 0 | 7 |
+
+| Cohort | Episodes with length≥2 | Zero among length≥2 | Episodes with length≥3 | Zero among length≥3 | Internal edges | Any-product updates | Pooled rate |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| all12 | 55 | 11 | 45 | 4 | 540 | 204 | 0.37777777777777777 |
+| without_J | 52 | 11 | 42 | 4 | 362 | 187 | 0.5165745856353591 |
+| without_J_Q | 47 | 10 | 37 | 3 | 300 | 179 | 0.5966666666666667 |
+
+### S7a County pooled internal update rates
+
+| County | Episodes | Internal edges | Maize updates | Urea updates | Any-product updates | Pooled any rate | Secondary episode mean any rate |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Sujiatun District | 8 | 33 | 19 | 2 | 20 | 0.6060606060606061 | 0.44761904761904764 |
+| Faku County | 9 | 38 | 11 | 14 | 22 | 0.5789473684210527 | 0.4860544217687074 |
+| Zhuanghe City | 7 | 46 | 21 | 3 | 22 | 0.4782608695652174 | 0.4833333333333333 |
+| Qingyuan County | 5 | 62 | 7 | 1 | 8 | 0.12903225806451613 | 0.18857142857142856 |
+| Fengcheng City | 8 | 26 | 11 | 8 | 15 | 0.5769230769230769 | 0.42857142857142855 |
+| Dashiqiao City | 4 | 13 | 4 | 3 | 6 | 0.46153846153846156 | 0.4761904761904762 |
+| Zhangwu County | 7 | 64 | 45 | 5 | 48 | 0.75 | 0.676530612244898 |
+| Dengta City | 3 | 8 | 6 | 0 | 6 | 0.75 | 0.75 |
+| Dawa County | 1 | 2 | 1 | 0 | 1 | 0.5 | 0.5 |
+| Changtu County | 9 | 32 | 10 | 8 | 14 | 0.4375 | 0.4583333333333333 |
+| Kaiyuan City | 10 | 38 | 19 | 14 | 25 | 0.6578947368421053 | 0.7155092592592592 |
+| Jianping County | 3 | 178 | 15 | 2 | 17 | 0.09550561797752809 | 0.11944909928780896 |
+
+### S7b Three-valued national-dependent grid: all36 settings
+
+The unchanged fixed twelve-county product medians define the rate branch. The four fractions are 1/4, 1/3, 1/2 and 2/3; run lengths are strictly greater than24/36/48 observations; national raw-price amplitudes max/min−1 are strictly greater than10/20/30%. Run evidence is cut at missing/zero/source boundaries. The rate branch alone identifies Jianping and Qingyuan at1/4 or1/3; it is not the complete national-dependent flag set. Partial national coverage provides only a lower bound: a strict observed exceedance resolves true; otherwise the branch remains unresolved. All36 rows were applied:20 complete PASS,16 unresolved. PASS refers to the county flag decision, not full coverage of every individual window.
+
+| Rate fraction | Run length > | Raw-price amplitude > | Status | Initial rate branch | Known flagged | Unresolved | Complete flagged set | Retained N |
+|---|---|---|---|---|---|---|---|---|
+| 1/4 | 24 | 10% | PASS | Qingyuan County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Fengcheng City; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Fengcheng City; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | 0 |
+| 1/4 | 24 | 20% | PASS | Qingyuan County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | 1 |
+| 1/4 | 24 | 30% | UNKNOWN | Qingyuan County; Jianping County | Qingyuan County; Dashiqiao City; Dengta City; Dawa County; Jianping County | Sujiatun District; Zhangwu County | NA | NA |
+| 1/4 | 36 | 10% | PASS | Qingyuan County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 4 |
+| 1/4 | 36 | 20% | PASS | Qingyuan County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 6 |
+| 1/4 | 36 | 30% | UNKNOWN | Qingyuan County; Jianping County | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Zhangwu County | NA | NA |
+| 1/4 | 48 | 10% | UNKNOWN | Qingyuan County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Jianping County | Dawa County | NA | NA |
+| 1/4 | 48 | 20% | UNKNOWN | Qingyuan County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Jianping County | Dawa County | NA | NA |
+| 1/4 | 48 | 30% | UNKNOWN | Qingyuan County; Jianping County | Qingyuan County; Dashiqiao City; Jianping County | Sujiatun District; Zhangwu County; Dawa County | NA | NA |
+| 1/3 | 24 | 10% | PASS | Qingyuan County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Fengcheng City; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Fengcheng City; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | 0 |
+| 1/3 | 24 | 20% | PASS | Qingyuan County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | 1 |
+| 1/3 | 24 | 30% | UNKNOWN | Qingyuan County; Jianping County | Qingyuan County; Dashiqiao City; Dengta City; Dawa County; Jianping County | Sujiatun District; Zhangwu County | NA | NA |
+| 1/3 | 36 | 10% | PASS | Qingyuan County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 4 |
+| 1/3 | 36 | 20% | PASS | Qingyuan County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 6 |
+| 1/3 | 36 | 30% | UNKNOWN | Qingyuan County; Jianping County | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Zhangwu County | NA | NA |
+| 1/3 | 48 | 10% | UNKNOWN | Qingyuan County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Jianping County | Dawa County | NA | NA |
+| 1/3 | 48 | 20% | UNKNOWN | Qingyuan County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Jianping County | Dawa County | NA | NA |
+| 1/3 | 48 | 30% | UNKNOWN | Qingyuan County; Jianping County | Qingyuan County; Dashiqiao City; Jianping County | Sujiatun District; Zhangwu County; Dawa County | NA | NA |
+| 1/2 | 24 | 10% | PASS | Qingyuan County; Dawa County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Fengcheng City; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Fengcheng City; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | 0 |
+| 1/2 | 24 | 20% | PASS | Qingyuan County; Dawa County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | 1 |
+| 1/2 | 24 | 30% | UNKNOWN | Qingyuan County; Dawa County; Jianping County | Qingyuan County; Dashiqiao City; Dengta City; Dawa County; Jianping County | Sujiatun District; Zhangwu County | NA | NA |
+| 1/2 | 36 | 10% | PASS | Qingyuan County; Dawa County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 4 |
+| 1/2 | 36 | 20% | PASS | Qingyuan County; Dawa County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 6 |
+| 1/2 | 36 | 30% | UNKNOWN | Qingyuan County; Dawa County; Jianping County | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Zhangwu County | NA | NA |
+| 1/2 | 48 | 10% | PASS | Qingyuan County; Dawa County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 6 |
+| 1/2 | 48 | 20% | PASS | Qingyuan County; Dawa County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 6 |
+| 1/2 | 48 | 30% | UNKNOWN | Qingyuan County; Dawa County; Jianping County | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Zhangwu County | NA | NA |
+| 2/3 | 24 | 10% | PASS | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Fengcheng City; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Fengcheng City; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | 0 |
+| 2/3 | 24 | 20% | PASS | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dengta City; Dawa County; Changtu County; Kaiyuan City; Jianping County | 1 |
+| 2/3 | 24 | 30% | UNKNOWN | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Qingyuan County; Dashiqiao City; Dengta City; Dawa County; Jianping County | Sujiatun District; Zhangwu County | NA | NA |
+| 2/3 | 36 | 10% | PASS | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Faku County; Zhuanghe City; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 4 |
+| 2/3 | 36 | 20% | PASS | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 6 |
+| 2/3 | 36 | 30% | UNKNOWN | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Zhangwu County | NA | NA |
+| 2/3 | 48 | 10% | PASS | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 6 |
+| 2/3 | 48 | 20% | PASS | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | ∅ | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 6 |
+| 2/3 | 48 | 30% | UNKNOWN | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Qingyuan County; Dashiqiao City; Dawa County; Jianping County | Sujiatun District; Zhangwu County | NA | NA |
+
+Complete flagged sets from the20 PASS settings yield four distinct retained cohorts (N0/N1/N4/N6); the16 unresolved settings do not supply complete sets. No unknown branch is treated as false. Primary alignment uses the nominal labelled statistical-period dates5/15/25, not a claim that every25th is the calendar-day midpoint. The calendar-day sensitivity shifts67 of309 labels and changes extrema/counts in9 windows, while all53 run threshold states,432 county/grid states,20 complete settings and the four retained sets remain unchanged.
+
+### S7c All53 same-source constant-run national windows
+
+The union comprises all53 original-county/product same-source runs longer than24 observations; thresholds>36 and>48 select20 and13 runs. National evidence is FULL in36 windows and PARTIAL in17. The earlier37-window table was the non-Jianping/Qingyuan subset and is reported separately from the complete union. Exact unavailable endpoints remain NA, including cancelled labels. Nominal prices are product-specific maize purchase mixed and domestic urea CNY/t; county originals are CNY/500g and are not treated as directly comparable national/local levels.
+
+| Run index | County | Product | Source | County value CNY/500g | Start | End | Obs | NBS expected/available | Coverage | Cancelled periods | Unknown missing | NBS min/max CNY/t | Observed amplitude % | Exact first/last CNY/t | Endpoint log change |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2 | Sujiatun District | Maize | ln_price_111 | 0.80 | 2018-02-15 | 2019-09-25 | 59 | 59/57 | PARTIAL_LOWER_BOUND | 2019-02-05 | 2018-02-15 | 1765.1/1929.9 | 9.336581 | NA/1882.3 | NA |
+| 140 | Sujiatun District | Urea | ln_price_111 | 1.10 | 2018-01-05 | 2020-04-15 | 83 | 83/81 | PARTIAL_LOWER_BOUND | 2019-02-05 | 2018-02-15 | 1728.5/2230.3 | 29.030952 | 2103.3/1802.4 | -0.154388430 |
+| 141 | Sujiatun District | Urea | ln_price_111 | 1.00 | 2020-04-25 | 2021-01-15 | 27 | 27/27 | FULL | ∅ | ∅ | 1670.3/2018.9 | 20.870502 | 1770.6/2018.9 | 0.131234336 |
+| 327 | Faku County | Urea | ln_price_111 | 1.05 | 2018-04-25 | 2019-08-15 | 48 | 48/47 | FULL | 2019-02-05 | ∅ | 1873.8/2230.3 | 19.025510 | 2021.5/1873.8 | -0.075871356 |
+| 332 | Faku County | Urea | ln_price_111 | 1.00 | 2020-04-25 | 2021-01-25 | 28 | 28/28 | FULL | ∅ | ∅ | 1670.3/2070.0 | 23.929833 | 1770.6/2070.0 | 0.156230135 |
+| 407 | Zhuanghe City | Maize | ln_price_111 | 0.87 | 2018-05-15 | 2019-04-25 | 35 | 35/34 | FULL | 2019-02-05 | ∅ | 1765.1/1903.1 | 7.818254 | 1781.0/1820.2 | 0.021771381 |
+| 409 | Zhuanghe City | Maize | ln_price_111 | 0.97 | 2019-08-15 | 2020-04-15 | 25 | 25/25 | FULL | ∅ | ∅ | 1809.5/1949.1 | 7.714838 | 1929.9/1949.1 | 0.009899539 |
+| 534 | Zhuanghe City | Urea | ln_price_111 | 1.00 | 2019-07-25 | 2020-07-25 | 37 | 37/37 | FULL | ∅ | ∅ | 1670.3/1921.2 | 15.021254 | 1921.2/1670.3 | -0.139946740 |
+| 550 | Zhuanghe City | Urea | ln_price_111 | 1.37 | 2023-04-05 | 2023-12-15 | 26 | 26/26 | FULL | ∅ | ∅ | 2119.1/2575.0 | 21.513850 | 2575.0/2432.9 | -0.056765573 |
+| 562 | Qingyuan County | Maize | ln_price_111 | 0.85 | 2018-05-05 | 2019-03-05 | 31 | 31/30 | FULL | 2019-02-05 | ∅ | 1765.1/1903.1 | 7.818254 | 1780.8/1784.7 | 0.002187632 |
+| 564 | Qingyuan County | Maize | ln_price_111 | 0.85 | 2019-03-25 | 2020-01-05 | 29 | 29/29 | FULL | ∅ | ∅ | 1765.1/1929.9 | 9.336581 | 1775.5/1812.3 | 0.020514683 |
+| 607 | Qingyuan County | Maize | ln_price_115 | 1.00 | 2024-10-05 | 2026-03-05 | 52 | 52/49 | PARTIAL_LOWER_BOUND | 2025-10-05; 2026-02-15 | 2025-01-25 | 2009.2/2370.1 | 17.962373 | 2104.8/2301.0 | 0.089123360 |
+| 611 | Qingyuan County | Urea | ln_price_111 | 1.10 | 2018-01-05 | 2020-03-15 | 80 | 80/78 | PARTIAL_LOWER_BOUND | 2019-02-05 | 2018-02-15 | 1728.5/2230.3 | 29.030952 | 2103.3/1885.7 | -0.109208435 |
+| 612 | Qingyuan County | Urea | ln_price_111 | 1.00 | 2020-03-25 | 2021-03-25 | 37 | 37/36 | PARTIAL_LOWER_BOUND | ∅ | 2021-02-15 | 1670.3/2227.3 | 33.347303 | 1820.0/2199.3 | 0.189302627 |
+| 617 | Qingyuan County | Urea | ln_price_111 | 1.60 | 2022-03-25 | 2024-01-25 | 67 | 67/66 | FULL | 2023-01-25 | ∅ | 2119.1/3187.4 | 50.412911 | 2911.7/2240.4 | -0.262082682 |
+| 619 | Qingyuan County | Urea | ln_price_115 | 1.20 | 2024-04-25 | 2025-03-05 | 32 | 32/31 | PARTIAL_LOWER_BOUND | ∅ | 2025-01-25 | 1685.1/2399.7 | 42.406979 | 2239.8/1835.7 | -0.198960696 |
+| 620 | Qingyuan County | Urea | ln_price_115 | 1.00 | 2025-03-15 | 2026-09-25 | 56 | 56/53 | PARTIAL_LOWER_BOUND | 2025-10-05; 2026-02-15 | 2026-09-25 | 1609.7/1945.6 | 20.867242 | 1842.8/NA | NA |
+| 653 | Fengcheng City | Maize | ln_price_111 | 0.95 | 2019-07-05 | 2020-05-05 | 31 | 31/31 | FULL | ∅ | ∅ | 1809.5/2073.5 | 14.589666 | 1910.0/2073.5 | 0.082134759 |
+| 808 | Dashiqiao City | Maize | ln_price_111 | 0.82 | 2018-01-05 | 2020-02-25 | 78 | 78/76 | PARTIAL_LOWER_BOUND | 2019-02-05 | 2018-02-15 | 1765.1/1929.9 | 9.336581 | 1770.2/1847.4 | 0.042686711 |
+| 871 | Dashiqiao City | Urea | ln_price_111 | 0.98 | 2018-04-25 | 2019-02-25 | 31 | 31/30 | FULL | 2019-02-05 | ∅ | 1941.2/2230.3 | 14.892850 | 2021.5/1969.9 | -0.025857030 |
+| 873 | Dashiqiao City | Urea | ln_price_111 | 1.05 | 2019-05-05 | 2021-02-25 | 66 | 66/65 | PARTIAL_LOWER_BOUND | ∅ | 2021-02-15 | 1670.3/2227.3 | 33.347303 | 2100.5/2227.3 | 0.058614678 |
+| 916 | Dashiqiao City | Urea | ln_price_115 | 1.00 | 2025-06-25 | 2026-02-25 | 25 | 25/23 | FULL | 2025-10-05; 2026-02-15 | ∅ | 1609.7/1826.1 | 13.443499 | 1826.1/1823.0 | -0.001699049 |
+| 1109 | Zhangwu County | Urea | ln_price_111 | 1.00 | 2018-04-25 | 2018-12-25 | 25 | 25/25 | FULL | ∅ | ∅ | 1941.2/2230.3 | 14.892850 | 2021.5/2045.8 | 0.011949101 |
+| 1111 | Zhangwu County | Urea | ln_price_111 | 1.08 | 2019-03-15 | 2019-11-15 | 25 | 25/25 | FULL | ∅ | ∅ | 1728.5/2175.5 | 25.860573 | 2024.1/1728.5 | -0.157871177 |
+| 1132 | Zhangwu County | Urea | ln_price_115 | 1.20 | 2024-02-05 | 2024-10-25 | 27 | 27/26 | FULL | 2024-02-15 | ∅ | 1885.5/2399.7 | 27.271281 | 2244.0/1885.5 | -0.174066950 |
+| 1134 | Zhangwu County | Urea | ln_price_115 | 1.05 | 2025-02-25 | 2026-09-25 | 58 | 58/55 | PARTIAL_LOWER_BOUND | 2025-10-05; 2026-02-15 | 2026-09-25 | 1609.7/1945.6 | 20.867242 | 1850.4/NA | NA |
+| 1137 | Dengta City | Maize | ln_price_111 | 0.87 | 2018-04-05 | 2018-12-05 | 25 | 25/25 | FULL | ∅ | ∅ | 1765.1/1903.1 | 7.818254 | 1847.0/1903.1 | 0.029921434 |
+| 1311 | Dengta City | Urea | ln_price_111 | 1.50 | 2018-03-15 | 2019-02-25 | 35 | 35/34 | FULL | 2019-02-05 | ∅ | 1941.2/2230.3 | 14.892850 | 2019.4/1969.9 | -0.024817658 |
+| 1317 | Dengta City | Urea | ln_price_111 | 1.10 | 2019-05-25 | 2020-03-05 | 29 | 29/29 | FULL | ∅ | ∅ | 1728.5/2016.9 | 16.684987 | 2016.9/1885.1 | -0.067580809 |
+| 1319 | Dengta City | Urea | ln_price_111 | 1.00 | 2020-03-25 | 2021-02-25 | 34 | 34/33 | PARTIAL_LOWER_BOUND | ∅ | 2021-02-15 | 1670.3/2227.3 | 33.347303 | 1820.0/2227.3 | 0.201953588 |
+| 1323 | Dengta City | Urea | ln_price_111 | 1.50 | 2021-06-15 | 2022-04-05 | 30 | 30/29 | FULL | 2022-02-05 | ∅ | 2470.9/3158.9 | 27.844105 | 2724.8/2891.1 | 0.059242022 |
+| 1346 | Dengta City | Urea | ln_price_115 | 1.00 | 2025-03-25 | 2026-03-15 | 36 | 36/34 | FULL | 2025-10-05; 2026-02-15 | ∅ | 1609.7/1945.6 | 20.867242 | 1923.8/1886.8 | -0.019420124 |
+| 1349 | Dawa County | Maize | ln_price_111 | 0.80 | 2018-01-05 | 2020-04-05 | 82 | 82/80 | PARTIAL_LOWER_BOUND | 2019-02-05 | 2018-02-15 | 1765.1/1929.9 | 9.336581 | 1770.2/1924.7 | 0.083677577 |
+| 1393 | Dawa County | Maize | ln_price_115 | 1.10 | 2024-12-05 | 2025-11-25 | 36 | 36/34 | PARTIAL_LOWER_BOUND | 2025-10-05 | 2025-01-25 | 2009.2/2370.1 | 17.962373 | 2056.0/2195.4 | 0.065601915 |
+| 1403 | Dawa County | Urea | ln_price_111 | 1.05 | 2019-03-15 | 2020-03-05 | 36 | 36/36 | FULL | ∅ | ∅ | 1728.5/2175.5 | 25.860573 | 2024.1/1885.1 | -0.071144287 |
+| 1404 | Dawa County | Urea | ln_price_111 | 1.00 | 2020-03-15 | 2020-12-15 | 28 | 28/28 | FULL | ∅ | ∅ | 1670.3/1913.7 | 14.572233 | 1885.7/1913.7 | 0.014739436 |
+| 1426 | Dawa County | Urea | ln_price_111 | 1.35 | 2023-05-25 | 2024-01-25 | 25 | 25/25 | FULL | ∅ | ∅ | 2119.1/2516.9 | 18.772120 | 2139.7/2240.4 | 0.045988789 |
+| 1427 | Dawa County | Urea | ln_price_115 | 1.35 | 2024-02-05 | 2025-03-15 | 41 | 41/39 | PARTIAL_LOWER_BOUND | 2024-02-15 | 2025-01-25 | 1685.1/2399.7 | 42.406979 | 2244.0/1842.8 | -0.196973834 |
+| 1428 | Dawa County | Urea | ln_price_115 | 1.05 | 2025-03-25 | 2026-03-15 | 36 | 36/34 | FULL | 2025-10-05; 2026-02-15 | ∅ | 1609.7/1945.6 | 20.867242 | 1923.8/1886.8 | -0.019420124 |
+| 1434 | Changtu County | Maize | ln_price_111 | 0.86 | 2019-05-15 | 2020-02-15 | 28 | 28/28 | FULL | ∅ | ∅ | 1809.5/1929.9 | 6.653772 | 1872.9/1864.4 | -0.004548746 |
+| 1532 | Changtu County | Urea | ln_price_111 | 1.15 | 2019-04-25 | 2020-02-15 | 30 | 30/30 | FULL | ∅ | ∅ | 1728.5/2122.1 | 22.771189 | 2122.1/1767.9 | -0.182613763 |
+| 1534 | Changtu County | Urea | ln_price_111 | 1.00 | 2020-05-15 | 2021-01-15 | 25 | 25/25 | FULL | ∅ | ∅ | 1670.3/2018.9 | 20.870502 | 1700.9/2018.9 | 0.171395286 |
+| 1768 | Kaiyuan City | Urea | ln_price_111 | 1.05 | 2018-05-05 | 2019-02-15 | 29 | 29/28 | FULL | 2019-02-05 | ∅ | 1941.2/2230.3 | 14.892850 | 2041.1/1978.0 | -0.031402645 |
+| 1778 | Kaiyuan City | Urea | ln_price_111 | 0.95 | 2020-04-15 | 2021-01-15 | 28 | 28/28 | FULL | ∅ | ∅ | 1670.3/2018.9 | 20.870502 | 1802.4/2018.9 | 0.113433698 |
+| 1844 | Kaiyuan City | Urea | ln_price_115 | 1.00 | 2025-06-25 | 2026-02-25 | 25 | 25/23 | FULL | 2025-10-05; 2026-02-15 | ∅ | 1609.7/1826.1 | 13.443499 | 1826.1/1823.0 | -0.001699049 |
+| 1853 | Jianping County | Maize | ln_price_111 | 0.85 | 2018-05-05 | 2019-08-15 | 47 | 47/46 | FULL | 2019-02-05 | ∅ | 1765.1/1929.9 | 9.336581 | 1780.8/1929.9 | 0.080405487 |
+| 1872 | Jianping County | Maize | ln_price_111 | 1.22 | 2021-04-05 | 2022-02-25 | 33 | 33/32 | FULL | 2022-02-05 | ∅ | 2511.5/2833.6 | 12.825005 | 2735.7/2643.1 | -0.034434874 |
+| 1876 | Jianping County | Maize | ln_price_111 | 1.25 | 2022-12-05 | 2023-12-15 | 38 | 38/37 | FULL | 2023-01-25 | ∅ | 2485.5/2881.7 | 15.940455 | 2881.7/2485.5 | -0.147906551 |
+| 1889 | Jianping County | Maize | ln_price_115 | 1.07 | 2025-03-15 | 2026-09-25 | 56 | 56/53 | PARTIAL_LOWER_BOUND | 2025-10-05; 2026-02-15 | 2026-09-25 | 2145.9/2370.1 | 10.447831 | 2193.7/NA | NA |
+| 1891 | Jianping County | Urea | ln_price_111 | 1.00 | 2018-04-25 | 2021-04-25 | 109 | 109/107 | PARTIAL_LOWER_BOUND | 2019-02-05 | 2021-02-15 | 1670.3/2230.3 | 33.526911 | 2021.5/2210.9 | 0.089559862 |
+| 1894 | Jianping County | Urea | ln_price_111 | 1.50 | 2022-04-15 | 2024-01-25 | 65 | 65/64 | FULL | 2023-01-25 | ∅ | 2119.1/3187.4 | 50.412911 | 2885.2/2240.4 | -0.252939800 |
+| 1895 | Jianping County | Urea | ln_price_115 | 1.50 | 2024-02-05 | 2024-11-15 | 29 | 29/28 | FULL | 2024-02-15 | ∅ | 1867.2/2399.7 | 28.518638 | 2244.0/1867.2 | -0.183820005 |
+| 1896 | Jianping County | Urea | ln_price_115 | 1.50 | 2024-12-05 | 2026-02-15 | 44 | 44/41 | PARTIAL_LOWER_BOUND | 2025-10-05; 2026-02-15 | 2025-01-25 | 1609.7/1945.6 | 20.867242 | 1853.4/NA | NA |
+
+Observed amplitude in a PARTIAL row is a lower bound rather than the full-window amplitude. Confirmed cancellation and unknown missing coverage are separated; there is no interpolation, carry-forward or deletion of the original county calendar.
+
+### S7d Conditional and paired results for all 20 complete-set/benchmark configurations
+
+| Set ID | Retained N | Retained counties | Interpretation |
+|---|---|---|---|
+| complete_set_0 | 0 | ∅ | EMPTY_COHORT; all inferential and point statistics NA |
+| complete_set_1 | 1 | Fengcheng City | One-county centering degeneracy; no distributional inference |
+| complete_set_2 | 4 | Fengcheng City; Dengta City; Changtu County; Kaiyuan City | All five paired95% intervals include zero |
+| complete_set_3 | 6 | Faku County; Zhuanghe City; Fengcheng City; Dengta City; Changtu County; Kaiyuan City | All five paired95% intervals include zero |
+
+The five benchmarks reuse their six-period common county-date indices and original coefficients. The donor container has108 baseline rows, but B2 actual outer indices are supported on72…107 (the36 dates of2020), not all 108. Each cohort recomputes its own index, conditioning set and denominator under the unchanged original twelve-county complete-date mask; no newly complete aggregate dates are added.
+
+| Benchmark | Set ID | N | A>=1 dates | Observed H % | Fixed ref mean % | Fixed90% % | Fixed upper-tail p | Paired D mean pp | Paired95% pp | D>0 fraction | Valid/skipped | Status |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| B0 | complete_set_0 | 0 | NA | NA | NA | [NA, NA] | NA | NA | [NA, NA] | NA | 0/1999 | EMPTY_COHORT |
+| B0 | complete_set_1 | 1 | 171 | 0.000000 | 0.000000 | [0.000000, 0.000000] | 1 | 0.000000 | [0.000000, 0.000000] | 0.000000000 | 1999/0 | DEGENERATE; actual PASS |
+| B0 | complete_set_2 | 4 | 183 | 9.153005 | 11.675852 | [9.426230, 13.934426] | 0.975 | -2.746233 | [-6.322261, 0.497512] | 0.047023512 | 1999/0 | PASS |
+| B0 | complete_set_3 | 6 | 179 | 10.055866 | 12.152724 | [10.242086, 14.059590] | 0.971 | -2.632499 | [-5.616211, 0.000000] | 0.022011006 | 1999/0 | PASS |
+| B1 | complete_set_0 | 0 | NA | NA | NA | [NA, NA] | NA | NA | [NA, NA] | NA | 0/1999 | EMPTY_COHORT |
+| B1 | complete_set_1 | 1 | 121 | 0.000000 | 0.000000 | [0.000000, 0.000000] | 1 | 0.000000 | [0.000000, 0.000000] | 0.000000000 | 1999/0 | DEGENERATE; actual PASS |
+| B1 | complete_set_2 | 4 | 146 | 10.102740 | 9.689177 | [7.705479, 11.815068] | 0.3745 | 0.351299 | [-3.443372, 4.319251] | 0.534267134 | 1999/0 | PASS |
+| B1 | complete_set_3 | 6 | 146 | 12.328767 | 13.635014 | [11.986301, 15.296804] | 0.906 | -0.796673 | [-4.043393, 3.365385] | 0.286643322 | 1999/0 | PASS |
+| B2 | complete_set_0 | 0 | NA | NA | NA | [NA, NA] | NA | NA | [NA, NA] | NA | 0/1999 | EMPTY_COHORT |
+| B2 | complete_set_1 | 1 | 43 | 0.000000 | 0.000000 | [0.000000, 0.000000] | 1 | 0.000000 | [0.000000, 0.000000] | 0.000000000 | 1999/0 | DEGENERATE; actual PASS |
+| B2 | complete_set_2 | 4 | 67 | 15.671642 | 10.867934 | [7.835821, 13.805970] | 0.0095 | 5.050889 | [-1.515925, 11.302708] | 0.936968484 | 1999/0 | PASS |
+| B2 | complete_set_3 | 6 | 66 | 18.686869 | 17.388745 | [14.898990, 19.949495] | 0.2345 | 2.680518 | [-3.958829, 8.160104] | 0.836918459 | 1999/0 | PASS |
+| B3 | complete_set_0 | 0 | NA | NA | NA | [NA, NA] | NA | NA | [NA, NA] | NA | 0/1999 | EMPTY_COHORT |
+| B3 | complete_set_1 | 1 | 196 | 0.000000 | 0.000000 | [0.000000, 0.000000] | 1 | 0.000000 | [0.000000, 0.000000] | 0.000000000 | 1999/0 | DEGENERATE; actual PASS |
+| B3 | complete_set_2 | 4 | 204 | 2.573529 | 5.623400 | [4.411765, 6.740196] | 1 | -2.195306 | [-6.683168, 1.470588] | 0.149074537 | 1999/0 | PASS |
+| B3 | complete_set_3 | 6 | 203 | 3.119869 | 6.479471 | [5.172414, 7.717570] | 1 | -2.559701 | [-5.833545, 0.571895] | 0.055027514 | 1999/0 | PASS |
+| B4 | complete_set_0 | 0 | NA | NA | NA | [NA, NA] | NA | NA | [NA, NA] | NA | 0/1999 | EMPTY_COHORT |
+| B4 | complete_set_1 | 1 | 168 | 0.000000 | 0.000000 | [0.000000, 0.000000] | 1 | 0.000000 | [0.000000, 0.000000] | 0.000000000 | 1999/0 | DEGENERATE; actual PASS |
+| B4 | complete_set_2 | 4 | 181 | 9.116022 | 10.048671 | [8.287293, 11.878453] | 0.82 | -0.250833 | [-3.726940, 3.255491] | 0.440720360 | 1999/0 | PASS |
+| B4 | complete_set_3 | 6 | 181 | 11.970534 | 11.706774 | [10.313076, 13.075506] | 0.3895 | 0.576482 | [-2.274698, 3.481013] | 0.643821911 | 1999/0 | PASS |
+
+N0 is an explicit empty cohort: five benchmarks×1999 skip IDs=9995, all inferential statistics NA; these are not failed numerical draws. N1 retains only Fengcheng; one-county residual centering is identically zero, giving H/ref/D=0, p=1 and paired[0,0] by construction. Its index, benchmarks, attainment and accumulated shortfalls are not all zero; the degenerate conditional output cannot support distributional inference. All five paired95% intervals contain zero in both N4 andN6; B0 N6 has exact upper bound0. B2 N4 fixed-reference p=0.0095 does not replace its paired interval containing zero. Positive fractions are not p-values; D repeats are averaged with equal repeat weights.
+
+#### S7d additional core point statistics (all20 combinations)
+
+| Benchmark | Set ID | N | Complete aggregate dates | Attainment dates | Attainment % | Valid county-period pairs | Below-benchmark county-periods | Accumulated shortfall | Conditional mean H % | Status |
+|---|---|---|---|---|---|---|---|---|---|---|
+| B0 | complete_set_0 | 0 | NA | NA | NA | NA | NA | NA | NA | EMPTY_COHORT |
+| B0 | complete_set_1 | 1 | 204 | 171 | 83.823529 | 207 | 34 | 1.843504421699 | 0.000000 | PASS |
+| B0 | complete_set_2 | 4 | 204 | 183 | 89.705882 | 828 | 134 | 6.356436021413 | 9.153005 | PASS |
+| B0 | complete_set_3 | 6 | 204 | 179 | 87.745098 | 1240 | 234 | 11.185811272402 | 10.055866 | PASS |
+| B1 | complete_set_0 | 0 | NA | NA | NA | NA | NA | NA | NA | EMPTY_COHORT |
+| B1 | complete_set_1 | 1 | 204 | 121 | 59.313725 | 207 | 85 | 5.685699872846 | 0.000000 | PASS |
+| B1 | complete_set_2 | 4 | 204 | 146 | 71.568627 | 828 | 250 | 15.491097566449 | 10.102740 | PASS |
+| B1 | complete_set_3 | 6 | 204 | 146 | 71.568627 | 1240 | 390 | 24.994336662143 | 12.328767 | PASS |
+| B2 | complete_set_0 | 0 | NA | NA | NA | NA | NA | NA | NA | EMPTY_COHORT |
+| B2 | complete_set_1 | 1 | 204 | 43 | 21.078431 | 207 | 164 | 20.655398504520 | 0.000000 | PASS |
+| B2 | complete_set_2 | 4 | 204 | 67 | 32.843137 | 828 | 545 | 64.520865625983 | 15.671642 | PASS |
+| B2 | complete_set_3 | 6 | 204 | 66 | 32.352941 | 1240 | 832 | 99.109812678124 | 18.686869 | PASS |
+| B3 | complete_set_0 | 0 | NA | NA | NA | NA | NA | NA | NA | EMPTY_COHORT |
+| B3 | complete_set_1 | 1 | 204 | 196 | 96.078431 | 207 | 8 | 0.174215184523 | 0.000000 | PASS |
+| B3 | complete_set_2 | 4 | 204 | 204 | 100.000000 | 828 | 21 | 0.892852977193 | 2.573529 | PASS |
+| B3 | complete_set_3 | 6 | 204 | 203 | 99.509804 | 1240 | 41 | 1.640823461827 | 3.119869 | PASS |
+| B4 | complete_set_0 | 0 | NA | NA | NA | NA | NA | NA | NA | EMPTY_COHORT |
+| B4 | complete_set_1 | 1 | 204 | 168 | 82.352941 | 207 | 38 | 1.976165222765 | 0.000000 | PASS |
+| B4 | complete_set_2 | 4 | 204 | 181 | 88.725490 | 828 | 140 | 7.828676122698 | 9.116022 | PASS |
+| B4 | complete_set_3 | 6 | 204 | 181 | 88.725490 | 1240 | 237 | 14.986586551262 | 11.970534 | PASS |
+
+Core component denominators use valid county price pairs over the original207 planned-period calendar; aggregate attainment retains the original12 complete mask with204 dates. Thus valid county-period pairs need not equal N×204. Empty cohort quantities remain NA.
+
+### S7e Monitoring alerts for the six-county complete screen
+
+The one-third/>36/>20% screen (rate fraction 1/3, run length >36, national amplitude >20%) retains Faku, Zhuanghe, Fengcheng, Dengta, Changtu and Kaiyuan. The original 207 scheduled dates and 204 complete-date mask are retained. The two rules use the existing timing, missing-date and source-boundary conventions; the source boundary alone does not reset an alert. The table compares Full12, U10 and S6.
+
+| Benchmark | Counties | Rule | Trigger dates | Complete-date % | Episodes | First trigger | Last trigger |
+| --- | ---: | --- | ---: | ---: | ---: | --- | --- |
+| B0 | 12 | i | 19 | 9.31 | 4 | 2021-10-25 | 2025-01-25 |
+| B0 | 12 | ii | 63 | 30.88 | 11 | 2021-07-25 | 2025-02-25 |
+| B0 | 10 | i | 12 | 5.88 | 2 | 2021-10-25 | 2022-07-05 |
+| B0 | 10 | ii | 42 | 20.59 | 7 | 2021-07-25 | 2025-01-25 |
+| B0 | 6 | i | 16 | 7.84 | 3 | 2022-04-05 | 2025-02-05 |
+| B0 | 6 | ii | 57 | 27.94 | 10 | 2021-07-25 | 2025-02-25 |
+| B1 | 12 | i | 38 | 18.63 | 5 | 2021-10-15 | 2025-02-05 |
+| B1 | 12 | ii | 102 | 50.00 | 5 | 2021-07-05 | 2025-03-05 |
+| B1 | 10 | i | 33 | 16.18 | 5 | 2021-10-15 | 2025-02-05 |
+| B1 | 10 | ii | 77 | 37.75 | 9 | 2021-07-05 | 2025-03-05 |
+| B1 | 6 | i | 38 | 18.63 | 7 | 2021-08-15 | 2025-02-05 |
+| B1 | 6 | ii | 95 | 46.57 | 6 | 2021-07-05 | 2025-03-15 |
+| B2 | 12 | i | 126 | 61.76 | 4 | 2021-07-05 | 2025-05-05 |
+| B2 | 12 | ii | 157 | 76.96 | 8 | 2021-06-15 | 2026-09-25 |
+| B2 | 10 | i | 116 | 56.86 | 4 | 2021-07-05 | 2025-04-15 |
+| B2 | 10 | ii | 146 | 71.57 | 6 | 2021-06-15 | 2026-09-25 |
+| B2 | 6 | i | 131 | 64.22 | 3 | 2021-07-05 | 2025-04-25 |
+| B2 | 6 | ii | 159 | 77.94 | 7 | 2021-06-15 | 2026-09-25 |
+| B3 | 12 | i | 0 | 0.00 | 0 | — | — |
+| B3 | 12 | ii | 15 | 7.35 | 3 | 2021-10-25 | 2022-08-05 |
+| B3 | 10 | i | 0 | 0.00 | 0 | — | — |
+| B3 | 10 | ii | 11 | 5.39 | 4 | 2021-10-25 | 2022-07-25 |
+| B3 | 6 | i | 0 | 0.00 | 0 | — | — |
+| B3 | 6 | ii | 13 | 6.37 | 4 | 2021-10-25 | 2025-01-15 |
+| B4 | 12 | i | 22 | 10.78 | 4 | 2021-10-05 | 2024-12-25 |
+| B4 | 12 | ii | 66 | 32.35 | 11 | 2021-07-25 | 2025-01-15 |
+| B4 | 10 | i | 14 | 6.86 | 5 | 2021-10-15 | 2024-12-25 |
+| B4 | 10 | ii | 46 | 22.55 | 9 | 2021-07-25 | 2024-12-25 |
+| B4 | 6 | i | 12 | 5.88 | 4 | 2021-10-05 | 2024-12-25 |
+| B4 | 6 | ii | 67 | 32.84 | 9 | 2021-06-25 | 2025-01-25 |
+
+The integer rule 3k≥N requires at least four low counties for N=12 and N=10, but two for N=6. Minimum triggering shares are therefore 33.33%, 40.00% and 33.33%. The six-county series has 1,035 benchmark–date records, including fifteen masked missing rows. The missing 25 November 2024 slot remains masked even though all six retained counties have positive prices at that date.
+
+### S7f National nominal-date versus calendar-midpoint sensitivity
+
+The national alignment uses nominal dekad dates 5, 15 and 25. The sensitivity replaces the last slot by the downward-rounded midpoint of days 21 through the calendar month end (24, 25 or 26). Sixty-seven of the 309 national dates move. Nine run windows change their number of observations or extrema, while all 53 threshold states, all 432 county–grid classifications, the twenty complete settings and four complete retained sets remain unchanged. No T4b resampling is rerun for this invariant alignment comparison.
+
+## S8 National price context and county quotation paths
+
+National inputs are reconstructed from 309 title, price and publication records. The derivative national CSV SHA-256 is acac4dd6f91f5d33997f42771026236aa6c62e37fdbe66e22908c9872ffdade3. Exact nominal statistical-period endpoints are used. A cancelled or otherwise unavailable endpoint is NA, not a substituted nearby price. National cancellation and missing coverage do not rewrite observed county quotation segments.
+
+| County / episode | Start | End | County observations/slots | National available/expected | Coverage | NBS first/last CNY/t | Endpoint change % | Endpoint log change |
+|---|---|---|---|---|---|---|---|---|
+| Jianping County | 2022-04-15 | 2024-11-15 | 94/94 | 92/94 | PASS | 2885.2/1867.2 | -35.283516 | -0.435154239 |
+| Jianping County | 2024-12-05 | 2026-02-15 | 44/44 | 41/44 | PARTIAL | 1853.4/NA | NA | NA |
+| Qingyuan County | 2022-03-25 | 2024-04-15 | 75/75 | 73/75 | PASS | 2911.7/2188.3 | -24.844593 | -0.285612116 |
+| Jianping County observed span | 2022-04-15 | 2026-02-15 | 138/139 | 134/139 | PARTIAL | 2885.2/NA | NA | NA |
+
+Jianping94:2885.2→1867.2 CNY/t,−35.2835%,log change−0.4351542391; Qingyuan75:2911.7→2188.3,−24.8446%,log change−0.2856121164. Jianping44 and138-observation span end on the cancelled2026-02-15 label and have NA endpoint changes. The county1.50 span remains138 observed quotes in139 slots with one missing county quote, not a continuous139-observation segment.
+
+All three panels have315 original planned dates: Jianping urea, Qingyuan urea and Jianping maize. Each county/other11/national log series is centred at its own first-three-observation mean on2018-01-05/15/25. These are displayed path normalisations, not a change to the scientific price-ratio benchmark. Source and missing/cancelled-date line-break indicators are stored explicitly; lines must not bridge a false connect-previous flag. Normalised logs retain national units only through their own log baseline; original county and national nominal levels have different units.
+
+### S8a Jianping County Urea panel data (315 planned dates)
+
+| Date | County price original | Own status/source | Other11 valid | Own centred log | Other11 centred log | NBS CNY/t | NBS centred log | NBS status | Source break | Own/NBS connect previous |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 2018-01-05 | 0.75 | observed/ln_price_111 | 11 | 0.000000000 | -0.000000000 | 2103.3 | 0.011946531 | observed | no | no/no |
+| 2018-01-15 | 0.75 | observed/ln_price_111 | 11 | 0.000000000 | -0.000000000 | 2070.5 | -0.003770885 | observed | no | yes/yes |
+| 2018-01-25 | 0.75 | observed/ln_price_111 | 11 | 0.000000000 | -0.000000000 | 2061.4 | -0.008175646 | observed | no | yes/yes |
+| 2018-02-05 | 0.75 | observed/ln_price_111 | 11 | 0.000000000 | 0.051293294 | 2056.8 | -0.010409632 | observed | no | yes/yes |
+| 2018-02-15 | 0.75 | observed/ln_price_111 | 11 | 0.000000000 | 0.051293294 | NA | NA | unknown_missing | no | yes/no |
+| 2018-02-25 | 0.75 | observed/ln_price_111 | 11 | 0.000000000 | 0.051293294 | 2063.0 | -0.007399775 | observed | no | yes/no |
+| 2018-03-05 | 0.75 | observed/ln_price_111 | 11 | 0.000000000 | 0.051293294 | 2056.2 | -0.010701390 | observed | no | yes/yes |
+| 2018-03-15 | 0.75 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2019.4 | -0.028760572 | observed | no | yes/yes |
+| 2018-03-25 | 0.75 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1972.1 | -0.052462044 | observed | no | yes/yes |
+| 2018-04-05 | 0.75 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1959.5 | -0.058871671 | observed | no | yes/yes |
+| 2018-04-15 | 0.75 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1988.5 | -0.044180424 | observed | no | yes/yes |
+| 2018-04-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2021.5 | -0.027721199 | observed | no | yes/yes |
+| 2018-05-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2041.1 | -0.018072131 | observed | no | yes/yes |
+| 2018-05-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2064.9 | -0.006479210 | observed | no | yes/yes |
+| 2018-05-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2075.3 | -0.001455288 | observed | no | yes/yes |
+| 2018-06-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2073.9 | -0.002130117 | observed | no | yes/yes |
+| 2018-06-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2086.7 | 0.004022862 | observed | no | yes/yes |
+| 2018-06-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2081.4 | 0.001479735 | observed | no | yes/yes |
+| 2018-07-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2053.5 | -0.012015355 | observed | no | yes/yes |
+| 2018-07-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2014.7 | -0.031090708 | observed | no | yes/yes |
+| 2018-07-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 1941.2 | -0.068254671 | observed | no | yes/yes |
+| 2018-08-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 1944.0 | -0.066813303 | observed | no | yes/yes |
+| 2018-08-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 1994.6 | -0.041117480 | observed | no | yes/yes |
+| 2018-08-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 1999.3 | -0.038763890 | observed | no | yes/yes |
+| 2018-09-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2039.2 | -0.019003435 | observed | no | yes/yes |
+| 2018-09-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2100.4 | 0.010566794 | observed | no | yes/yes |
+| 2018-09-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2124.0 | 0.021740094 | observed | no | yes/yes |
+| 2018-10-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2230.3 | 0.070575096 | observed | no | yes/yes |
+| 2018-10-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2215.6 | 0.063962238 | observed | no | yes/yes |
+| 2018-10-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2196.2 | 0.055167585 | observed | no | yes/yes |
+| 2018-11-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2184.6 | 0.049871736 | observed | no | yes/yes |
+| 2018-11-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2169.9 | 0.043120074 | observed | no | yes/yes |
+| 2018-11-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 2141.4 | 0.029898812 | observed | no | yes/yes |
+| 2018-12-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 2067.4 | -0.005269230 | observed | no | yes/yes |
+| 2018-12-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 2048.2 | -0.014599651 | observed | no | yes/yes |
+| 2018-12-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 2045.8 | -0.015772098 | observed | no | yes/yes |
+| 2019-01-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 1999.6 | -0.038613849 | observed | no | yes/yes |
+| 2019-01-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 1983.3 | -0.046798885 | observed | no | yes/yes |
+| 2019-01-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 1978.3 | -0.049323119 | observed | no | yes/yes |
+| 2019-02-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2019-02-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 1978.0 | -0.049474776 | observed | no | yes/no |
+| 2019-02-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 1969.9 | -0.053578229 | observed | no | yes/yes |
+| 2019-03-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 1988.5 | -0.044180424 | observed | no | yes/yes |
+| 2019-03-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 2024.1 | -0.026435852 | observed | no | yes/yes |
+| 2019-03-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 2094.0 | 0.007515103 | observed | no | yes/yes |
+| 2019-04-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 2175.5 | 0.045697514 | observed | no | yes/yes |
+| 2019-04-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 2145.8 | 0.031951434 | observed | no | yes/yes |
+| 2019-04-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 2122.1 | 0.020845155 | observed | no | yes/yes |
+| 2019-05-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 2100.5 | 0.010614402 | observed | no | yes/yes |
+| 2019-05-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 2083.3 | 0.002392166 | observed | no | yes/yes |
+| 2019-05-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.137470991 | 2016.9 | -0.029999330 | observed | no | yes/yes |
+| 2019-06-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1997.5 | -0.039664611 | observed | no | yes/yes |
+| 2019-06-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1991.7 | -0.042572464 | observed | no | yes/yes |
+| 2019-06-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1987.2 | -0.044834396 | observed | no | yes/yes |
+| 2019-07-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1975.8 | -0.050587630 | observed | no | yes/yes |
+| 2019-07-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1964.3 | -0.056425061 | observed | no | yes/yes |
+| 2019-07-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1921.2 | -0.078611018 | observed | no | yes/yes |
+| 2019-08-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1901.5 | -0.088917961 | observed | no | yes/yes |
+| 2019-08-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1873.8 | -0.103592555 | observed | no | yes/yes |
+| 2019-08-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 1853.4 | -0.114539219 | observed | no | yes/yes |
+| 2019-09-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1863.1 | -0.109319242 | observed | no | yes/yes |
+| 2019-09-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1880.7 | -0.099916961 | observed | no | yes/yes |
+| 2019-09-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1858.1 | -0.112006549 | observed | no | yes/yes |
+| 2019-10-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1837.5 | -0.123155057 | observed | no | yes/yes |
+| 2019-10-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1824.7 | -0.130145419 | observed | no | yes/yes |
+| 2019-10-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1774.5 | -0.158042316 | observed | no | yes/yes |
+| 2019-11-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1741.1 | -0.177043912 | observed | no | yes/yes |
+| 2019-11-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.128254336 | 1728.5 | -0.184307029 | observed | no | yes/yes |
+| 2019-11-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.109562203 | 1733.2 | -0.181591598 | observed | no | yes/yes |
+| 2019-12-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.109562203 | 1774.8 | -0.157873269 | observed | no | yes/yes |
+| 2019-12-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.109562203 | 1776.7 | -0.156803298 | observed | no | yes/yes |
+| 2019-12-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.109562203 | 1768.2 | -0.161598929 | observed | no | yes/yes |
+| 2020-01-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.109562203 | 1776.4 | -0.156972165 | observed | no | yes/yes |
+| 2020-01-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.109562203 | 1780.3 | -0.154779120 | observed | no | yes/yes |
+| 2020-01-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 1776.7 | -0.156803298 | observed | no | yes/yes |
+| 2020-02-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 1765.0 | -0.163410319 | observed | no | yes/yes |
+| 2020-02-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 1767.9 | -0.161768608 | observed | no | yes/yes |
+| 2020-02-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 1821.1 | -0.132120295 | observed | no | yes/yes |
+| 2020-03-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 1885.1 | -0.097580139 | observed | no | yes/yes |
+| 2020-03-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 1885.7 | -0.097261904 | observed | no | yes/yes |
+| 2020-03-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1820.0 | -0.132724508 | observed | no | yes/yes |
+| 2020-04-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1786.4 | -0.151358588 | observed | no | yes/yes |
+| 2020-04-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1802.4 | -0.142441899 | observed | no | yes/yes |
+| 2020-04-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1770.6 | -0.160242537 | observed | no | yes/yes |
+| 2020-05-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1731.9 | -0.182341937 | observed | no | yes/yes |
+| 2020-05-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1700.9 | -0.200403486 | observed | no | yes/yes |
+| 2020-05-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1716.0 | -0.191565008 | observed | no | yes/yes |
+| 2020-06-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1730.3 | -0.183266205 | observed | no | yes/yes |
+| 2020-06-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1720.2 | -0.189120446 | observed | no | yes/yes |
+| 2020-06-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1694.8 | -0.203996269 | observed | no | yes/yes |
+| 2020-07-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1683.7 | -0.210567256 | observed | no | yes/yes |
+| 2020-07-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1676.3 | -0.214972026 | observed | no | yes/yes |
+| 2020-07-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1670.3 | -0.218557758 | observed | no | yes/yes |
+| 2020-08-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1745.8 | -0.174348106 | observed | no | yes/yes |
+| 2020-08-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1763.4 | -0.164317246 | observed | no | yes/yes |
+| 2020-08-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1728.6 | -0.184249177 | observed | no | yes/yes |
+| 2020-09-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1728.1 | -0.184538470 | observed | no | yes/yes |
+| 2020-09-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1722.4 | -0.187842342 | observed | no | yes/yes |
+| 2020-09-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1731.3 | -0.182688438 | observed | no | yes/yes |
+| 2020-10-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1730.0 | -0.183439601 | observed | no | yes/yes |
+| 2020-10-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1743.3 | -0.175781140 | observed | no | yes/yes |
+| 2020-10-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1798.4 | -0.144663628 | observed | no | yes/yes |
+| 2020-11-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1870.1 | -0.105569104 | observed | no | yes/yes |
+| 2020-11-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1884.7 | -0.097792352 | observed | no | yes/yes |
+| 2020-11-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1877.2 | -0.101779704 | observed | no | yes/yes |
+| 2020-12-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1889.4 | -0.095301691 | observed | no | yes/yes |
+| 2020-12-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1913.7 | -0.082522468 | observed | no | yes/yes |
+| 2020-12-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1923.0 | -0.077674543 | observed | no | yes/yes |
+| 2021-01-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 1929.8 | -0.074144639 | observed | no | yes/yes |
+| 2021-01-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.051293294 | 2018.9 | -0.029008201 | observed | no | yes/yes |
+| 2021-01-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.100083459 | 2070.0 | -0.004012402 | observed | no | yes/yes |
+| 2021-02-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | 2183.2 | 0.049230681 | observed | no | yes/yes |
+| 2021-02-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.146603474 | NA | NA | unknown_missing | no | yes/no |
+| 2021-02-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.191055237 | 2227.3 | 0.069229080 | observed | no | yes/no |
+| 2021-03-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.191055237 | 2179.9 | 0.047717995 | observed | no | yes/yes |
+| 2021-03-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.191055237 | 2173.7 | 0.044869776 | observed | no | yes/yes |
+| 2021-03-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.191055237 | 2199.3 | 0.056578119 | observed | no | yes/yes |
+| 2021-04-05 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.191055237 | 2182.4 | 0.048864179 | observed | no | yes/yes |
+| 2021-04-15 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.191055237 | 2176.2 | 0.046019227 | observed | no | yes/yes |
+| 2021-04-25 | 1.00 | observed/ln_price_111 | 11 | 0.287682072 | 0.191055237 | 2210.9 | 0.061838663 | observed | no | yes/yes |
+| 2021-05-05 | 1.10 | observed/ln_price_111 | 11 | 0.382992252 | 0.191055237 | 2226.7 | 0.068959660 | observed | no | yes/yes |
+| 2021-05-15 | 1.10 | observed/ln_price_111 | 11 | 0.382992252 | 0.191055237 | 2347.3 | 0.121704722 | observed | no | yes/yes |
+| 2021-05-25 | 1.10 | observed/ln_price_111 | 11 | 0.382992252 | 0.191055237 | 2454.3 | 0.166280579 | observed | no | yes/yes |
+| 2021-06-05 | 1.10 | observed/ln_price_111 | 11 | 0.382992252 | 0.274436846 | 2674.2 | 0.252089261 | observed | no | yes/yes |
+| 2021-06-15 | 1.10 | observed/ln_price_111 | 11 | 0.382992252 | 0.422856851 | 2724.8 | 0.270834022 | observed | no | yes/yes |
+| 2021-06-25 | 1.10 | observed/ln_price_111 | 11 | 0.382992252 | 0.422856851 | 2795.6 | 0.296485743 | observed | no | yes/yes |
+| 2021-07-05 | 1.10 | observed/ln_price_111 | 11 | 0.382992252 | 0.456758402 | 2814.3 | 0.303152554 | observed | no | yes/yes |
+| 2021-07-15 | 1.10 | observed/ln_price_111 | 11 | 0.382992252 | 0.450069414 | 2800.7 | 0.298308377 | observed | no | yes/yes |
+| 2021-07-25 | 1.10 | observed/ln_price_111 | 11 | 0.382992252 | 0.456758402 | 2822.5 | 0.306062008 | observed | no | yes/yes |
+| 2021-08-05 | 1.10 | observed/ln_price_111 | 11 | 0.382992252 | 0.456758402 | 2825.6 | 0.307159722 | observed | no | yes/yes |
+| 2021-08-15 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.456758402 | 2727.9 | 0.271971073 | observed | no | yes/yes |
+| 2021-08-25 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.456758402 | 2537.7 | 0.199697150 | observed | no | yes/yes |
+| 2021-09-05 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.456758402 | 2590.5 | 0.220289898 | observed | no | yes/yes |
+| 2021-09-15 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.456758402 | 2650.2 | 0.243074100 | observed | no | yes/yes |
+| 2021-09-25 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.456758402 | 2845.2 | 0.314072355 | observed | no | yes/yes |
+| 2021-10-05 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.456758402 | 3005.0 | 0.368716559 | observed | no | yes/yes |
+| 2021-10-15 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.489548225 | 3144.4 | 0.414062084 | observed | no | yes/yes |
+| 2021-10-25 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.489548225 | 3158.9 | 0.418662857 | observed | no | yes/yes |
+| 2021-11-05 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.456758402 | 2658.9 | 0.246351494 | observed | no | yes/yes |
+| 2021-11-15 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.422856851 | 2563.9 | 0.209968528 | observed | no | yes/yes |
+| 2021-11-25 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.387765531 | 2477.1 | 0.175527512 | observed | no | yes/yes |
+| 2021-12-05 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.387765531 | 2501.6 | 0.185369518 | observed | no | yes/yes |
+| 2021-12-15 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.387765531 | 2480.0 | 0.176697551 | observed | no | yes/yes |
+| 2021-12-25 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.387765531 | 2470.9 | 0.173021448 | observed | no | yes/yes |
+| 2022-01-05 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.387765531 | 2492.5 | 0.181725214 | observed | no | yes/yes |
+| 2022-01-15 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.351397887 | 2563.3 | 0.209734482 | observed | no | yes/yes |
+| 2022-01-25 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.351397887 | 2568.6 | 0.211799994 | observed | no | yes/yes |
+| 2022-02-05 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.387765531 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2022-02-15 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.422856851 | 2645.0 | 0.241110056 | observed | no | yes/no |
+| 2022-02-25 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.422856851 | 2628.9 | 0.235004499 | observed | no | yes/yes |
+| 2022-03-05 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.456758402 | 2705.8 | 0.263836608 | observed | no | yes/yes |
+| 2022-03-15 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.456758402 | 2825.5 | 0.307124331 | observed | no | yes/yes |
+| 2022-03-25 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.521296924 | 2911.7 | 0.337176094 | observed | no | yes/yes |
+| 2022-04-05 | 1.40 | observed/ln_price_111 | 11 | 0.624154309 | 0.521296924 | 2891.1 | 0.330076043 | observed | no | yes/yes |
+| 2022-04-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.521296924 | 2885.2 | 0.328033212 | observed | no | yes/yes |
+| 2022-04-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.521296924 | 2934.3 | 0.344907915 | observed | no | yes/yes |
+| 2022-05-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.521296924 | 3035.4 | 0.378782202 | observed | no | yes/yes |
+| 2022-05-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.552068582 | 3179.5 | 0.425162943 | observed | no | yes/yes |
+| 2022-05-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.581921545 | 3184.5 | 0.426734282 | observed | no | yes/yes |
+| 2022-06-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.581921545 | 3187.4 | 0.427644528 | observed | no | yes/yes |
+| 2022-06-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.581921545 | 3177.7 | 0.424596655 | observed | no | yes/yes |
+| 2022-06-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.581921545 | 3069.3 | 0.389888513 | observed | no | yes/yes |
+| 2022-07-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.581921545 | 2897.8 | 0.332390819 | observed | no | yes/yes |
+| 2022-07-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.552068582 | 2564.7 | 0.210280504 | observed | no | yes/yes |
+| 2022-07-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.521296924 | 2483.9 | 0.178268896 | observed | no | yes/yes |
+| 2022-08-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.456758402 | 2391.5 | 0.140359775 | observed | no | yes/yes |
+| 2022-08-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.456758402 | 2340.9 | 0.118974462 | observed | no | yes/yes |
+| 2022-08-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.358777994 | 2326.6 | 0.112846965 | observed | no | yes/yes |
+| 2022-09-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.358777994 | 2383.4 | 0.136967031 | observed | no | yes/yes |
+| 2022-09-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.358777994 | 2482.0 | 0.177503678 | observed | no | yes/yes |
+| 2022-09-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.358777994 | 2505.9 | 0.187086942 | observed | no | yes/yes |
+| 2022-10-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.358777994 | 2510.8 | 0.189040418 | observed | no | yes/yes |
+| 2022-10-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.387765531 | 2516.5 | 0.191308038 | observed | no | yes/yes |
+| 2022-10-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.387765531 | 2472.6 | 0.173709219 | observed | no | yes/yes |
+| 2022-11-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.387765531 | 2491.8 | 0.181444332 | observed | no | yes/yes |
+| 2022-11-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.387765531 | 2580.3 | 0.216344662 | observed | no | yes/yes |
+| 2022-11-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.387765531 | 2685.1 | 0.256156962 | observed | no | yes/yes |
+| 2022-12-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.387765531 | 2708.1 | 0.264686273 | observed | no | yes/yes |
+| 2022-12-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.408967739 | 2733.8 | 0.274131574 | observed | no | yes/yes |
+| 2022-12-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.408967739 | 2708.4 | 0.264797045 | observed | no | yes/yes |
+| 2023-01-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.422856851 | 2687.4 | 0.257013174 | observed | no | yes/yes |
+| 2023-01-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.422856851 | 2689.8 | 0.257905832 | observed | no | yes/yes |
+| 2023-01-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.422856851 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2023-02-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.422856851 | 2720.5 | 0.269254678 | observed | no | yes/no |
+| 2023-02-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.422856851 | 2682.5 | 0.255188186 | observed | no | yes/yes |
+| 2023-02-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.422856851 | 2701.7 | 0.262320195 | observed | no | yes/yes |
+| 2023-03-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.443335382 | 2710.1 | 0.265424525 | observed | no | yes/yes |
+| 2023-03-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.456758402 | 2706.2 | 0.263984428 | observed | no | yes/yes |
+| 2023-03-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.456758402 | 2692.0 | 0.258723403 | observed | no | yes/yes |
+| 2023-04-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.422856851 | 2575.0 | 0.214288525 | observed | no | yes/yes |
+| 2023-04-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.422856851 | 2509.9 | 0.188681903 | observed | no | yes/yes |
+| 2023-04-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.422856851 | 2433.8 | 0.157892813 | observed | no | yes/yes |
+| 2023-05-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.387765531 | 2365.7 | 0.129512952 | observed | no | yes/yes |
+| 2023-05-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.366104034 | 2288.2 | 0.096204473 | observed | no | yes/yes |
+| 2023-05-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2139.7 | 0.029104623 | observed | no | yes/yes |
+| 2023-06-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.313657559 | 2186.5 | 0.050741083 | observed | no | yes/yes |
+| 2023-06-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.313657559 | 2119.1 | 0.019430461 | observed | no | yes/yes |
+| 2023-06-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.313657559 | 2144.6 | 0.031392046 | observed | no | yes/yes |
+| 2023-07-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2236.3 | 0.073261705 | observed | no | yes/yes |
+| 2023-07-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2322.0 | 0.110867874 | observed | no | yes/yes |
+| 2023-07-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2406.8 | 0.146737055 | observed | no | yes/yes |
+| 2023-08-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2452.9 | 0.165709989 | observed | no | yes/yes |
+| 2023-08-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2468.9 | 0.172211698 | observed | no | yes/yes |
+| 2023-08-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2477.2 | 0.175567881 | observed | no | yes/yes |
+| 2023-09-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2516.9 | 0.191466976 | observed | no | yes/yes |
+| 2023-09-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2500.2 | 0.184809720 | observed | no | yes/yes |
+| 2023-09-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2472.5 | 0.173668775 | observed | no | yes/yes |
+| 2023-10-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2408.4 | 0.147401617 | observed | no | yes/yes |
+| 2023-10-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2371.7 | 0.132045988 | observed | no | yes/yes |
+| 2023-10-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2445.7 | 0.162770371 | observed | no | yes/yes |
+| 2023-11-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2507.1 | 0.187565698 | observed | no | yes/yes |
+| 2023-11-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2497.4 | 0.183689182 | observed | no | yes/yes |
+| 2023-11-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2456.1 | 0.167013717 | observed | no | yes/yes |
+| 2023-12-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.366104034 | 2436.8 | 0.159124694 | observed | no | yes/yes |
+| 2023-12-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2432.9 | 0.157522952 | observed | no | yes/yes |
+| 2023-12-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2367.5 | 0.130273537 | observed | no | yes/yes |
+| 2024-01-05 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2357.8 | 0.126167972 | observed | no | yes/yes |
+| 2024-01-15 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.351397887 | 2309.7 | 0.105556637 | observed | no | yes/yes |
+| 2024-01-25 | 1.50 | observed/ln_price_111 | 11 | 0.693147181 | 0.313657559 | 2240.4 | 0.075093412 | observed | no | yes/yes |
+| 2024-02-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.313657559 | 2244.0 | 0.076698978 | observed | yes | no/yes |
+| 2024-02-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.313657559 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2024-02-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.313657559 | 2304.5 | 0.103302724 | observed | no | yes/no |
+| 2024-03-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.313657559 | 2318.2 | 0.109230013 | observed | no | yes/yes |
+| 2024-03-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.313657559 | 2295.5 | 0.099389676 | observed | no | yes/yes |
+| 2024-03-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 2192.8 | 0.053618257 | observed | no | yes/yes |
+| 2024-04-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 2134.1 | 0.026484003 | observed | no | yes/yes |
+| 2024-04-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 2188.3 | 0.051563978 | observed | no | yes/yes |
+| 2024-04-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.233614851 | 2239.8 | 0.074825567 | observed | no | yes/yes |
+| 2024-05-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.233614851 | 2296.2 | 0.099694574 | observed | no | yes/yes |
+| 2024-05-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.233614851 | 2351.5 | 0.123492413 | observed | no | yes/yes |
+| 2024-05-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 2380.9 | 0.135917558 | observed | no | yes/yes |
+| 2024-06-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.298153372 | 2399.7 | 0.143782720 | observed | no | yes/yes |
+| 2024-06-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.298153372 | 2349.0 | 0.122428697 | observed | no | yes/yes |
+| 2024-06-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.313657559 | 2352.5 | 0.123917583 | observed | no | yes/yes |
+| 2024-07-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.328925031 | 2345.3 | 0.120852316 | observed | no | yes/yes |
+| 2024-07-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.328925031 | 2305.2 | 0.103606431 | observed | no | yes/yes |
+| 2024-07-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.313657559 | 2203.5 | 0.058485996 | observed | no | yes/yes |
+| 2024-08-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 2184.8 | 0.049963282 | observed | no | yes/yes |
+| 2024-08-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 2140.1 | 0.029291548 | observed | no | yes/yes |
+| 2024-08-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 2086.7 | 0.004022862 | observed | no | yes/yes |
+| 2024-09-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 2016.6 | -0.030148084 | observed | no | yes/yes |
+| 2024-09-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 1951.7 | -0.062860222 | observed | no | yes/yes |
+| 2024-09-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 1903.1 | -0.088076874 | observed | no | yes/yes |
+| 2024-10-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 1946.3 | -0.065630875 | observed | no | yes/yes |
+| 2024-10-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 1900.4 | -0.089496619 | observed | no | yes/yes |
+| 2024-10-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.274436846 | 1885.5 | -0.097367971 | observed | no | yes/yes |
+| 2024-11-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.233614851 | 1879.3 | -0.100661642 | observed | no | yes/yes |
+| 2024-11-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.233614851 | 1867.2 | -0.107121027 | observed | no | yes/yes |
+| 2024-11-25 | - | missing_value/ln_price_115 | 11 | NA | 0.233614851 | 1860.4 | -0.110769491 | observed | no | no/yes |
+| 2024-12-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.233614851 | 1853.4 | -0.114539219 | observed | no | no/yes |
+| 2024-12-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.233614851 | 1823.9 | -0.130583944 | observed | no | yes/yes |
+| 2024-12-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.233614851 | 1788.4 | -0.150239644 | observed | no | yes/yes |
+| 2025-01-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.233614851 | 1702.6 | -0.199404515 | observed | no | yes/yes |
+| 2025-01-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.216807733 | 1685.1 | -0.209736100 | observed | no | yes/yes |
+| 2025-01-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.191055237 | NA | NA | unknown_missing | no | yes/no |
+| 2025-02-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.146603474 | 1695.0 | -0.203878268 | observed | no | yes/no |
+| 2025-02-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1763.0 | -0.164544106 | observed | no | yes/yes |
+| 2025-02-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1850.4 | -0.116159177 | observed | no | yes/yes |
+| 2025-03-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1835.7 | -0.124135129 | observed | no | yes/yes |
+| 2025-03-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1842.8 | -0.120274855 | observed | no | yes/yes |
+| 2025-03-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1923.8 | -0.077258612 | observed | no | yes/yes |
+| 2025-04-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1945.6 | -0.065990596 | observed | no | yes/yes |
+| 2025-04-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1899.3 | -0.090075612 | observed | no | yes/yes |
+| 2025-04-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1851.1 | -0.115780952 | observed | no | yes/yes |
+| 2025-05-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1917.9 | -0.080330172 | observed | no | yes/yes |
+| 2025-05-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1937.8 | -0.070007700 | observed | no | yes/yes |
+| 2025-05-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1890.0 | -0.094984180 | observed | no | yes/yes |
+| 2025-06-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1864.3 | -0.108675362 | observed | no | yes/yes |
+| 2025-06-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1825.6 | -0.129652309 | observed | no | yes/yes |
+| 2025-06-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1826.1 | -0.129378464 | observed | no | yes/yes |
+| 2025-07-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1820.3 | -0.132559687 | observed | no | yes/yes |
+| 2025-07-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1822.4 | -0.131406695 | observed | no | yes/yes |
+| 2025-07-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1811.8 | -0.137240183 | observed | no | yes/yes |
+| 2025-08-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1788.9 | -0.149960103 | observed | no | yes/yes |
+| 2025-08-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.100083459 | 1766.2 | -0.162730663 | observed | no | yes/yes |
+| 2025-08-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1759.9 | -0.166304020 | observed | no | yes/yes |
+| 2025-09-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1736.4 | -0.179747005 | observed | no | yes/yes |
+| 2025-09-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1699.8 | -0.201050412 | observed | no | yes/yes |
+| 2025-09-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1663.9 | -0.222396765 | observed | no | yes/yes |
+| 2025-10-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2025-10-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1609.7 | -0.255513183 | observed | no | yes/no |
+| 2025-10-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1616.7 | -0.251173975 | observed | no | yes/yes |
+| 2025-11-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1619.8 | -0.249258324 | observed | no | yes/yes |
+| 2025-11-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1647.9 | -0.232059259 | observed | no | yes/yes |
+| 2025-11-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1676.7 | -0.214733433 | observed | no | yes/yes |
+| 2025-12-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1713.2 | -0.193198042 | observed | no | yes/yes |
+| 2025-12-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1711.8 | -0.194015561 | observed | no | yes/yes |
+| 2025-12-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1727.6 | -0.184827847 | observed | no | yes/yes |
+| 2026-01-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1745.0 | -0.174806454 | observed | no | yes/yes |
+| 2026-01-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1759.4 | -0.166588167 | observed | no | yes/yes |
+| 2026-01-25 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1763.2 | -0.164430669 | observed | no | yes/yes |
+| 2026-02-05 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | 1783.8 | -0.152815089 | observed | no | yes/yes |
+| 2026-02-15 | 1.50 | observed/ln_price_115 | 11 | 0.693147181 | 0.051293294 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2026-02-25 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.051293294 | 1823.0 | -0.131077513 | observed | no | yes/no |
+| 2026-03-05 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.051293294 | 1859.9 | -0.111038286 | observed | no | yes/yes |
+| 2026-03-15 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.100083459 | 1886.8 | -0.096678737 | observed | no | yes/yes |
+| 2026-03-25 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.100083459 | 1878.9 | -0.100874510 | observed | no | yes/yes |
+| 2026-04-05 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.100083459 | 1882.1 | -0.099172834 | observed | no | yes/yes |
+| 2026-04-15 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.100083459 | 1886.4 | -0.096890758 | observed | no | yes/yes |
+| 2026-04-25 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.100083459 | 1895.0 | -0.092342171 | observed | no | yes/yes |
+| 2026-05-05 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.146603474 | 1889.4 | -0.095301691 | observed | no | yes/yes |
+| 2026-05-15 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.100083459 | 1861.3 | -0.110285841 | observed | no | yes/yes |
+| 2026-05-25 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.100083459 | 1848.2 | -0.117348817 | observed | no | yes/yes |
+| 2026-06-05 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.146603474 | 1860.2 | -0.110877000 | observed | no | yes/yes |
+| 2026-06-15 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.146603474 | 1849.2 | -0.116807896 | observed | no | yes/yes |
+| 2026-06-25 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.146603474 | 1844.6 | -0.119298557 | observed | no | yes/yes |
+| 2026-07-05 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.146603474 | 1827.8 | -0.128447951 | observed | no | yes/yes |
+| 2026-07-15 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.146603474 | 1799.9 | -0.143829901 | observed | no | yes/yes |
+| 2026-07-25 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.146603474 | 1786.8 | -0.151134699 | observed | no | yes/yes |
+| 2026-08-05 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.100083459 | 1770.4 | -0.160355499 | observed | no | yes/yes |
+| 2026-08-15 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.100083459 | 1750.4 | -0.171716676 | observed | no | yes/yes |
+| 2026-08-25 | 1.20 | observed/ln_price_115 | 11 | 0.470003629 | 0.100083459 | 1745.4 | -0.174577253 | observed | no | yes/yes |
+| 2026-09-05 | 1.10 | observed/ln_price_115 | 11 | 0.382992252 | 0.100083459 | 1771.9 | -0.159508592 | observed | no | yes/yes |
+| 2026-09-15 | 1.10 | observed/ln_price_115 | 11 | 0.382992252 | 0.100083459 | 1792.5 | -0.147949716 | observed | no | yes/yes |
+| 2026-09-25 | 1.10 | observed/ln_price_115 | 11 | 0.382992252 | 0.100083459 | NA | NA | unknown_missing | no | yes/no |
+
+### S8b Qingyuan County Urea panel data (315 planned dates)
+
+| Date | County price original | Own status/source | Other11 valid | Own centred log | Other11 centred log | NBS CNY/t | NBS centred log | NBS status | Source break | Own/NBS connect previous |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 2018-01-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | -0.000000000 | 2103.3 | 0.011946531 | observed | no | no/no |
+| 2018-01-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | -0.000000000 | 2070.5 | -0.003770885 | observed | no | yes/yes |
+| 2018-01-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | -0.000000000 | 2061.4 | -0.008175646 | observed | no | yes/yes |
+| 2018-02-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.051293294 | 2056.8 | -0.010409632 | observed | no | yes/yes |
+| 2018-02-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.051293294 | NA | NA | unknown_missing | no | yes/no |
+| 2018-02-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.051293294 | 2063.0 | -0.007399775 | observed | no | yes/no |
+| 2018-03-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.051293294 | 2056.2 | -0.010701390 | observed | no | yes/yes |
+| 2018-03-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.051293294 | 2019.4 | -0.028760572 | observed | no | yes/yes |
+| 2018-03-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1972.1 | -0.052462044 | observed | no | yes/yes |
+| 2018-04-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.080852097 | 1959.5 | -0.058871671 | observed | no | yes/yes |
+| 2018-04-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1988.5 | -0.044180424 | observed | no | yes/yes |
+| 2018-04-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.080852097 | 2021.5 | -0.027721199 | observed | no | yes/yes |
+| 2018-05-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2041.1 | -0.018072131 | observed | no | yes/yes |
+| 2018-05-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2064.9 | -0.006479210 | observed | no | yes/yes |
+| 2018-05-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2075.3 | -0.001455288 | observed | no | yes/yes |
+| 2018-06-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2073.9 | -0.002130117 | observed | no | yes/yes |
+| 2018-06-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2086.7 | 0.004022862 | observed | no | yes/yes |
+| 2018-06-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2081.4 | 0.001479735 | observed | no | yes/yes |
+| 2018-07-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2053.5 | -0.012015355 | observed | no | yes/yes |
+| 2018-07-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2014.7 | -0.031090708 | observed | no | yes/yes |
+| 2018-07-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1941.2 | -0.068254671 | observed | no | yes/yes |
+| 2018-08-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1944.0 | -0.066813303 | observed | no | yes/yes |
+| 2018-08-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1994.6 | -0.041117480 | observed | no | yes/yes |
+| 2018-08-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1999.3 | -0.038763890 | observed | no | yes/yes |
+| 2018-09-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2039.2 | -0.019003435 | observed | no | yes/yes |
+| 2018-09-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2100.4 | 0.010566794 | observed | no | yes/yes |
+| 2018-09-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2124.0 | 0.021740094 | observed | no | yes/yes |
+| 2018-10-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2230.3 | 0.070575096 | observed | no | yes/yes |
+| 2018-10-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2215.6 | 0.063962238 | observed | no | yes/yes |
+| 2018-10-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2196.2 | 0.055167585 | observed | no | yes/yes |
+| 2018-11-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2184.6 | 0.049871736 | observed | no | yes/yes |
+| 2018-11-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2169.9 | 0.043120074 | observed | no | yes/yes |
+| 2018-11-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 2141.4 | 0.029898812 | observed | no | yes/yes |
+| 2018-12-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.146603474 | 2067.4 | -0.005269230 | observed | no | yes/yes |
+| 2018-12-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.146603474 | 2048.2 | -0.014599651 | observed | no | yes/yes |
+| 2018-12-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.146603474 | 2045.8 | -0.015772098 | observed | no | yes/yes |
+| 2019-01-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.146603474 | 1999.6 | -0.038613849 | observed | no | yes/yes |
+| 2019-01-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.146603474 | 1983.3 | -0.046798885 | observed | no | yes/yes |
+| 2019-01-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.146603474 | 1978.3 | -0.049323119 | observed | no | yes/yes |
+| 2019-02-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.146603474 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2019-02-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.146603474 | 1978.0 | -0.049474776 | observed | no | yes/no |
+| 2019-02-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.146603474 | 1969.9 | -0.053578229 | observed | no | yes/yes |
+| 2019-03-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.146603474 | 1988.5 | -0.044180424 | observed | no | yes/yes |
+| 2019-03-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.128254336 | 2024.1 | -0.026435852 | observed | no | yes/yes |
+| 2019-03-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.128254336 | 2094.0 | 0.007515103 | observed | no | yes/yes |
+| 2019-04-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.128254336 | 2175.5 | 0.045697514 | observed | no | yes/yes |
+| 2019-04-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.137470991 | 2145.8 | 0.031951434 | observed | no | yes/yes |
+| 2019-04-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.137470991 | 2122.1 | 0.020845155 | observed | no | yes/yes |
+| 2019-05-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.137470991 | 2100.5 | 0.010614402 | observed | no | yes/yes |
+| 2019-05-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.137470991 | 2083.3 | 0.002392166 | observed | no | yes/yes |
+| 2019-05-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.128254336 | 2016.9 | -0.029999330 | observed | no | yes/yes |
+| 2019-06-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.128254336 | 1997.5 | -0.039664611 | observed | no | yes/yes |
+| 2019-06-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.128254336 | 1991.7 | -0.042572464 | observed | no | yes/yes |
+| 2019-06-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.128254336 | 1987.2 | -0.044834396 | observed | no | yes/yes |
+| 2019-07-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.128254336 | 1975.8 | -0.050587630 | observed | no | yes/yes |
+| 2019-07-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.128254336 | 1964.3 | -0.056425061 | observed | no | yes/yes |
+| 2019-07-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.109562203 | 1921.2 | -0.078611018 | observed | no | yes/yes |
+| 2019-08-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.109562203 | 1901.5 | -0.088917961 | observed | no | yes/yes |
+| 2019-08-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.109562203 | 1873.8 | -0.103592555 | observed | no | yes/yes |
+| 2019-08-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.128254336 | 1853.4 | -0.114539219 | observed | no | yes/yes |
+| 2019-09-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.109562203 | 1863.1 | -0.109319242 | observed | no | yes/yes |
+| 2019-09-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.109562203 | 1880.7 | -0.099916961 | observed | no | yes/yes |
+| 2019-09-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.109562203 | 1858.1 | -0.112006549 | observed | no | yes/yes |
+| 2019-10-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.109562203 | 1837.5 | -0.123155057 | observed | no | yes/yes |
+| 2019-10-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.109562203 | 1824.7 | -0.130145419 | observed | no | yes/yes |
+| 2019-10-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.109562203 | 1774.5 | -0.158042316 | observed | no | yes/yes |
+| 2019-11-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.109562203 | 1741.1 | -0.177043912 | observed | no | yes/yes |
+| 2019-11-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.109562203 | 1728.5 | -0.184307029 | observed | no | yes/yes |
+| 2019-11-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1733.2 | -0.181591598 | observed | no | yes/yes |
+| 2019-12-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1774.8 | -0.157873269 | observed | no | yes/yes |
+| 2019-12-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1776.7 | -0.156803298 | observed | no | yes/yes |
+| 2019-12-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1768.2 | -0.161598929 | observed | no | yes/yes |
+| 2020-01-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1776.4 | -0.156972165 | observed | no | yes/yes |
+| 2020-01-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1780.3 | -0.154779120 | observed | no | yes/yes |
+| 2020-01-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1776.7 | -0.156803298 | observed | no | yes/yes |
+| 2020-02-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1765.0 | -0.163410319 | observed | no | yes/yes |
+| 2020-02-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1767.9 | -0.161768608 | observed | no | yes/yes |
+| 2020-02-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.051293294 | 1821.1 | -0.132120295 | observed | no | yes/yes |
+| 2020-03-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.100083459 | 1885.1 | -0.097580139 | observed | no | yes/yes |
+| 2020-03-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.051293294 | 1885.7 | -0.097261904 | observed | no | yes/yes |
+| 2020-03-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1820.0 | -0.132724508 | observed | no | yes/yes |
+| 2020-04-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1786.4 | -0.151358588 | observed | no | yes/yes |
+| 2020-04-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1802.4 | -0.142441899 | observed | no | yes/yes |
+| 2020-04-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1770.6 | -0.160242537 | observed | no | yes/yes |
+| 2020-05-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1731.9 | -0.182341937 | observed | no | yes/yes |
+| 2020-05-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1700.9 | -0.200403486 | observed | no | yes/yes |
+| 2020-05-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1716.0 | -0.191565008 | observed | no | yes/yes |
+| 2020-06-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1730.3 | -0.183266205 | observed | no | yes/yes |
+| 2020-06-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1720.2 | -0.189120446 | observed | no | yes/yes |
+| 2020-06-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1694.8 | -0.203996269 | observed | no | yes/yes |
+| 2020-07-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1683.7 | -0.210567256 | observed | no | yes/yes |
+| 2020-07-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1676.3 | -0.214972026 | observed | no | yes/yes |
+| 2020-07-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1670.3 | -0.218557758 | observed | no | yes/yes |
+| 2020-08-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1745.8 | -0.174348106 | observed | no | yes/yes |
+| 2020-08-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1763.4 | -0.164317246 | observed | no | yes/yes |
+| 2020-08-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1728.6 | -0.184249177 | observed | no | yes/yes |
+| 2020-09-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1728.1 | -0.184538470 | observed | no | yes/yes |
+| 2020-09-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1722.4 | -0.187842342 | observed | no | yes/yes |
+| 2020-09-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1731.3 | -0.182688438 | observed | no | yes/yes |
+| 2020-10-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1730.0 | -0.183439601 | observed | no | yes/yes |
+| 2020-10-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1743.3 | -0.175781140 | observed | no | yes/yes |
+| 2020-10-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1798.4 | -0.144663628 | observed | no | yes/yes |
+| 2020-11-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1870.1 | -0.105569104 | observed | no | yes/yes |
+| 2020-11-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1884.7 | -0.097792352 | observed | no | yes/yes |
+| 2020-11-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1877.2 | -0.101779704 | observed | no | yes/yes |
+| 2020-12-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1889.4 | -0.095301691 | observed | no | yes/yes |
+| 2020-12-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1913.7 | -0.082522468 | observed | no | yes/yes |
+| 2020-12-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1923.0 | -0.077674543 | observed | no | yes/yes |
+| 2021-01-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 1929.8 | -0.074144639 | observed | no | yes/yes |
+| 2021-01-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.051293294 | 2018.9 | -0.029008201 | observed | no | yes/yes |
+| 2021-01-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.100083459 | 2070.0 | -0.004012402 | observed | no | yes/yes |
+| 2021-02-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.146603474 | 2183.2 | 0.049230681 | observed | no | yes/yes |
+| 2021-02-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.146603474 | NA | NA | unknown_missing | no | yes/no |
+| 2021-02-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.191055237 | 2227.3 | 0.069229080 | observed | no | yes/no |
+| 2021-03-05 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.191055237 | 2179.9 | 0.047717995 | observed | no | yes/yes |
+| 2021-03-15 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.191055237 | 2173.7 | 0.044869776 | observed | no | yes/yes |
+| 2021-03-25 | 1.00 | observed/ln_price_111 | 11 | -0.095310180 | 0.191055237 | 2199.3 | 0.056578119 | observed | no | yes/yes |
+| 2021-04-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.191055237 | 2182.4 | 0.048864179 | observed | no | yes/yes |
+| 2021-04-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.191055237 | 2176.2 | 0.046019227 | observed | no | yes/yes |
+| 2021-04-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.191055237 | 2210.9 | 0.061838663 | observed | no | yes/yes |
+| 2021-05-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.191055237 | 2226.7 | 0.068959660 | observed | no | yes/yes |
+| 2021-05-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.191055237 | 2347.3 | 0.121704722 | observed | no | yes/yes |
+| 2021-05-25 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.191055237 | 2454.3 | 0.166280579 | observed | no | yes/yes |
+| 2021-06-05 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.274436846 | 2674.2 | 0.252089261 | observed | no | yes/yes |
+| 2021-06-15 | 1.10 | observed/ln_price_111 | 11 | 0.000000000 | 0.422856851 | 2724.8 | 0.270834022 | observed | no | yes/yes |
+| 2021-06-25 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.422856851 | 2795.6 | 0.296485743 | observed | no | yes/yes |
+| 2021-07-05 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.456758402 | 2814.3 | 0.303152554 | observed | no | yes/yes |
+| 2021-07-15 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.450069414 | 2800.7 | 0.298308377 | observed | no | yes/yes |
+| 2021-07-25 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.456758402 | 2822.5 | 0.306062008 | observed | no | yes/yes |
+| 2021-08-05 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.456758402 | 2825.6 | 0.307159722 | observed | no | yes/yes |
+| 2021-08-15 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.456758402 | 2727.9 | 0.271971073 | observed | no | yes/yes |
+| 2021-08-25 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.456758402 | 2537.7 | 0.199697150 | observed | no | yes/yes |
+| 2021-09-05 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.456758402 | 2590.5 | 0.220289898 | observed | no | yes/yes |
+| 2021-09-15 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.456758402 | 2650.2 | 0.243074100 | observed | no | yes/yes |
+| 2021-09-25 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.456758402 | 2845.2 | 0.314072355 | observed | no | yes/yes |
+| 2021-10-05 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.456758402 | 3005.0 | 0.368716559 | observed | no | yes/yes |
+| 2021-10-15 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.489548225 | 3144.4 | 0.414062084 | observed | no | yes/yes |
+| 2021-10-25 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.489548225 | 3158.9 | 0.418662857 | observed | no | yes/yes |
+| 2021-11-05 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.456758402 | 2658.9 | 0.246351494 | observed | no | yes/yes |
+| 2021-11-15 | 1.45 | observed/ln_price_111 | 11 | 0.276253377 | 0.422856851 | 2563.9 | 0.209968528 | observed | no | yes/yes |
+| 2021-11-25 | 1.35 | observed/ln_price_111 | 11 | 0.204794413 | 0.387765531 | 2477.1 | 0.175527512 | observed | no | yes/yes |
+| 2021-12-05 | 1.35 | observed/ln_price_111 | 11 | 0.204794413 | 0.387765531 | 2501.6 | 0.185369518 | observed | no | yes/yes |
+| 2021-12-15 | 1.35 | observed/ln_price_111 | 11 | 0.204794413 | 0.387765531 | 2480.0 | 0.176697551 | observed | no | yes/yes |
+| 2021-12-25 | 1.35 | observed/ln_price_111 | 11 | 0.204794413 | 0.387765531 | 2470.9 | 0.173021448 | observed | no | yes/yes |
+| 2022-01-05 | 1.35 | observed/ln_price_111 | 11 | 0.204794413 | 0.387765531 | 2492.5 | 0.181725214 | observed | no | yes/yes |
+| 2022-01-15 | 1.35 | observed/ln_price_111 | 11 | 0.204794413 | 0.387765531 | 2563.3 | 0.209734482 | observed | no | yes/yes |
+| 2022-01-25 | 1.35 | observed/ln_price_111 | 11 | 0.204794413 | 0.387765531 | 2568.6 | 0.211799994 | observed | no | yes/yes |
+| 2022-02-05 | 1.35 | observed/ln_price_111 | 11 | 0.204794413 | 0.387765531 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2022-02-15 | 1.35 | observed/ln_price_111 | 11 | 0.204794413 | 0.422856851 | 2645.0 | 0.241110056 | observed | no | yes/no |
+| 2022-02-25 | 1.35 | observed/ln_price_111 | 11 | 0.204794413 | 0.422856851 | 2628.9 | 0.235004499 | observed | no | yes/yes |
+| 2022-03-05 | 1.50 | observed/ln_price_111 | 11 | 0.310154928 | 0.456758402 | 2705.8 | 0.263836608 | observed | no | yes/yes |
+| 2022-03-15 | 1.50 | observed/ln_price_111 | 11 | 0.310154928 | 0.456758402 | 2825.5 | 0.307124331 | observed | no | yes/yes |
+| 2022-03-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.489548225 | 2911.7 | 0.337176094 | observed | no | yes/yes |
+| 2022-04-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.489548225 | 2891.1 | 0.330076043 | observed | no | yes/yes |
+| 2022-04-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.521296924 | 2885.2 | 0.328033212 | observed | no | yes/yes |
+| 2022-04-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.521296924 | 2934.3 | 0.344907915 | observed | no | yes/yes |
+| 2022-05-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.521296924 | 3035.4 | 0.378782202 | observed | no | yes/yes |
+| 2022-05-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.552068582 | 3179.5 | 0.425162943 | observed | no | yes/yes |
+| 2022-05-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.581921545 | 3184.5 | 0.426734282 | observed | no | yes/yes |
+| 2022-06-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.581921545 | 3187.4 | 0.427644528 | observed | no | yes/yes |
+| 2022-06-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.581921545 | 3177.7 | 0.424596655 | observed | no | yes/yes |
+| 2022-06-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.581921545 | 3069.3 | 0.389888513 | observed | no | yes/yes |
+| 2022-07-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.581921545 | 2897.8 | 0.332390819 | observed | no | yes/yes |
+| 2022-07-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.552068582 | 2564.7 | 0.210280504 | observed | no | yes/yes |
+| 2022-07-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.456758402 | 2483.9 | 0.178268896 | observed | no | yes/yes |
+| 2022-08-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.456758402 | 2391.5 | 0.140359775 | observed | no | yes/yes |
+| 2022-08-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.456758402 | 2340.9 | 0.118974462 | observed | no | yes/yes |
+| 2022-08-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.358777994 | 2326.6 | 0.112846965 | observed | no | yes/yes |
+| 2022-09-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.358777994 | 2383.4 | 0.136967031 | observed | no | yes/yes |
+| 2022-09-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.358777994 | 2482.0 | 0.177503678 | observed | no | yes/yes |
+| 2022-09-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.358777994 | 2505.9 | 0.187086942 | observed | no | yes/yes |
+| 2022-10-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.358777994 | 2510.8 | 0.189040418 | observed | no | yes/yes |
+| 2022-10-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.387765531 | 2516.5 | 0.191308038 | observed | no | yes/yes |
+| 2022-10-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.387765531 | 2472.6 | 0.173709219 | observed | no | yes/yes |
+| 2022-11-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.387765531 | 2491.8 | 0.181444332 | observed | no | yes/yes |
+| 2022-11-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.387765531 | 2580.3 | 0.216344662 | observed | no | yes/yes |
+| 2022-11-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.387765531 | 2685.1 | 0.256156962 | observed | no | yes/yes |
+| 2022-12-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.387765531 | 2708.1 | 0.264686273 | observed | no | yes/yes |
+| 2022-12-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.408967739 | 2733.8 | 0.274131574 | observed | no | yes/yes |
+| 2022-12-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.408967739 | 2708.4 | 0.264797045 | observed | no | yes/yes |
+| 2023-01-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.422856851 | 2687.4 | 0.257013174 | observed | no | yes/yes |
+| 2023-01-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.422856851 | 2689.8 | 0.257905832 | observed | no | yes/yes |
+| 2023-01-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.422856851 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2023-02-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.422856851 | 2720.5 | 0.269254678 | observed | no | yes/no |
+| 2023-02-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.422856851 | 2682.5 | 0.255188186 | observed | no | yes/yes |
+| 2023-02-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.422856851 | 2701.7 | 0.262320195 | observed | no | yes/yes |
+| 2023-03-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.443335382 | 2710.1 | 0.265424525 | observed | no | yes/yes |
+| 2023-03-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.456758402 | 2706.2 | 0.263984428 | observed | no | yes/yes |
+| 2023-03-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.456758402 | 2692.0 | 0.258723403 | observed | no | yes/yes |
+| 2023-04-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.422856851 | 2575.0 | 0.214288525 | observed | no | yes/yes |
+| 2023-04-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.422856851 | 2509.9 | 0.188681903 | observed | no | yes/yes |
+| 2023-04-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.422856851 | 2433.8 | 0.157892813 | observed | no | yes/yes |
+| 2023-05-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.387765531 | 2365.7 | 0.129512952 | observed | no | yes/yes |
+| 2023-05-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.366104034 | 2288.2 | 0.096204473 | observed | no | yes/yes |
+| 2023-05-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2139.7 | 0.029104623 | observed | no | yes/yes |
+| 2023-06-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.313657559 | 2186.5 | 0.050741083 | observed | no | yes/yes |
+| 2023-06-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.313657559 | 2119.1 | 0.019430461 | observed | no | yes/yes |
+| 2023-06-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.313657559 | 2144.6 | 0.031392046 | observed | no | yes/yes |
+| 2023-07-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2236.3 | 0.073261705 | observed | no | yes/yes |
+| 2023-07-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2322.0 | 0.110867874 | observed | no | yes/yes |
+| 2023-07-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2406.8 | 0.146737055 | observed | no | yes/yes |
+| 2023-08-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2452.9 | 0.165709989 | observed | no | yes/yes |
+| 2023-08-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2468.9 | 0.172211698 | observed | no | yes/yes |
+| 2023-08-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2477.2 | 0.175567881 | observed | no | yes/yes |
+| 2023-09-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2516.9 | 0.191466976 | observed | no | yes/yes |
+| 2023-09-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2500.2 | 0.184809720 | observed | no | yes/yes |
+| 2023-09-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2472.5 | 0.173668775 | observed | no | yes/yes |
+| 2023-10-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2408.4 | 0.147401617 | observed | no | yes/yes |
+| 2023-10-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2371.7 | 0.132045988 | observed | no | yes/yes |
+| 2023-10-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2445.7 | 0.162770371 | observed | no | yes/yes |
+| 2023-11-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2507.1 | 0.187565698 | observed | no | yes/yes |
+| 2023-11-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2497.4 | 0.183689182 | observed | no | yes/yes |
+| 2023-11-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2456.1 | 0.167013717 | observed | no | yes/yes |
+| 2023-12-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.366104034 | 2436.8 | 0.159124694 | observed | no | yes/yes |
+| 2023-12-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2432.9 | 0.157522952 | observed | no | yes/yes |
+| 2023-12-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2367.5 | 0.130273537 | observed | no | yes/yes |
+| 2024-01-05 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2357.8 | 0.126167972 | observed | no | yes/yes |
+| 2024-01-15 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.351397887 | 2309.7 | 0.105556637 | observed | no | yes/yes |
+| 2024-01-25 | 1.60 | observed/ln_price_111 | 11 | 0.374693449 | 0.313657559 | 2240.4 | 0.075093412 | observed | no | yes/yes |
+| 2024-02-05 | 1.60 | observed/ln_price_115 | 11 | 0.374693449 | 0.313657559 | 2244.0 | 0.076698978 | observed | yes | no/yes |
+| 2024-02-15 | 1.60 | observed/ln_price_115 | 11 | 0.374693449 | 0.313657559 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2024-02-25 | 1.60 | observed/ln_price_115 | 11 | 0.374693449 | 0.313657559 | 2304.5 | 0.103302724 | observed | no | yes/no |
+| 2024-03-05 | 1.60 | observed/ln_price_115 | 11 | 0.374693449 | 0.313657559 | 2318.2 | 0.109230013 | observed | no | yes/yes |
+| 2024-03-15 | 1.60 | observed/ln_price_115 | 11 | 0.374693449 | 0.313657559 | 2295.5 | 0.099389676 | observed | no | yes/yes |
+| 2024-03-25 | 1.60 | observed/ln_price_115 | 11 | 0.374693449 | 0.274436846 | 2192.8 | 0.053618257 | observed | no | yes/yes |
+| 2024-04-05 | 1.60 | observed/ln_price_115 | 11 | 0.374693449 | 0.274436846 | 2134.1 | 0.026484003 | observed | no | yes/yes |
+| 2024-04-15 | 1.60 | observed/ln_price_115 | 11 | 0.374693449 | 0.274436846 | 2188.3 | 0.051563978 | observed | no | yes/yes |
+| 2024-04-25 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.274436846 | 2239.8 | 0.074825567 | observed | no | yes/yes |
+| 2024-05-05 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.233614851 | 2296.2 | 0.099694574 | observed | no | yes/yes |
+| 2024-05-15 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.250144153 | 2351.5 | 0.123492413 | observed | no | yes/yes |
+| 2024-05-25 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.290310195 | 2380.9 | 0.135917558 | observed | no | yes/yes |
+| 2024-06-05 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.298153372 | 2399.7 | 0.143782720 | observed | no | yes/yes |
+| 2024-06-15 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.313657559 | 2349.0 | 0.122428697 | observed | no | yes/yes |
+| 2024-06-25 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.351397887 | 2352.5 | 0.123917583 | observed | no | yes/yes |
+| 2024-07-05 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.351397887 | 2345.3 | 0.120852316 | observed | no | yes/yes |
+| 2024-07-15 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.336472237 | 2305.2 | 0.103606431 | observed | no | yes/yes |
+| 2024-07-25 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.313657559 | 2203.5 | 0.058485996 | observed | no | yes/yes |
+| 2024-08-05 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.298153372 | 2184.8 | 0.049963282 | observed | no | yes/yes |
+| 2024-08-15 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.274436846 | 2140.1 | 0.029291548 | observed | no | yes/yes |
+| 2024-08-25 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.274436846 | 2086.7 | 0.004022862 | observed | no | yes/yes |
+| 2024-09-05 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.298153372 | 2016.6 | -0.030148084 | observed | no | yes/yes |
+| 2024-09-15 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.298153372 | 1951.7 | -0.062860222 | observed | no | yes/yes |
+| 2024-09-25 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.274436846 | 1903.1 | -0.088076874 | observed | no | yes/yes |
+| 2024-10-05 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.274436846 | 1946.3 | -0.065630875 | observed | no | yes/yes |
+| 2024-10-15 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.274436846 | 1900.4 | -0.089496619 | observed | no | yes/yes |
+| 2024-10-25 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.274436846 | 1885.5 | -0.097367971 | observed | no | yes/yes |
+| 2024-11-05 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.274436846 | 1879.3 | -0.100661642 | observed | no | yes/yes |
+| 2024-11-15 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.233614851 | 1867.2 | -0.107121027 | observed | no | yes/yes |
+| 2024-11-25 | 1.20 | observed/ln_price_115 | 10 | 0.087011377 | NA | 1860.4 | -0.110769491 | observed | no | yes/yes |
+| 2024-12-05 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.233614851 | 1853.4 | -0.114539219 | observed | no | yes/yes |
+| 2024-12-15 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.233614851 | 1823.9 | -0.130583944 | observed | no | yes/yes |
+| 2024-12-25 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.233614851 | 1788.4 | -0.150239644 | observed | no | yes/yes |
+| 2025-01-05 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.233614851 | 1702.6 | -0.199404515 | observed | no | yes/yes |
+| 2025-01-15 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.216807733 | 1685.1 | -0.209736100 | observed | no | yes/yes |
+| 2025-01-25 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.191055237 | NA | NA | unknown_missing | no | yes/no |
+| 2025-02-05 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.146603474 | 1695.0 | -0.203878268 | observed | no | yes/no |
+| 2025-02-15 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.100083459 | 1763.0 | -0.164544106 | observed | no | yes/yes |
+| 2025-02-25 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.100083459 | 1850.4 | -0.116159177 | observed | no | yes/yes |
+| 2025-03-05 | 1.20 | observed/ln_price_115 | 11 | 0.087011377 | 0.100083459 | 1835.7 | -0.124135129 | observed | no | yes/yes |
+| 2025-03-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1842.8 | -0.120274855 | observed | no | yes/yes |
+| 2025-03-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1923.8 | -0.077258612 | observed | no | yes/yes |
+| 2025-04-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1945.6 | -0.065990596 | observed | no | yes/yes |
+| 2025-04-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1899.3 | -0.090075612 | observed | no | yes/yes |
+| 2025-04-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1851.1 | -0.115780952 | observed | no | yes/yes |
+| 2025-05-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1917.9 | -0.080330172 | observed | no | yes/yes |
+| 2025-05-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1937.8 | -0.070007700 | observed | no | yes/yes |
+| 2025-05-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1890.0 | -0.094984180 | observed | no | yes/yes |
+| 2025-06-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1864.3 | -0.108675362 | observed | no | yes/yes |
+| 2025-06-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1825.6 | -0.129652309 | observed | no | yes/yes |
+| 2025-06-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1826.1 | -0.129378464 | observed | no | yes/yes |
+| 2025-07-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1820.3 | -0.132559687 | observed | no | yes/yes |
+| 2025-07-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1822.4 | -0.131406695 | observed | no | yes/yes |
+| 2025-07-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1811.8 | -0.137240183 | observed | no | yes/yes |
+| 2025-08-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1788.9 | -0.149960103 | observed | no | yes/yes |
+| 2025-08-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1766.2 | -0.162730663 | observed | no | yes/yes |
+| 2025-08-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1759.9 | -0.166304020 | observed | no | yes/yes |
+| 2025-09-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1736.4 | -0.179747005 | observed | no | yes/yes |
+| 2025-09-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1699.8 | -0.201050412 | observed | no | yes/yes |
+| 2025-09-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1663.9 | -0.222396765 | observed | no | yes/yes |
+| 2025-10-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2025-10-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1609.7 | -0.255513183 | observed | no | yes/no |
+| 2025-10-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1616.7 | -0.251173975 | observed | no | yes/yes |
+| 2025-11-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1619.8 | -0.249258324 | observed | no | yes/yes |
+| 2025-11-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1647.9 | -0.232059259 | observed | no | yes/yes |
+| 2025-11-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1676.7 | -0.214733433 | observed | no | yes/yes |
+| 2025-12-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1713.2 | -0.193198042 | observed | no | yes/yes |
+| 2025-12-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1711.8 | -0.194015561 | observed | no | yes/yes |
+| 2025-12-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1727.6 | -0.184827847 | observed | no | yes/yes |
+| 2026-01-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1745.0 | -0.174806454 | observed | no | yes/yes |
+| 2026-01-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1759.4 | -0.166588167 | observed | no | yes/yes |
+| 2026-01-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1763.2 | -0.164430669 | observed | no | yes/yes |
+| 2026-02-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1783.8 | -0.152815089 | observed | no | yes/yes |
+| 2026-02-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2026-02-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.051293294 | 1823.0 | -0.131077513 | observed | no | yes/no |
+| 2026-03-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1859.9 | -0.111038286 | observed | no | yes/yes |
+| 2026-03-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1886.8 | -0.096678737 | observed | no | yes/yes |
+| 2026-03-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1878.9 | -0.100874510 | observed | no | yes/yes |
+| 2026-04-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1882.1 | -0.099172834 | observed | no | yes/yes |
+| 2026-04-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1886.4 | -0.096890758 | observed | no | yes/yes |
+| 2026-04-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.100083459 | 1895.0 | -0.092342171 | observed | no | yes/yes |
+| 2026-05-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1889.4 | -0.095301691 | observed | no | yes/yes |
+| 2026-05-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1861.3 | -0.110285841 | observed | no | yes/yes |
+| 2026-05-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1848.2 | -0.117348817 | observed | no | yes/yes |
+| 2026-06-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1860.2 | -0.110877000 | observed | no | yes/yes |
+| 2026-06-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1849.2 | -0.116807896 | observed | no | yes/yes |
+| 2026-06-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1844.6 | -0.119298557 | observed | no | yes/yes |
+| 2026-07-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1827.8 | -0.128447951 | observed | no | yes/yes |
+| 2026-07-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1799.9 | -0.143829901 | observed | no | yes/yes |
+| 2026-07-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1786.8 | -0.151134699 | observed | no | yes/yes |
+| 2026-08-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1770.4 | -0.160355499 | observed | no | yes/yes |
+| 2026-08-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1750.4 | -0.171716676 | observed | no | yes/yes |
+| 2026-08-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1745.4 | -0.174577253 | observed | no | yes/yes |
+| 2026-09-05 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1771.9 | -0.159508592 | observed | no | yes/yes |
+| 2026-09-15 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | 1792.5 | -0.147949716 | observed | no | yes/yes |
+| 2026-09-25 | 1.00 | observed/ln_price_115 | 11 | -0.095310180 | 0.146603474 | NA | NA | unknown_missing | no | yes/no |
+
+### S8c Jianping County Maize panel data (315 planned dates)
+
+| Date | County price original | Own status/source | Other11 valid | Own centred log | Other11 centred log | NBS CNY/t | NBS centred log | NBS status | Source break | Own/NBS connect previous |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 2018-01-05 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | -0.032479532 | 1770.2 | -0.009646290 | observed | no | no/no |
+| 2018-01-15 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | 0.004334441 | 1796.0 | 0.004823145 | observed | no | yes/yes |
+| 2018-01-25 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | 0.028145090 | 1796.0 | 0.004823145 | observed | no | yes/yes |
+| 2018-02-05 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | 0.028145090 | 1800.4 | 0.007270038 | observed | no | yes/yes |
+| 2018-02-15 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | 0.028145090 | NA | NA | unknown_missing | no | yes/no |
+| 2018-02-25 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | 0.028145090 | 1820.3 | 0.018262498 | observed | no | yes/no |
+| 2018-03-05 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | 0.028145090 | 1878.3 | 0.049628288 | observed | no | yes/yes |
+| 2018-03-15 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | 0.028145090 | 1905.8 | 0.064163043 | observed | no | yes/yes |
+| 2018-03-25 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | 0.028145090 | 1900.7 | 0.061483415 | observed | no | yes/yes |
+| 2018-04-05 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | -0.007786919 | 1847.0 | 0.032823876 | observed | no | yes/yes |
+| 2018-04-15 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | 0.028145090 | 1812.3 | 0.013857932 | observed | no | yes/yes |
+| 2018-04-25 | 0.80 | observed/ln_price_111 | 11 | 0.000000000 | 0.028145090 | 1801.4 | 0.007825316 | observed | no | yes/yes |
+| 2018-05-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1780.8 | -0.003676123 | observed | no | yes/yes |
+| 2018-05-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1781.0 | -0.003563820 | observed | no | yes/yes |
+| 2018-05-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.016310633 | 1789.5 | 0.001197426 | observed | no | yes/yes |
+| 2018-06-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1779.6 | -0.004350205 | observed | no | yes/yes |
+| 2018-06-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1768.9 | -0.010380940 | observed | no | yes/yes |
+| 2018-06-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1765.1 | -0.012531479 | observed | no | yes/yes |
+| 2018-07-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1765.2 | -0.012474826 | observed | no | yes/yes |
+| 2018-07-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1770.2 | -0.009646290 | observed | no | yes/yes |
+| 2018-07-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1773.8 | -0.007614687 | observed | no | yes/yes |
+| 2018-08-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1769.6 | -0.009985292 | observed | no | yes/yes |
+| 2018-08-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.016310633 | 1771.0 | -0.009194466 | observed | no | yes/yes |
+| 2018-08-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1783.4 | -0.002217170 | observed | no | yes/yes |
+| 2018-09-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.004334441 | 1799.9 | 0.006992283 | observed | no | yes/yes |
+| 2018-09-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.016310633 | 1800.8 | 0.007492186 | observed | no | yes/yes |
+| 2018-09-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.016310633 | 1791.7 | 0.002426065 | observed | no | yes/yes |
+| 2018-10-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.016310633 | 1772.4 | -0.008404264 | observed | no | yes/yes |
+| 2018-10-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1781.2 | -0.003451530 | observed | no | yes/yes |
+| 2018-10-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1823.8 | 0.020183412 | observed | no | yes/yes |
+| 2018-11-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1849.9 | 0.034392759 | observed | no | yes/yes |
+| 2018-11-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1880.0 | 0.050532952 | observed | no | yes/yes |
+| 2018-11-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1899.3 | 0.060746572 | observed | no | yes/yes |
+| 2018-12-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1903.1 | 0.062745311 | observed | no | yes/yes |
+| 2018-12-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.016310633 | 1884.3 | 0.052817574 | observed | no | yes/yes |
+| 2018-12-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.016310633 | 1862.0 | 0.040912354 | observed | no | yes/yes |
+| 2019-01-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.016310633 | 1859.3 | 0.039461248 | observed | no | yes/yes |
+| 2019-01-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.016310633 | 1847.0 | 0.032823876 | observed | no | yes/yes |
+| 2019-01-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.016310633 | 1836.9 | 0.027340543 | observed | no | yes/yes |
+| 2019-02-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2019-02-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1829.1 | 0.023085218 | observed | no | yes/no |
+| 2019-02-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1797.5 | 0.005657986 | observed | no | yes/yes |
+| 2019-03-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | -0.007786919 | 1784.7 | -0.001488491 | observed | no | yes/yes |
+| 2019-03-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | -0.007786919 | 1781.5 | -0.003283119 | observed | no | yes/yes |
+| 2019-03-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | -0.007786919 | 1775.5 | -0.006656751 | observed | no | yes/yes |
+| 2019-04-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | -0.007786919 | 1765.1 | -0.012531479 | observed | no | yes/yes |
+| 2019-04-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.004334441 | 1784.9 | -0.001376434 | observed | no | yes/yes |
+| 2019-04-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1820.2 | 0.018207560 | observed | no | yes/yes |
+| 2019-05-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.028145090 | 1845.4 | 0.031957231 | observed | no | yes/yes |
+| 2019-05-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.039841130 | 1872.9 | 0.046749207 | observed | no | yes/yes |
+| 2019-05-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.051401952 | 1914.4 | 0.068665433 | observed | no | yes/yes |
+| 2019-06-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.062830648 | 1914.6 | 0.068769899 | observed | no | yes/yes |
+| 2019-06-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.062830648 | 1913.6 | 0.068247460 | observed | no | yes/yes |
+| 2019-06-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.062830648 | 1910.7 | 0.066730842 | observed | no | yes/yes |
+| 2019-07-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.062830648 | 1910.0 | 0.066364417 | observed | no | yes/yes |
+| 2019-07-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.062830648 | 1908.6 | 0.065631164 | observed | no | yes/yes |
+| 2019-07-25 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.062830648 | 1910.6 | 0.066678504 | observed | no | yes/yes |
+| 2019-08-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.062830648 | 1928.6 | 0.076055526 | observed | no | yes/yes |
+| 2019-08-15 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.062830648 | 1929.9 | 0.076729363 | observed | no | yes/yes |
+| 2019-08-25 | 1.00 | observed/ln_price_111 | 11 | 0.223143551 | 0.062830648 | 1928.2 | 0.075848100 | observed | no | yes/yes |
+| 2019-09-05 | 1.00 | observed/ln_price_111 | 11 | 0.223143551 | 0.062830648 | 1921.7 | 0.072471386 | observed | no | yes/yes |
+| 2019-09-15 | 1.00 | observed/ln_price_111 | 11 | 0.223143551 | 0.062830648 | 1914.6 | 0.068769899 | observed | no | yes/yes |
+| 2019-09-25 | 1.00 | observed/ln_price_111 | 11 | 0.223143551 | 0.039841130 | 1882.3 | 0.051755609 | observed | no | yes/yes |
+| 2019-10-05 | 1.00 | observed/ln_price_111 | 11 | 0.223143551 | 0.028145090 | 1809.5 | 0.012311739 | observed | no | yes/yes |
+| 2019-10-15 | 1.00 | observed/ln_price_111 | 11 | 0.223143551 | 0.016310633 | 1816.0 | 0.015897455 | observed | no | yes/yes |
+| 2019-10-25 | 1.00 | observed/ln_price_111 | 11 | 0.223143551 | 0.028145090 | 1825.8 | 0.021279422 | observed | no | yes/yes |
+| 2019-11-05 | 0.95 | observed/ln_price_111 | 11 | 0.171850257 | 0.039841130 | 1838.0 | 0.027939199 | observed | no | yes/yes |
+| 2019-11-15 | 0.95 | observed/ln_price_111 | 11 | 0.171850257 | 0.039841130 | 1837.5 | 0.027667127 | observed | no | yes/yes |
+| 2019-11-25 | 0.95 | observed/ln_price_111 | 11 | 0.171850257 | 0.039841130 | 1836.3 | 0.027013853 | observed | no | yes/yes |
+| 2019-12-05 | 0.77 | observed/ln_price_111 | 11 | -0.038221213 | 0.051401952 | 1821.6 | 0.018976411 | observed | no | yes/yes |
+| 2019-12-15 | 0.77 | observed/ln_price_111 | 11 | -0.038221213 | 0.051401952 | 1813.4 | 0.014464711 | observed | no | yes/yes |
+| 2019-12-25 | 0.76 | observed/ln_price_111 | 11 | -0.051293294 | 0.039841130 | 1810.8 | 0.013029912 | observed | no | yes/yes |
+| 2020-01-05 | 0.75 | observed/ln_price_111 | 11 | -0.064538521 | 0.039841130 | 1812.3 | 0.013857932 | observed | no | yes/yes |
+| 2020-01-15 | 0.75 | observed/ln_price_111 | 11 | -0.064538521 | 0.051401952 | 1817.8 | 0.016888154 | observed | no | yes/yes |
+| 2020-01-25 | 0.75 | observed/ln_price_111 | 11 | -0.064538521 | 0.051401952 | 1818.0 | 0.016998171 | observed | no | yes/yes |
+| 2020-02-05 | 0.75 | observed/ln_price_111 | 11 | -0.064538521 | 0.051401952 | 1854.0 | 0.036606642 | observed | no | yes/yes |
+| 2020-02-15 | 0.77 | observed/ln_price_111 | 11 | -0.038221213 | 0.062830648 | 1864.4 | 0.042200461 | observed | no | yes/yes |
+| 2020-02-25 | 0.78 | observed/ln_price_111 | 11 | -0.025317808 | 0.062830648 | 1847.4 | 0.033040420 | observed | no | yes/yes |
+| 2020-03-05 | 0.78 | observed/ln_price_111 | 11 | -0.025317808 | 0.085303504 | 1856.9 | 0.038169606 | observed | no | yes/yes |
+| 2020-03-15 | 0.84 | observed/ln_price_111 | 11 | 0.048790164 | 0.096353340 | 1862.8 | 0.041341907 | observed | no | yes/yes |
+| 2020-03-25 | 0.84 | observed/ln_price_111 | 11 | 0.048790164 | 0.107282411 | 1877.1 | 0.048989208 | observed | no | yes/yes |
+| 2020-04-05 | 0.85 | observed/ln_price_111 | 11 | 0.060624622 | 0.118093327 | 1924.7 | 0.074031287 | observed | no | yes/yes |
+| 2020-04-15 | 0.86 | observed/ln_price_111 | 11 | 0.072320662 | 0.139370725 | 1949.1 | 0.086628903 | observed | no | yes/yes |
+| 2020-04-25 | 0.86 | observed/ln_price_111 | 11 | 0.072320662 | 0.149842025 | 2019.7 | 0.122210161 | observed | no | yes/yes |
+| 2020-05-05 | 0.87 | observed/ln_price_111 | 11 | 0.083881484 | 0.180613684 | 2073.5 | 0.148499176 | observed | no | yes/yes |
+| 2020-05-15 | 0.90 | observed/ln_price_111 | 11 | 0.117783036 | 0.190664020 | 2067.0 | 0.145359456 | observed | no | yes/yes |
+| 2020-05-25 | 0.90 | observed/ln_price_111 | 11 | 0.117783036 | 0.190664020 | 2047.1 | 0.135685333 | observed | no | yes/yes |
+| 2020-06-05 | 0.90 | observed/ln_price_111 | 11 | 0.117783036 | 0.190664020 | 2058.9 | 0.141433035 | observed | no | yes/yes |
+| 2020-06-15 | 0.90 | observed/ln_price_111 | 11 | 0.117783036 | 0.190664020 | 2090.5 | 0.156664447 | observed | no | yes/yes |
+| 2020-06-25 | 0.90 | observed/ln_price_111 | 11 | 0.117783036 | 0.200614351 | 2149.1 | 0.184310325 | observed | no | yes/yes |
+| 2020-07-05 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.200614351 | 2169.4 | 0.193711807 | observed | no | yes/yes |
+| 2020-07-15 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.200614351 | 2192.9 | 0.204486044 | observed | no | yes/yes |
+| 2020-07-25 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.220222822 | 2278.6 | 0.242822395 | observed | no | yes/yes |
+| 2020-08-05 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.239454184 | 2355.0 | 0.275801903 | observed | no | yes/yes |
+| 2020-08-15 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.239454184 | 2301.0 | 0.252604986 | observed | no | yes/yes |
+| 2020-08-25 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.239454184 | 2273.6 | 0.240625654 | observed | no | yes/yes |
+| 2020-09-05 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.239454184 | 2235.3 | 0.223636622 | observed | no | yes/yes |
+| 2020-09-15 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.267625061 | 2254.9 | 0.232366801 | observed | no | yes/yes |
+| 2020-09-25 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.285974199 | 2274.9 | 0.241197271 | observed | no | yes/yes |
+| 2020-10-05 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.285974199 | 2302.0 | 0.253039486 | observed | no | yes/yes |
+| 2020-10-15 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.285974199 | 2374.0 | 0.283837471 | observed | no | yes/yes |
+| 2020-10-25 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.321692282 | 2430.0 | 0.307152433 | observed | no | yes/yes |
+| 2020-11-05 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.347667768 | 2430.7 | 0.307440457 | observed | no | yes/yes |
+| 2020-11-15 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.356178458 | 2425.8 | 0.305422542 | observed | no | yes/yes |
+| 2020-11-25 | 0.97 | observed/ln_price_111 | 11 | 0.192684344 | 0.356178458 | 2464.1 | 0.321087804 | observed | no | yes/yes |
+| 2020-12-05 | 1.04 | observed/ln_price_111 | 11 | 0.262364264 | 0.356178458 | 2534.8 | 0.349375914 | observed | no | yes/yes |
+| 2020-12-15 | 1.10 | observed/ln_price_111 | 11 | 0.318453731 | 0.372985576 | 2534.4 | 0.349218098 | observed | no | yes/yes |
+| 2020-12-25 | 1.10 | observed/ln_price_111 | 11 | 0.318453731 | 0.372985576 | 2547.8 | 0.354491417 | observed | no | yes/yes |
+| 2021-01-05 | 1.10 | observed/ln_price_111 | 11 | 0.318453731 | 0.397678189 | 2675.9 | 0.403546948 | observed | no | yes/yes |
+| 2021-01-15 | 1.10 | observed/ln_price_111 | 11 | 0.318453731 | 0.453028284 | 2853.9 | 0.467947655 | observed | no | yes/yes |
+| 2021-01-25 | 1.17 | observed/ln_price_111 | 11 | 0.380147300 | 0.498148719 | 2892.9 | 0.481520634 | observed | no | yes/yes |
+| 2021-02-05 | 1.23 | observed/ln_price_111 | 11 | 0.430157721 | 0.512747519 | 2878.8 | 0.476634716 | observed | no | yes/yes |
+| 2021-02-15 | 1.30 | observed/ln_price_111 | 11 | 0.485507816 | 0.512747519 | NA | NA | unknown_missing | no | yes/no |
+| 2021-02-25 | 1.30 | observed/ln_price_111 | 11 | 0.485507816 | 0.527136256 | 2908.2 | 0.486795508 | observed | no | yes/no |
+| 2021-03-05 | 1.30 | observed/ln_price_111 | 11 | 0.485507816 | 0.527136256 | 2915.2 | 0.489199603 | observed | no | yes/yes |
+| 2021-03-15 | 1.30 | observed/ln_price_111 | 11 | 0.485507816 | 0.527136256 | 2849.6 | 0.466439809 | observed | no | yes/yes |
+| 2021-03-25 | 1.30 | observed/ln_price_111 | 11 | 0.485507816 | 0.527136256 | 2808.2 | 0.451804884 | observed | no | yes/yes |
+| 2021-04-05 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2735.7 | 0.425648520 | observed | no | yes/yes |
+| 2021-04-15 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2777.6 | 0.440848421 | observed | no | yes/yes |
+| 2021-04-25 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2803.3 | 0.450058470 | observed | no | yes/yes |
+| 2021-05-05 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2818.4 | 0.455430523 | observed | no | yes/yes |
+| 2021-05-15 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2826.9 | 0.458441880 | observed | no | yes/yes |
+| 2021-05-25 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2833.6 | 0.460809163 | observed | no | yes/yes |
+| 2021-06-05 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2828.1 | 0.458866283 | observed | no | yes/yes |
+| 2021-06-15 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2818.3 | 0.455395042 | observed | no | yes/yes |
+| 2021-06-25 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2753.0 | 0.431952401 | observed | no | yes/yes |
+| 2021-07-05 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2735.5 | 0.425575410 | observed | no | yes/yes |
+| 2021-07-15 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.483333634 | 2695.8 | 0.410956182 | observed | no | yes/yes |
+| 2021-07-25 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2634.1 | 0.387802743 | observed | no | yes/yes |
+| 2021-08-05 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.490768612 | 2684.7 | 0.406830165 | observed | no | yes/yes |
+| 2021-08-15 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.475842962 | 2707.7 | 0.415360741 | observed | no | yes/yes |
+| 2021-08-25 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.468295756 | 2697.5 | 0.411586593 | observed | no | yes/yes |
+| 2021-09-05 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.453028284 | 2666.3 | 0.399952919 | observed | no | yes/yes |
+| 2021-09-15 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.453028284 | 2580.8 | 0.367360604 | observed | no | yes/yes |
+| 2021-09-25 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.437524098 | 2519.8 | 0.343440709 | observed | no | yes/yes |
+| 2021-10-05 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.389514878 | 2511.5 | 0.340141359 | observed | no | yes/yes |
+| 2021-10-15 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.397678189 | 2514.4 | 0.341295382 | observed | no | yes/yes |
+| 2021-10-25 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.389514878 | 2564.3 | 0.360946712 | observed | no | yes/yes |
+| 2021-11-05 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.405775399 | 2629.8 | 0.386168973 | observed | no | yes/yes |
+| 2021-11-15 | 1.22 | observed/ln_price_111 | 10 | 0.421994410 | NA | 2659.1 | 0.397248895 | observed | no | yes/yes |
+| 2021-11-25 | 1.22 | observed/ln_price_111 | 10 | 0.421994410 | NA | 2655.6 | 0.395931793 | observed | no | yes/yes |
+| 2021-12-05 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.421775741 | 2641.6 | 0.390645969 | observed | no | yes/yes |
+| 2021-12-15 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.413807571 | 2632.6 | 0.387233126 | observed | no | yes/yes |
+| 2021-12-25 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.413807571 | 2624.3 | 0.384075369 | observed | no | yes/yes |
+| 2022-01-05 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.429680920 | 2628.2 | 0.385560376 | observed | no | yes/yes |
+| 2022-01-15 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.413807571 | 2623.0 | 0.383579876 | observed | no | yes/yes |
+| 2022-01-25 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.413807571 | 2626.5 | 0.384913337 | observed | no | yes/yes |
+| 2022-02-05 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.413807571 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2022-02-15 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.421775741 | 2633.6 | 0.387612907 | observed | no | yes/no |
+| 2022-02-25 | 1.22 | observed/ln_price_111 | 11 | 0.421994410 | 0.429680920 | 2643.1 | 0.391213646 | observed | no | yes/yes |
+| 2022-03-05 | 1.16 | observed/ln_price_111 | 11 | 0.371563556 | 0.437524098 | 2693.3 | 0.410028383 | observed | no | yes/yes |
+| 2022-03-15 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.437524098 | 2720.5 | 0.420076862 | observed | no | yes/yes |
+| 2022-03-25 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.453028284 | 2728.6 | 0.423049832 | observed | no | yes/yes |
+| 2022-04-05 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.453028284 | 2734.1 | 0.425063489 | observed | no | yes/yes |
+| 2022-04-15 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.468295756 | 2732.4 | 0.424441519 | observed | no | yes/yes |
+| 2022-04-25 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.475842962 | 2741.3 | 0.427693436 | observed | no | yes/yes |
+| 2022-05-05 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.490768612 | 2780.0 | 0.441712103 | observed | no | yes/yes |
+| 2022-05-15 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.490768612 | 2786.1 | 0.443903944 | observed | no | yes/yes |
+| 2022-05-25 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.490768612 | 2787.2 | 0.444298683 | observed | no | yes/yes |
+| 2022-06-05 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.490768612 | 2789.3 | 0.445051844 | observed | no | yes/yes |
+| 2022-06-15 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.498148719 | 2803.0 | 0.449951447 | observed | no | yes/yes |
+| 2022-06-25 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.498148719 | 2813.7 | 0.453761518 | observed | no | yes/yes |
+| 2022-07-05 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.498148719 | 2791.7 | 0.445911904 | observed | no | yes/yes |
+| 2022-07-15 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.527136256 | 2772.3 | 0.438938476 | observed | no | yes/yes |
+| 2022-07-25 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.498148719 | 2738.1 | 0.426525424 | observed | no | yes/yes |
+| 2022-08-05 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.498148719 | 2723.6 | 0.421215710 | observed | no | yes/yes |
+| 2022-08-15 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.490768612 | 2712.6 | 0.417168760 | observed | no | yes/yes |
+| 2022-08-25 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.498148719 | 2697.8 | 0.411697801 | observed | no | yes/yes |
+| 2022-09-05 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.498148719 | 2712.4 | 0.417095027 | observed | no | yes/yes |
+| 2022-09-15 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.498148719 | 2726.1 | 0.422133192 | observed | no | yes/yes |
+| 2022-09-25 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.498148719 | 2726.8 | 0.422389936 | observed | no | yes/yes |
+| 2022-10-05 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.490768612 | 2731.4 | 0.424075473 | observed | no | yes/yes |
+| 2022-10-15 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.490768612 | 2737.1 | 0.426160141 | observed | no | yes/yes |
+| 2022-10-25 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.498148719 | 2757.0 | 0.433404307 | observed | no | yes/yes |
+| 2022-11-05 | 1.18 | observed/ln_price_111 | 11 | 0.388657990 | 0.490768612 | 2765.9 | 0.436627255 | observed | no | yes/yes |
+| 2022-11-15 | 1.15 | observed/ln_price_111 | 11 | 0.362905494 | 0.498148719 | 2803.9 | 0.450272480 | observed | no | yes/yes |
+| 2022-11-25 | 1.15 | observed/ln_price_111 | 11 | 0.362905494 | 0.512747519 | 2855.0 | 0.468333018 | observed | no | yes/yes |
+| 2022-12-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.541320891 | 2881.7 | 0.477641573 | observed | no | yes/yes |
+| 2022-12-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.527136256 | 2853.5 | 0.467807486 | observed | no | yes/yes |
+| 2022-12-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.512747519 | 2822.9 | 0.457025901 | observed | no | yes/yes |
+| 2023-01-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.512747519 | 2810.2 | 0.452516830 | observed | no | yes/yes |
+| 2023-01-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.512747519 | 2813.6 | 0.453725977 | observed | no | yes/yes |
+| 2023-01-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.512747519 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2023-02-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.512747519 | 2804.4 | 0.450450788 | observed | no | yes/no |
+| 2023-02-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.512747519 | 2793.3 | 0.446484868 | observed | no | yes/yes |
+| 2023-02-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.498148719 | 2796.1 | 0.447486764 | observed | no | yes/yes |
+| 2023-03-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.498148719 | 2787.3 | 0.444334561 | observed | no | yes/yes |
+| 2023-03-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.490768612 | 2777.8 | 0.440920423 | observed | no | yes/yes |
+| 2023-03-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.490768612 | 2754.5 | 0.432497113 | observed | no | yes/yes |
+| 2023-04-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.475842962 | 2708.0 | 0.415471530 | observed | no | yes/yes |
+| 2023-04-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.475842962 | 2725.0 | 0.421729603 | observed | no | yes/yes |
+| 2023-04-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.475842962 | 2729.0 | 0.423196417 | observed | no | yes/yes |
+| 2023-05-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.468295756 | 2704.1 | 0.414030315 | observed | no | yes/yes |
+| 2023-05-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.468295756 | 2655.3 | 0.395818818 | observed | no | yes/yes |
+| 2023-05-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.460691157 | 2647.5 | 0.392876974 | observed | no | yes/yes |
+| 2023-06-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.460691157 | 2676.4 | 0.403733783 | observed | no | yes/yes |
+| 2023-06-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.468295756 | 2695.4 | 0.410807792 | observed | no | yes/yes |
+| 2023-06-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.468295756 | 2748.6 | 0.430352866 | observed | no | yes/yes |
+| 2023-07-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.475842962 | 2798.2 | 0.448237529 | observed | no | yes/yes |
+| 2023-07-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.490768612 | 2811.8 | 0.453086023 | observed | no | yes/yes |
+| 2023-07-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.490768612 | 2799.9 | 0.448844877 | observed | no | yes/yes |
+| 2023-08-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.490768612 | 2812.5 | 0.453334943 | observed | no | yes/yes |
+| 2023-08-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.498148719 | 2864.8 | 0.471759715 | observed | no | yes/yes |
+| 2023-08-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.505474760 | 2871.5 | 0.474095717 | observed | no | yes/yes |
+| 2023-09-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.512747519 | 2878.0 | 0.476356784 | observed | no | yes/yes |
+| 2023-09-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.512747519 | 2841.0 | 0.463417278 | observed | no | yes/yes |
+| 2023-09-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.512747519 | 2783.0 | 0.442790658 | observed | no | yes/yes |
+| 2023-10-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.468295756 | 2716.2 | 0.418495020 | observed | no | yes/yes |
+| 2023-10-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.468295756 | 2681.3 | 0.405562927 | observed | no | yes/yes |
+| 2023-10-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.468295756 | 2608.0 | 0.377844819 | observed | no | yes/yes |
+| 2023-11-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.453028284 | 2588.2 | 0.370223829 | observed | no | yes/yes |
+| 2023-11-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.453028284 | 2586.2 | 0.369450792 | observed | no | yes/yes |
+| 2023-11-25 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.453028284 | 2572.6 | 0.364178236 | observed | no | yes/yes |
+| 2023-12-05 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.437524098 | 2526.2 | 0.345977373 | observed | no | yes/yes |
+| 2023-12-15 | 1.25 | observed/ln_price_111 | 11 | 0.446287103 | 0.437524098 | 2485.5 | 0.329735022 | observed | no | yes/yes |
+| 2023-12-25 | 1.23 | observed/ln_price_111 | 11 | 0.430157721 | 0.437524098 | 2432.7 | 0.308262927 | observed | no | yes/yes |
+| 2024-01-05 | 1.23 | observed/ln_price_111 | 11 | 0.430157721 | 0.372985576 | 2403.6 | 0.296228789 | observed | no | yes/yes |
+| 2024-01-15 | 1.23 | observed/ln_price_111 | 11 | 0.430157721 | 0.372985576 | 2340.0 | 0.269412105 | observed | no | yes/yes |
+| 2024-01-25 | 1.15 | observed/ln_price_111 | 11 | 0.362905494 | 0.347667768 | 2272.6 | 0.240185726 | observed | no | yes/yes |
+| 2024-02-05 | 1.15 | observed/ln_price_115 | 11 | 0.362905494 | 0.330425962 | 2275.4 | 0.241417036 | observed | yes | no/yes |
+| 2024-02-15 | 1.15 | observed/ln_price_115 | 11 | 0.362905494 | 0.321692282 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2024-02-25 | 1.18 | observed/ln_price_115 | 11 | 0.388657990 | 0.321692282 | 2315.3 | 0.258800444 | observed | no | yes/no |
+| 2024-03-05 | 1.18 | observed/ln_price_115 | 11 | 0.388657990 | 0.303992705 | 2336.8 | 0.268043647 | observed | no | yes/yes |
+| 2024-03-15 | 1.18 | observed/ln_price_115 | 11 | 0.388657990 | 0.312881652 | 2336.1 | 0.267744047 | observed | no | yes/yes |
+| 2024-03-25 | 1.18 | observed/ln_price_115 | 11 | 0.388657990 | 0.321692282 | 2317.6 | 0.259793343 | observed | no | yes/yes |
+| 2024-04-05 | 1.15 | observed/ln_price_115 | 11 | 0.362905494 | 0.312881652 | 2306.1 | 0.254818961 | observed | no | yes/yes |
+| 2024-04-15 | 1.15 | observed/ln_price_115 | 11 | 0.362905494 | 0.321692282 | 2292.5 | 0.248904100 | observed | no | yes/yes |
+| 2024-04-25 | 1.15 | observed/ln_price_115 | 11 | 0.362905494 | 0.321692282 | 2270.3 | 0.239173157 | observed | no | yes/yes |
+| 2024-05-05 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.312881652 | 2266.5 | 0.237497967 | observed | no | yes/yes |
+| 2024-05-15 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.312881652 | 2292.8 | 0.249034953 | observed | no | yes/yes |
+| 2024-05-25 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.321692282 | 2321.5 | 0.261474704 | observed | no | yes/yes |
+| 2024-06-05 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.339084025 | 2332.8 | 0.266330438 | observed | no | yes/yes |
+| 2024-06-15 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.339084025 | 2367.4 | 0.281053482 | observed | no | yes/yes |
+| 2024-06-25 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.347667768 | 2383.6 | 0.287873125 | observed | no | yes/yes |
+| 2024-07-05 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.356178458 | 2391.0 | 0.290972864 | observed | no | yes/yes |
+| 2024-07-15 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.356178458 | 2370.3 | 0.282277705 | observed | no | yes/yes |
+| 2024-07-25 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.356178458 | 2347.8 | 0.272739895 | observed | no | yes/yes |
+| 2024-08-05 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.356178458 | 2315.7 | 0.258973193 | observed | no | yes/yes |
+| 2024-08-15 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.347667768 | 2274.9 | 0.241197271 | observed | no | yes/yes |
+| 2024-08-25 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.347667768 | 2268.7 | 0.238468155 | observed | no | yes/yes |
+| 2024-09-05 | 1.16 | observed/ln_price_115 | 11 | 0.371563556 | 0.330425962 | 2269.7 | 0.238908839 | observed | no | yes/yes |
+| 2024-09-15 | 1.12 | observed/ln_price_115 | 11 | 0.336472237 | 0.330425962 | 2220.6 | 0.217038605 | observed | no | yes/yes |
+| 2024-09-25 | 1.12 | observed/ln_price_115 | 11 | 0.336472237 | 0.321692282 | 2105.5 | 0.163814144 | observed | no | yes/yes |
+| 2024-10-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.295024035 | 2104.8 | 0.163481626 | observed | no | yes/yes |
+| 2024-10-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.276841716 | 2107.0 | 0.164526310 | observed | no | yes/yes |
+| 2024-10-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.239454184 | 2112.9 | 0.167322587 | observed | no | yes/yes |
+| 2024-11-05 | 1.06 | observed/ln_price_115 | 11 | 0.281412459 | 0.248932928 | 2115.7 | 0.168646902 | observed | no | yes/yes |
+| 2024-11-15 | 1.06 | observed/ln_price_115 | 11 | 0.281412459 | 0.248932928 | 2086.9 | 0.154940887 | observed | no | yes/yes |
+| 2024-11-25 | - | missing_value/ln_price_115 | 11 | NA | 0.210466647 | 2083.4 | 0.153262350 | observed | no | no/yes |
+| 2024-12-05 | 1.06 | observed/ln_price_115 | 11 | 0.281412459 | 0.220222822 | 2056.0 | 0.140023523 | observed | no | no/yes |
+| 2024-12-15 | 1.00 | observed/ln_price_115 | 11 | 0.223143551 | 0.190664020 | 2032.4 | 0.128478536 | observed | no | yes/yes |
+| 2024-12-25 | 1.00 | observed/ln_price_115 | 11 | 0.223143551 | 0.190664020 | 2009.2 | 0.116997808 | observed | no | yes/yes |
+| 2025-01-05 | 1.00 | observed/ln_price_115 | 11 | 0.223143551 | 0.190664020 | 2009.2 | 0.116997808 | observed | no | yes/yes |
+| 2025-01-15 | 1.00 | observed/ln_price_115 | 11 | 0.223143551 | 0.190664020 | 2026.4 | 0.125521995 | observed | no | yes/yes |
+| 2025-01-25 | 1.00 | observed/ln_price_115 | 11 | 0.223143551 | 0.180613684 | NA | NA | unknown_missing | no | yes/no |
+| 2025-02-05 | 1.00 | observed/ln_price_115 | 11 | 0.223143551 | 0.190664020 | 2050.8 | 0.137491136 | observed | no | yes/no |
+| 2025-02-15 | 1.00 | observed/ln_price_115 | 11 | 0.223143551 | 0.200614351 | 2092.3 | 0.157525115 | observed | no | yes/yes |
+| 2025-02-25 | 1.00 | observed/ln_price_115 | 11 | 0.223143551 | 0.220222822 | 2117.2 | 0.169355636 | observed | no | yes/yes |
+| 2025-03-05 | 1.05 | observed/ln_price_115 | 11 | 0.271933715 | 0.239454184 | 2146.5 | 0.183099784 | observed | no | yes/yes |
+| 2025-03-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.239454184 | 2193.7 | 0.204850791 | observed | no | yes/yes |
+| 2025-03-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.267625061 | 2189.7 | 0.203025723 | observed | no | yes/yes |
+| 2025-04-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.248932928 | 2178.5 | 0.197897742 | observed | no | yes/yes |
+| 2025-04-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.258322668 | 2195.7 | 0.205762078 | observed | no | yes/yes |
+| 2025-04-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.258322668 | 2215.3 | 0.214649010 | observed | no | yes/yes |
+| 2025-05-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.276841716 | 2303.2 | 0.253560636 | observed | no | yes/yes |
+| 2025-05-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.285974199 | 2316.4 | 0.259275432 | observed | no | yes/yes |
+| 2025-05-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.285974199 | 2303.0 | 0.253473796 | observed | no | yes/yes |
+| 2025-06-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.285974199 | 2310.5 | 0.256725127 | observed | no | yes/yes |
+| 2025-06-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.285974199 | 2339.0 | 0.268984663 | observed | no | yes/yes |
+| 2025-06-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.303992705 | 2370.1 | 0.282193324 | observed | no | yes/yes |
+| 2025-07-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.295024035 | 2368.3 | 0.281433573 | observed | no | yes/yes |
+| 2025-07-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.303992705 | 2329.7 | 0.265000679 | observed | no | yes/yes |
+| 2025-07-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.303992705 | 2340.3 | 0.269540302 | observed | no | yes/yes |
+| 2025-08-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.303992705 | 2328.0 | 0.264270705 | observed | no | yes/yes |
+| 2025-08-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.303992705 | 2317.7 | 0.259836490 | observed | no | yes/yes |
+| 2025-08-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.312881652 | 2300.9 | 0.252561526 | observed | no | yes/yes |
+| 2025-09-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.303992705 | 2299.7 | 0.252039855 | observed | no | yes/yes |
+| 2025-09-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.303992705 | 2304.0 | 0.253907918 | observed | no | yes/yes |
+| 2025-09-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.303992705 | 2300.0 | 0.252170298 | observed | no | yes/yes |
+| 2025-10-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.285974199 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2025-10-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.267625061 | 2154.3 | 0.186727020 | observed | no | yes/no |
+| 2025-10-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.248932928 | 2152.8 | 0.186030496 | observed | no | yes/yes |
+| 2025-11-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.258322668 | 2145.9 | 0.182820220 | observed | no | yes/yes |
+| 2025-11-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.248932928 | 2168.1 | 0.193112383 | observed | no | yes/yes |
+| 2025-11-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.248932928 | 2195.4 | 0.205625438 | observed | no | yes/yes |
+| 2025-12-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.258322668 | 2225.3 | 0.219152913 | observed | no | yes/yes |
+| 2025-12-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.276841716 | 2231.2 | 0.221800733 | observed | no | yes/yes |
+| 2025-12-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.276841716 | 2228.4 | 0.220545014 | observed | no | yes/yes |
+| 2026-01-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.276841716 | 2235.5 | 0.223726092 | observed | no | yes/yes |
+| 2026-01-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.276841716 | 2243.3 | 0.227209171 | observed | no | yes/yes |
+| 2026-01-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.295024035 | 2251.9 | 0.231035480 | observed | no | yes/yes |
+| 2026-02-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.295024035 | 2254.1 | 0.232011955 | observed | no | yes/yes |
+| 2026-02-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.303992705 | NA | NA | confirmed_cancelled | no | yes/no |
+| 2026-02-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.303992705 | 2268.3 | 0.238291827 | observed | no | yes/no |
+| 2026-03-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2301.0 | 0.252604986 | observed | no | yes/yes |
+| 2026-03-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.330425962 | 2338.6 | 0.268813635 | observed | no | yes/yes |
+| 2026-03-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.330425962 | 2340.1 | 0.269454839 | observed | no | yes/yes |
+| 2026-04-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.330425962 | 2324.5 | 0.262766137 | observed | no | yes/yes |
+| 2026-04-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.330425962 | 2320.3 | 0.260957663 | observed | no | yes/yes |
+| 2026-04-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.330425962 | 2324.0 | 0.262551014 | observed | no | yes/yes |
+| 2026-05-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.330425962 | 2321.7 | 0.261560851 | observed | no | yes/yes |
+| 2026-05-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2314.3 | 0.258368441 | observed | no | yes/yes |
+| 2026-05-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2305.2 | 0.254428616 | observed | no | yes/yes |
+| 2026-06-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.312881652 | 2294.8 | 0.249906869 | observed | no | yes/yes |
+| 2026-06-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2297.5 | 0.251082750 | observed | no | yes/yes |
+| 2026-06-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2297.7 | 0.251169798 | observed | no | yes/yes |
+| 2026-07-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2292.0 | 0.248685974 | observed | no | yes/yes |
+| 2026-07-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2281.4 | 0.244050465 | observed | no | yes/yes |
+| 2026-07-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2264.9 | 0.236791783 | observed | no | yes/yes |
+| 2026-08-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2241.6 | 0.226451072 | observed | no | yes/yes |
+| 2026-08-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2235.8 | 0.223860281 | observed | no | yes/yes |
+| 2026-08-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2240.1 | 0.225781683 | observed | no | yes/yes |
+| 2026-09-05 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2236.8 | 0.224307448 | observed | no | yes/yes |
+| 2026-09-15 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | 2209.5 | 0.212027421 | observed | no | yes/yes |
+| 2026-09-25 | 1.07 | observed/ln_price_115 | 11 | 0.290802200 | 0.321692282 | NA | NA | unknown_missing | no | yes/no |
+
+### S8d Other-eleven-county median endpoints for all27 tied longest segments
+
+These are the exact27 longest-segment rows selected for the original24 county/product series, without reselecting runs. At each actual segment endpoint, the comparison cohort is the original MAIN12 minus the selected county. All54 endpoints contain eleven positive quotations; the median uses exact Decimal ordering of preserved original price strings in a common unit. The change is log(median_end) minus log(median_start), with no interpolation. Available comparison-county endpoints do not fill missing national endpoints or turn PARTIAL national coverage into full coverage.
+
+| County | Product | Start | End | Own constant-run observations | Other11 median start CNY/500g | Other11 median end CNY/500g | Other11 median endpoint log change | Positive quotes start/end |
+|---|---|---|---|---|---|---|---|---|
+| Sujiatun | Maize | 2018-02-15 | 2019-09-25 | 59 | 0.85 | 0.88 | 0.034685557988 | 11/11 |
+| Sujiatun | Urea | 2018-01-05 | 2020-04-15 | 83 | 0.95 | 1.00 | 0.051293294388 | 11/11 |
+| Faku | Maize | 2018-01-15 | 2018-03-25 | 8 | 0.82 | 0.82 | 0.000000000000 | 11/11 |
+| Faku | Maize | 2021-06-05 | 2021-08-15 | 8 | 1.35 | 1.32 | -0.022472855852 | 11/11 |
+| Faku | Maize | 2022-04-25 | 2022-07-05 | 8 | 1.33 | 1.36 | 0.022305757514 | 11/11 |
+| Faku | Urea | 2018-04-25 | 2019-08-15 | 48 | 1.03 | 1.08 | 0.047402238895 | 11/11 |
+| Zhuanghe | Maize | 2018-05-15 | 2019-04-25 | 35 | 0.85 | 0.85 | 0.000000000000 | 11/11 |
+| Zhuanghe | Urea | 2019-07-25 | 2020-07-25 | 37 | 1.08 | 1.00 | -0.076961041136 | 11/11 |
+| Qingyuan | Maize | 2024-10-05 | 2026-03-05 | 52 | 1.11 | 1.14 | 0.026668247082 | 11/11 |
+| Qingyuan | Urea | 2018-01-05 | 2020-03-15 | 80 | 0.95 | 1.00 | 0.051293294388 | 11/11 |
+| Fengcheng | Maize | 2019-07-05 | 2020-05-05 | 31 | 0.86 | 0.99 | 0.140772553881 | 11/11 |
+| Fengcheng | Urea | 2020-04-05 | 2020-10-05 | 19 | 1.00 | 1.00 | 0.000000000000 | 11/11 |
+| Fengcheng | Urea | 2025-09-05 | 2026-03-05 | 19 | 1.00 | 1.05 | 0.048790164169 | 11/11 |
+| Dashiqiao | Maize | 2018-01-05 | 2020-02-25 | 78 | 0.80 | 0.88 | 0.095310179804 | 11/11 |
+| Dashiqiao | Urea | 2019-05-05 | 2021-02-25 | 66 | 1.10 | 1.15 | 0.044451762571 | 11/11 |
+| Zhangwu | Maize | 2025-08-05 | 2025-12-25 | 15 | 1.12 | 1.09 | -0.027150989066 | 11/11 |
+| Zhangwu | Urea | 2025-02-25 | 2026-09-25 | 58 | 1.09 | 1.10 | 0.009132483563 | 11/11 |
+| Dengta | Maize | 2018-04-05 | 2018-12-05 | 25 | 0.82 | 0.85 | 0.035932009226 | 11/11 |
+| Dengta | Urea | 2025-03-25 | 2026-03-15 | 36 | 1.05 | 1.05 | 0.000000000000 | 11/11 |
+| Dawa | Maize | 2018-01-05 | 2020-04-05 | 82 | 0.80 | 0.93 | 0.150572858479 | 11/11 |
+| Dawa | Urea | 2023-05-25 | 2025-03-15 | 66 | 1.35 | 1.05 | -0.251314428281 | 11/11 |
+| Changtu | Maize | 2019-05-15 | 2020-02-15 | 28 | 0.86 | 0.88 | 0.022989518225 | 11/11 |
+| Changtu | Urea | 2019-04-25 | 2020-02-15 | 30 | 1.09 | 1.05 | -0.037387532072 | 11/11 |
+| Kaiyuan | Maize | 2018-02-15 | 2018-06-25 | 14 | 0.82 | 0.85 | 0.035932009226 | 11/11 |
+| Kaiyuan | Urea | 2018-05-05 | 2019-02-15 | 29 | 1.05 | 1.10 | 0.046520015635 | 11/11 |
+| Jianping | Maize | 2025-03-15 | 2026-09-25 | 56 | 1.05 | 1.14 | 0.082238098237 | 11/11 |
+| Jianping | Urea | 2018-04-25 | 2021-04-25 | 109 | 1.05 | 1.15 | 0.090971778206 | 11/11 |
+
+### S8e Complete archive product inventory and cross-product screening
+
+The archive contains 610 responses: 604 successes and six original HTTP failures. Parsing identifies 318 date-pivot pages, 153 county-product time-series pages, 132 pages without a price table and one empty price table. It yields 83,521 cells, 80,955 unique cells, 2,566 additional lineage copies and zero price conflicts. The normalized cross-product table retains 36 fields.
+
+Thirty-one exact source-local product mappings retain commodity name, specification and unit. Seventeen regular-page specifications include sixteen with 315 captured dates and chicken with 312. Imported urea appears on six dates (90 cells); the remaining thirteen sparse specifications each appear on three dates (45 cells). Only three actual second-page reports are present: 15 June 2018, 25 December 2024 and 25 September 2026. The March 2026 chicken omissions are resolved by exact source-local commodity identity rather than assigning shifted rows to the wrong product.
+
+**Table S8e. Exact product coverage, rate support and one-third/>36/>20% classifications.**
+
+| Product | Exact specification | Unit | Number of dates | N12 counties with evaluable rates | Counties confirmed under the principal setting | Number of UNKNOWN counties |
+|---|---|---|---:|---:|---|---:|
+| japonica paddy | mixed grades | CNY/500 g | 315 | 11 | — | 12 |
+| milled rice | standard grade I | CNY/500 g | 315 | 12 | Dashiqiao City; Jianping County | 9 |
+| maize | mixed grades, purchase quotation | CNY/500 g | 315 | 12 | Jianping County | 4 |
+| maize | mixed grades, market quotation | CNY/500 g | 315 | 12 | — | 5 |
+| wheat flour | special grade I flour | CNY/500 g | 315 | 12 | Dashiqiao City; Dawa County; Jianping County | 9 |
+| wheat flour | standard flour | CNY/500 g | 315 | 12 | Dashiqiao City; Dawa County; Jianping County | 9 |
+| soybeans | grade I | CNY/500 g | 315 | 12 | — | 11 |
+| soybean oil | container-packed, grade I, solvent-extracted | CNY/5 L | 315 | 12 | Jianping County | 10 |
+| soybean blended oil | container-packed | CNY/5 L | 315 | 12 | — | 12 |
+| piglets | approximately 15 kg | CNY/500 g | 315 | 12 | — | 1 |
+| live pigs | mature pigs, 200–300 jin | CNY/500 g | 315 | 12 | — | 0 |
+| fresh pork | boneless hind-leg meat | CNY/500 g | 315 | 12 | — | 0 |
+| fresh beef | fresh, boneless | CNY/500 g | 315 | 12 | — | 9 |
+| fresh mutton | fresh, boneless | CNY/500 g | 315 | 12 | — | 9 |
+| chicken meat | dressed, eviscerated chicken, upper grade | CNY/500 g | 312 | 12 | Zhuanghe City; Dawa County; Jianping County | 7 |
+| eggs | fresh, intact | CNY/500 g | 315 | 12 | — | 0 |
+| urea | domestic | CNY/500 g | 315 | 12 | Sujiatun District; Qingyuan County; Dashiqiao City; Zhangwu County; Dawa County; Jianping County | 0 |
+| urea | imported | CNY/500 g | 6 | 3 | — | 12 |
+| diammonium phosphate | domestic | CNY/500 g | 3 | 0 | — | 12 |
+| diammonium phosphate | imported | CNY/500 g | 3 | 0 | — | 12 |
+| potassium chloride | domestic | CNY/500 g | 3 | 0 | — | 12 |
+| ternary compound fertilizer | domestic | CNY/500 g | 3 | 0 | — | 12 |
+| high-pressure polyethylene greenhouse film | thickness 0.014 mm | CNY/500 g | 3 | 0 | — | 12 |
+| high-pressure polyethylene mulch film | lay-flat width 1 m; 0.1 mm | CNY/500 g | 3 | 0 | — | 12 |
+| dimethoate | 40% emulsion | CNY/500 g | 3 | 0 | — | 12 |
+| dichlorvos | - | CNY/500 g | 3 | 0 | — | 12 |
+| paraquat | - | CNY/500 g | 3 | 0 | — | 12 |
+| soybean meal | domestic | CNY/500 g | 3 | 0 | — | 12 |
+| wheat bran | domestic | CNY/500 g | 3 | 0 | — | 12 |
+| agricultural diesel | grade 0 | CNY/L | 3 | 0 | — | 12 |
+| agricultural diesel | grade -10 | CNY/L | 3 | 0 | — | 12 |
+
+Table cells retain original Chinese commodity/specification/unit strings to support exact lookup. N12 is the original twelve-county cohort. The primary product median requires support in all twelve counties; japonica paddy has eleven and its primary median is NA. Its available-county median, 23.64%, is a separately labeled sensitivity. Imported urea has only three supported county rates from captured adjacent dates; each of the remaining thirteen sparse specifications has zero. These values describe actual capture support rather than full-period product price histories.
+
+Across all thirty-one products and 36 parameter settings, 1116 product-grid rows retain 13392 original-county classifications. At the one-third/>36/>20% setting, these 372 series contain nineteen confirmed, 275 unresolved and 78 false outcomes. All nineteen confirmed flags are in the regular-page products. Twelve concern rice, two flour grades, soybean oil and chicken beyond the two focal product fields. Exact national matches are retained only for maize purchase and domestic urea; qualifying runs in other products retain unresolved external-amplitude branches. Product-specific flags prioritize original-record checks.
+
+The product inventory contains 31 coverage records, 31 rate medians, 496 inventory county rates, 1,116 product-grid configurations and 22,197 source-aware constant runs. The main and available-county rate summaries use the original twelve-county cohort.
+
+## S9a Selected fixed-total Monte Carlo precision checks
+
+Six preselected six-period configurations extend their original PCG32 streams from 1,999 to a fixed 9,999 repetitions. Other main-table configurations retain 1,999 draws. Tail K denotes the number of fixed-reference draws at least as large as the observed statistic, including ties. Within one paired repetition, O and K_ref are the observed and reference below-benchmark county–date counts, and T is the number of attainment dates. The paired difference is D=(O−K_ref)/(N×T), with the re-estimated benchmark and common conditional date set. Positive, zero and negative counts use integer comparisons O>K_ref, O=K_ref and O<K_ref. D>0 is a distribution fraction, not a p value. All six configurations have 9,999 valid paired and fixed repetitions and zero empty conditional sets.
+
+**Table S9a.1. Full 9,999-draw precision summaries (fractions).**
+
+| Benchmark | Cohort | N | Fixed T | Observed H | Fixed reference mean | Fixed90% lower | Fixed90% upper | Tail K | Fixed p | Mean D | Paired95% lower | Paired95% upper | Positive | Zero | Negative | D>0 fraction |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| B0 | Full12 | 12 | 174 | 0.17049808429118773 | 0.13350161644517036 | 0.11637931034482758 | 0.1518199233716475 | 0 | 0.0001 | 0.026410314303385352 | 0.001763668430335097 | 0.051160337552742616 | 9827 | 18 | 154 | 0.9827982798279828 |
+| B0 | N11 | 11 | 183 | 0.12866368604073522 | 0.11547294818900701 | 0.10034773969200199 | 0.13065076999503228 | 814 | 0.0815 | 0.0018703787788429363 | -0.022609514837494113 | 0.0272149967580762 | 5438 | 132 | 4429 | 0.5438543854385438 |
+| B0 | S6 | 6 | 179 | 0.1005586592178771 | 0.12157873142993905 | 0.10242085661080075 | 0.14059590316573556 | 9683 | 0.9684 | -0.026253540388086433 | -0.05719921104536489 | 0.0008865248226950354 | 269 | 42 | 9688 | 0.0269026902690269 |
+| B2 | U10 | 10 | 79 | 0.24556962025316456 | 0.1501094413238784 | 0.12658227848101267 | 0.17341772151898735 | 0 | 0.0001 | 0.09493875100110553 | 0.03042819499341239 | 0.14025974025974025 | 9962 | 8 | 29 | 0.9962996299629963 |
+| B2 | S6 | 6 | 66 | 0.18686868686868688 | 0.1740070471693621 | 0.14646464646464646 | 0.20202020202020202 | 2480 | 0.2481 | 0.027326308131991238 | -0.037060185185185175 | 0.08065330726621037 | 8336 | 245 | 1418 | 0.8336833683368337 |
+| B4 | N11 | 11 | 178 | 0.12461695607763024 | 0.10179312108943477 | 0.09193054136874361 | 0.1118488253319714 | 0 | 0.0001 | 0.02317226499100424 | -0.001027221366204417 | 0.05056194885494799 | 9679 | 36 | 284 | 0.967996799679968 |
+
+*Note:* Values above are fractions, not percentages. Multiplying H by 100 gives percent and D by 100 gives percentage points. Source: actual precision summary JSON (8,519 bytes; SHA-256 dcf52677e60a27a53a029d9d99e99fd64d623562e75401afd0c9e4b4cd800e41). All 419,958 saved integer fields reconstruct the six 9,999-draw summaries. The 83,958 old-prefix fields match the original 1,999-draw records. Binomial intervals quantify Monte Carlo probability uncertainty, while the paired percentile interval quantifies the resampled paired-difference distribution.
+
+**Table S9a.2. Monte Carlo uncertainty of the fixed upper tail and positive-difference fraction.**
+
+| Benchmark | Cohort | Tail MCSE | Tail binomial95% lower | Tail binomial95% upper | Tail interval convention | Positive fraction MCSE | Positive binomial95% lower | Positive binomial95% upper |
+|---|---|---:|---:|---:|---|---:|---:|---:|
+| B0 | Full12 | — | 0 | 0.0002995583111209399 | one-sided 95% exact upper bound | 0.0013002888812227613 | 0.9800544727531613 | 0.9852554329403085 |
+| B0 | N11 | 0.002734472112451209 | 0.07612062145844765 | 0.08694094052666679 | two-sided 95% Clopper-Pearson | 0.004980979853784911 | 0.5340302522338831 | 0.5536529620562345 |
+| B0 | S6 | 0.0017493238732154033 | 0.96477855080418 | 0.9717388003544919 | two-sided 95% Clopper-Pearson | 0.0016180714965873348 | 0.023819724910079568 | 0.030265179506011042 |
+| B2 | U10 | — | 0 | 0.0002995583111209399 | one-sided 95% exact upper bound | 0.0006072105074184163 | 0.9949030994141032 | 0.9973933001923722 |
+| B2 | S6 | 0.00431844704708647 | 0.23958429843928086 | 0.25661229867221075 | two-sided 95% Clopper-Pearson | 0.003723832389126118 | 0.8262378547107567 | 0.8409339843421204 |
+| B4 | N11 | — | 0 | 0.0002995583111209399 | one-sided 95% exact upper bound | 0.0017601731079265408 | 0.9643577381084214 | 0.971359800285729 |
+
+*Note:* With R=9,999, plus-one p=(K+1)/10,000 and the resolution is 0.0001. Tail MCSE uses sqrt(R×q×(1−q))/(R+1), q=K/R. The positive-fraction MCSE uses sqrt(qpos×(1−qpos)/R), qpos=positive/R. A zero tail is accompanied by its one-sided 95% upper bound 0.0002995583111209399; it is not assigned a zero MCSE. Two-sided intervals use the exact Clopper–Pearson definition. For each configuration, the positive, zero and negative counts sum to 9,999.
+
+The original S6/B0 paired upper endpoint is exactly zero at 1,999 draws; its 9,999-draw upper endpoint is +0.08865248226950355 percentage points. The original N11/B4 lower endpoint is exactly zero; the 9,999-draw lower endpoint is −0.1027221366204417 percentage points. These precision checks therefore cross zero. The original Full12/B0 and U10/B2 paired intervals remain strictly positive.
+
+## S9b Alert thresholds on the common observation calendar
+
+The aggregate rule starts on the third consecutive valid scheduled date with G<−10⁻¹² and remains active until the condition fails or an observation is unavailable. The first two dates are not backfilled. County-share rules use exact integer comparisons 3k≥N and 2k≥N. Source changes alone do not reset either alert. All groups preserve the 207-slot calendar and original 204-complete-date mask. The 50% threshold requires 6, 5 and 3 below-benchmark counties in Full12, U10 and S6; the one-third threshold requires 4, 4 and 2.
+
+**Table S9b.1. All three rules, all benchmarks and all three county groups.**
+
+| Benchmark | Cohort | N | Rule | Complete dates | Trigger dates | Trigger percent | Episodes | First trigger | Last trigger |
+|---|---|---:|---|---:|---:|---:|---:|---|---|
+| B0 | Full12 | 12 | aggregate_three_dates | 204 | 19 | 9.313725490196079 | 4 | 2021-10-25 | 2025-01-25 |
+| B0 | Full12 | 12 | H_ge_third | 204 | 63 | 30.88235294117647 | 11 | 2021-07-25 | 2025-02-25 |
+| B0 | Full12 | 12 | H_ge_half | 204 | 31 | 15.196078431372548 | 6 | 2021-10-05 | 2025-01-25 |
+| B0 | U10 | 10 | aggregate_three_dates | 204 | 12 | 5.88235294117647 | 2 | 2021-10-25 | 2022-07-05 |
+| B0 | U10 | 10 | H_ge_third | 204 | 42 | 20.588235294117645 | 7 | 2021-07-25 | 2025-01-25 |
+| B0 | U10 | 10 | H_ge_half | 204 | 26 | 12.745098039215685 | 6 | 2021-10-05 | 2025-01-25 |
+| B0 | S6 | 6 | aggregate_three_dates | 204 | 16 | 7.8431372549019605 | 3 | 2022-04-05 | 2025-02-05 |
+| B0 | S6 | 6 | H_ge_third | 204 | 57 | 27.941176470588236 | 10 | 2021-07-25 | 2025-02-25 |
+| B0 | S6 | 6 | H_ge_half | 204 | 34 | 16.666666666666664 | 7 | 2021-10-05 | 2025-02-05 |
+| B1 | Full12 | 12 | aggregate_three_dates | 204 | 38 | 18.627450980392158 | 5 | 2021-10-15 | 2025-02-05 |
+| B1 | Full12 | 12 | H_ge_third | 204 | 102 | 50 | 5 | 2021-07-05 | 2025-03-05 |
+| B1 | Full12 | 12 | H_ge_half | 204 | 62 | 30.392156862745097 | 11 | 2021-08-15 | 2025-03-05 |
+| B1 | U10 | 10 | aggregate_three_dates | 204 | 33 | 16.176470588235293 | 5 | 2021-10-15 | 2025-02-05 |
+| B1 | U10 | 10 | H_ge_third | 204 | 77 | 37.745098039215684 | 9 | 2021-07-05 | 2025-03-05 |
+| B1 | U10 | 10 | H_ge_half | 204 | 56 | 27.450980392156865 | 10 | 2021-07-25 | 2025-02-05 |
+| B1 | S6 | 6 | aggregate_three_dates | 204 | 38 | 18.627450980392158 | 7 | 2021-08-15 | 2025-02-05 |
+| B1 | S6 | 6 | H_ge_third | 204 | 95 | 46.568627450980394 | 6 | 2021-07-05 | 2025-03-15 |
+| B1 | S6 | 6 | H_ge_half | 204 | 68 | 33.33333333333333 | 10 | 2021-07-25 | 2025-03-05 |
+| B2 | Full12 | 12 | aggregate_three_dates | 204 | 126 | 61.76470588235294 | 4 | 2021-07-05 | 2025-05-05 |
+| B2 | Full12 | 12 | H_ge_third | 204 | 157 | 76.9607843137255 | 8 | 2021-06-15 | 2026-09-25 |
+| B2 | Full12 | 12 | H_ge_half | 204 | 137 | 67.15686274509804 | 3 | 2021-06-15 | 2025-04-25 |
+| B2 | U10 | 10 | aggregate_three_dates | 204 | 116 | 56.86274509803921 | 4 | 2021-07-05 | 2025-04-15 |
+| B2 | U10 | 10 | H_ge_third | 204 | 146 | 71.56862745098039 | 6 | 2021-06-15 | 2026-09-25 |
+| B2 | U10 | 10 | H_ge_half | 204 | 132 | 64.70588235294117 | 7 | 2021-06-15 | 2026-09-25 |
+| B2 | S6 | 6 | aggregate_three_dates | 204 | 131 | 64.2156862745098 | 3 | 2021-07-05 | 2025-04-25 |
+| B2 | S6 | 6 | H_ge_third | 204 | 159 | 77.94117647058823 | 7 | 2021-06-15 | 2026-09-25 |
+| B2 | S6 | 6 | H_ge_half | 204 | 145 | 71.07843137254902 | 7 | 2021-06-15 | 2026-09-25 |
+| B3 | Full12 | 12 | aggregate_three_dates | 204 | 0 | 0 | 0 | NA | NA |
+| B3 | Full12 | 12 | H_ge_third | 204 | 15 | 7.352941176470589 | 3 | 2021-10-25 | 2022-08-05 |
+| B3 | Full12 | 12 | H_ge_half | 204 | 7 | 3.431372549019608 | 3 | 2021-10-25 | 2022-06-25 |
+| B3 | U10 | 10 | aggregate_three_dates | 204 | 0 | 0 | 0 | NA | NA |
+| B3 | U10 | 10 | H_ge_third | 204 | 11 | 5.392156862745098 | 4 | 2021-10-25 | 2022-07-25 |
+| B3 | U10 | 10 | H_ge_half | 204 | 5 | 2.450980392156863 | 3 | 2021-10-25 | 2022-06-25 |
+| B3 | S6 | 6 | aggregate_three_dates | 204 | 0 | 0 | 0 | NA | NA |
+| B3 | S6 | 6 | H_ge_third | 204 | 13 | 6.372549019607843 | 4 | 2021-10-25 | 2025-01-15 |
+| B3 | S6 | 6 | H_ge_half | 204 | 5 | 2.450980392156863 | 2 | 2022-03-15 | 2022-06-25 |
+| B4 | Full12 | 12 | aggregate_three_dates | 204 | 22 | 10.784313725490197 | 4 | 2021-10-05 | 2024-12-25 |
+| B4 | Full12 | 12 | H_ge_third | 204 | 66 | 32.35294117647059 | 11 | 2021-07-25 | 2025-01-15 |
+| B4 | Full12 | 12 | H_ge_half | 204 | 34 | 16.666666666666664 | 10 | 2021-08-05 | 2024-12-25 |
+| B4 | U10 | 10 | aggregate_three_dates | 204 | 14 | 6.862745098039216 | 5 | 2021-10-15 | 2024-12-25 |
+| B4 | U10 | 10 | H_ge_third | 204 | 46 | 22.54901960784314 | 9 | 2021-07-25 | 2024-12-25 |
+| B4 | U10 | 10 | H_ge_half | 204 | 31 | 15.196078431372548 | 10 | 2021-08-05 | 2024-12-25 |
+| B4 | S6 | 6 | aggregate_three_dates | 204 | 12 | 5.88235294117647 | 4 | 2021-10-05 | 2024-12-25 |
+| B4 | S6 | 6 | H_ge_third | 204 | 67 | 32.84313725490196 | 9 | 2021-06-25 | 2025-01-25 |
+| B4 | S6 | 6 | H_ge_half | 204 | 35 | 17.15686274509804 | 12 | 2021-08-05 | 2025-01-15 |
+
+Source: actual alert summary JSON (12,142 bytes; SHA-256 d3e5a6ebc14afcb8d3400cc949b8f63707219b4e691b22c761f9a38a23bc978d). Trigger durations are monitoring dates, not elapsed calendar days. The one-half rule's trigger dates are subsets of the one-third rule's dates, while episode counts can increase when a stricter threshold interrupts a run.
+
+## S9c Fixed-reference Monte Carlo uncertainty in the 1,999-draw main table
+
+**Table S9c.1. Main-table tail counts and MCSE.**
+
+| Benchmark | Cohort | Tail K | Valid R | Plus-one p | MCSE |
+|---|---|---:|---:|---:|---:|
+| B0 | Full12 | 0 | 1999 | 0.0005 | — |
+| B0 | U10 | 1155 | 1999 | 0.578 | 0.01104144269234615 |
+| B0 | S6 | 1941 | 1999 | 0.971 | 0.0037522379515193913 |
+| B1 | Full12 | 0 | 1999 | 0.0005 | — |
+| B1 | U10 | 19 | 1999 | 0.01 | 0.0021690671788151482 |
+| B1 | S6 | 1811 | 1999 | 0.906 | 0.006525319141233436 |
+| B2 | Full12 | 0 | 1999 | 0.0005 | — |
+| B2 | U10 | 0 | 1999 | 0.0005 | — |
+| B2 | S6 | 468 | 1999 | 0.2345 | 0.009466166285887652 |
+| B3 | Full12 | 0 | 1999 | 0.0005 | — |
+| B3 | U10 | 1948 | 1999 | 0.9745 | 0.0035248705445984924 |
+| B3 | S6 | 1999 | 1999 | 1 | — |
+| B4 | Full12 | 0 | 1999 | 0.0005 | — |
+| B4 | U10 | 219 | 1999 | 0.11 | 0.0069822543593003675 |
+| B4 | S6 | 778 | 1999 | 0.3895 | 0.010899617003611306 |
+
+*Note:* The main table uses R=1,999 throughout. MCSE=sqrt(R×q×(1−q))/(R+1), q=K/R. For K=0, the one-sided 95% upper bound on the underlying tail probability is 0.0014974930811077; for K=R, its one-sided lower bound is 0.9985025069188923. A dash represents use of the boundary bound rather than a reported zero standard error. The plus-one estimate's resolution 0.0005 is distinct from these binomial bounds.
+
+## S9d Precision count records
+
+The CSV files contain repetitions 1–9,999 in order, with all count fields and derived statistics. They underlie Tables S9a.1–S9a.2. Empty attainment sets have unavailable reference statistics. Paths are relative to the package root.
+
+| Benchmark | Cohort | Count record | UTF8 bytes | SHA-256 |
+|---|---|---|---:|---|
+| B0 | Full12 | [B0_all12_9999.csv](results/precision/B0_all12_9999.csv) | 1187068 | 2e4fda98477d477919ac4d916b85d343ff45a23064dc165c7d8c69a168a8b582 |
+| B0 | S6 | [B0_screened6_9999.csv](results/precision/B0_screened6_9999.csv) | 1153553 | a9f21b281f7d12b25cbaa3cf32f79eed09c9ce35e755bc77ecc9dbcf336bf35b |
+| B0 | N11 | [B0_without_Jianping11_9999.csv](results/precision/B0_without_Jianping11_9999.csv) | 1188467 | 31b03f5da2ea7a9dd5851a6d89bcf490498a5273fbe277a245efa7213af1fa79 |
+| B2 | S6 | [B2_screened6_9999.csv](results/precision/B2_screened6_9999.csv) | 1088473 | 3fa6c47f7995638dd60b51d66cc698ff447688545752b0442903e29d17f859a4 |
+| B2 | U10 | [B2_without_Jianping_Qingyuan10_9999.csv](results/precision/B2_without_Jianping_Qingyuan10_9999.csv) | 1055159 | dd4c08c6a1c63cac23a6ea3f6bc7a572ceb5680a684902311964fccb240c39db |
+| B4 | N11 | [B4_without_Jianping11_9999.csv](results/precision/B4_without_Jianping11_9999.csv) | 1171241 | a685bb2e607bf64207f84e8378e3ca72b29856e33d63f71f1ed57008676bbac8 |
+
+## S9e Supplementary figure specifications
+
+<!-- FIGURE:S1 -->
+
+Figure S1. B0 conditional-reference distributions and paired differences for Full12, N11 and U10. The upper panels show the original 1,999 fixed-benchmark conditional mean-H draws, the observed statistic and two-sided 90% reference intervals; the lower panels show paired D and its 95% interval. H is expressed in percent and D in percentage points. These plots retain the 1,999 main-analysis draws; the six 9,999 precision summaries remain separate in Table S9a.1. Data sources: original B0/L6 records and Section S2.
+
+<!-- FIGURE:S2 -->
+
+Figure S2. Jianping maize quotations, the median of the other eleven counties and national second-grade yellow-maize quotations. Each series is centered on its own mean across the three January 2018 observations. County connections break at the archive-source boundary and missing scheduled quotations; national connections break at their own unavailable scheduled periods. County and national product specifications and trading stages are retained. Data sources: Section S8c and the archived county/national price panels.

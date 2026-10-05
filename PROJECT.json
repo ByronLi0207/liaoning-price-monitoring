@@ -1,0 +1,50 @@
+{
+  "name": "AgriPrice Monitor",
+  "description": "Data and code replication package for historical county maize–urea quotation analysis",
+  "data_period": [
+    "2018-01-05",
+    "2026-09-25"
+  ],
+  "monitoring_dates": 315,
+  "counties": 12,
+  "products": [
+    "maize",
+    "urea"
+  ],
+  "entry_point": "scripts/project.py",
+  "source": "code/",
+  "input_data": "inputs/",
+  "reference_results": "results/",
+  "figures": "figures/",
+  "reports": "reports/",
+  "environment": "environment/",
+  "documentation": "docs/",
+  "research_title": "Benchmark choice and quotation persistence in county maize–urea price monitoring: Evidence from Liaoning, China",
+  "package_type": "research replication package",
+  "repository": "https://github.com/ByronLi0207/liaoning-price-monitoring",
+  "distribution": {
+    "source_repository": "programs, reports, figures and documentation",
+    "release_attachment": "complete inputs and reference results",
+    "release_asset": "agri-price-monitor.zip",
+    "visibility": "public"
+  },
+  "archival_deposit": {
+    "platform": "Zenodo",
+    "doi": "10.5281/zenodo.23157276",
+    "url": "https://zenodo.org/records/23157276",
+    "concept_doi": "10.5281/zenodo.23131960",
+    "scope": "complete replication package including Supplement S11",
+    "intended_file_access": "public",
+    "file_access": "public"
+  },
+  "readme": {
+    "english": "README.md",
+    "chinese": "README_zh.md"
+  },
+  "replication_map": "docs/replication_map.md",
+  "supplementary_validation": {
+    "county_influence": "all twelve symmetric deletions under five benchmarks",
+    "temporal_screen": "historical-only selection followed by two validation windows",
+    "peer_reference": "same-product observations in the other eleven counties"
+  }
+}

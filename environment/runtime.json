@@ -1,0 +1,34 @@
+{
+  "python": "3.12.14",
+  "packages": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8",
+    "pillow": "12.3.0",
+    "python-docx": "1.2.0",
+    "lxml": "6.1.1",
+    "pypdf": "6.10.0",
+    "PyMuPDF": "1.26.6",
+    "pdf2image": "1.17.0"
+  },
+  "node": "v24.19.0",
+  "PDF_font": "Liberation Serif; mathematical fallback fonts are embedded",
+  "role": "reference environment",
+  "runtime_version_equality_required": false,
+  "tested_replay_environments": [
+    {
+      "platform": "macOS",
+      "python": "3.12.13",
+      "node": "v24.16.0",
+      "python_dependency_lock": "requirements.lock.txt",
+      "complete_replay": "PASS"
+    },
+    {
+      "platform": "macOS",
+      "python": "3.13.14",
+      "node": "v24.19.0",
+      "python_dependency_lock": "requirements.lock.txt",
+      "complete_replay": "PASS"
+    }
+  ]
+}

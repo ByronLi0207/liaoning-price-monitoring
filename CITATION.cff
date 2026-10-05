@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: >-
+  Cite the replication software package using this metadata. The credited entity
+  is the verified repository-maintainer handle, not the manuscript author list.
+  For article attribution, use the author information in the accompanying manuscript.
+type: software
+title: "AgriPrice Monitor: data and code replication package"
+authors:
+  - name: "ByronLi0207 (repository maintainer)"
+    alias: "ByronLi0207"
+    website: "https://github.com/ByronLi0207"
+repository-code: "https://github.com/ByronLi0207/liaoning-price-monitoring"
+url: "https://doi.org/10.5281/zenodo.23131960"
+doi: "10.5281/zenodo.23131960"
+abstract: >-
+  Software, documentation and reproducible analysis inputs for county maize–urea
+  quotation screening, historical benchmark comparisons and monitoring-alert analysis.
+keywords:
+  - agricultural prices
+  - maize
+  - urea
+  - quotation persistence
+  - historical benchmarks
+  - replication
+license: MIT
