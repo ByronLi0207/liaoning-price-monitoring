@@ -1,0 +1,6 @@
+# Byte identity is checked against the release manifest on every platform.
+* -text
+*.png binary
+*.pdf binary
+*.docx binary
+*.zip binary
