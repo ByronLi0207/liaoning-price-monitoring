@@ -39,7 +39,7 @@
     {
       "path": "PROJECT.json",
       "bytes": 1759,
-      "sha256": "b3ef4899bef902724fcb0550a70da2298395204500da06ffc77c63f5012a4985"
+      "sha256": "181d3c1dc8d17e8d6c57f706dcae7cba362d530b3b1376c014d0cfa3b8e635c6"
     },
     {
       "path": "README.md",
@@ -53,8 +53,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 1808,
-      "sha256": "5269c5d0f41961ce9fdf258397895a6372f78f22ff33639c8ea37a6b77f9f454"
+      "bytes": 2014,
+      "sha256": "f1b5de86670729e58b9b5dea7276921acf468ff1ecc8e0134a3a20e9b89f2b03"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -4103,33 +4103,33 @@
     },
     {
       "path": "reports/manuscript.docx",
-      "bytes": 1175042,
-      "sha256": "b02795fa10d9a0f0c8fefe0a66cf7497e64c45abe4c5911a2a0a75af25f53593"
+      "bytes": 1175007,
+      "sha256": "625d2900b78ad4e9976111d968e2fdb1cc28d7f720cbf1c292246f30b38bba0d"
     },
     {
       "path": "reports/manuscript.md",
-      "bytes": 66284,
-      "sha256": "be6b1dde750f187e949c44b4c199a716ec5ddfa08414d05695c764f4460f9f45"
+      "bytes": 66145,
+      "sha256": "131c1740d526c7264891cde05cdcafc56e92a11b94245e984818fbdf4f6c3987"
     },
     {
       "path": "reports/manuscript.pdf",
-      "bytes": 874002,
-      "sha256": "6ce31c163359b46d2496391993431870815e7c558ccae2c4a38c229478b1fd86"
+      "bytes": 874968,
+      "sha256": "b94225bddca08a06d216b57346c181068aede568998af71562554001de070614"
     },
     {
       "path": "reports/project_brief.docx",
-      "bytes": 40582,
-      "sha256": "09b44f0b7ca4b8d73df44c0c1bcd5f2e29d3301b8246092f8a5f146cac998c8c"
+      "bytes": 40575,
+      "sha256": "366b7ccaf55a535e5318cf345706d25d7be7c8408c1157866459e7e5925dec91"
     },
     {
       "path": "reports/project_brief.md",
-      "bytes": 5028,
-      "sha256": "e2db8ab6debb6441924874caf0d77a2985c27e0dd54bbb84d2e21928ec8868a0"
+      "bytes": 5052,
+      "sha256": "bf21bfe247e998a965b38126582cd611f7a26b34ff353cce4a6c299dafbac2ed"
     },
     {
       "path": "reports/project_brief.pdf",
-      "bytes": 185630,
-      "sha256": "1bb796870b16c1238fdd1ac83049caea912fcd93bd726ec21e0f9f870477e60a"
+      "bytes": 184951,
+      "sha256": "ea6767e34ddb03078dfb1c3d96f59d95c32e64b9fe0fe48349ff853f8268def6"
     },
     {
       "path": "reports/response_to_reviewers.md",

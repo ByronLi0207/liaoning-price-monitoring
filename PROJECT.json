@@ -30,8 +30,8 @@
   },
   "archival_deposit": {
     "platform": "Zenodo",
-    "doi": "10.5281/zenodo.23157276",
-    "url": "https://zenodo.org/records/23157276",
+    "doi": "10.5281/zenodo.23168386",
+    "url": "https://zenodo.org/records/23168386",
     "concept_doi": "10.5281/zenodo.23131960",
     "scope": "complete replication package including Supplement S11",
     "intended_file_access": "public",

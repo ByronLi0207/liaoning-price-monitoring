@@ -48,9 +48,9 @@ $$
 Q_{it}=\frac{P_{C,it}}{P_{U,it}}. \tag{1}
 $$
 
-The ratio represents kilograms of urea at the quoted monetary value of one kilogram of maize. For fixed fertilizer quantity \(u\) and maize output sold \(Y\), fertilizer expense divided by maize revenue is \((u/Y)/Q\). Fertilizer profitability combines yield response with output and input prices (Ragasa et al., 2025); Northeast Chinese spring-maize recommendations use soil-fertility groups and response functions (Bao et al., 2020). The exchange ratio measures the quoted relative-price component of this relationship.
+The ratio represents kilograms of urea at the quoted monetary value of one kilogram of maize. Fertilizer expense as a share of maize revenue equals \((u/Y)/Q\), where \(u\) is fertilizer quantity and \(Y\) is maize output sold. Fertilizer profitability combines yield response with output and input prices (Ragasa et al., 2025); Northeast Chinese spring-maize recommendations use soil-fertility groups and response functions (Bao et al., 2020). The exchange ratio measures the quoted relative-price component of this relationship.
 
-During a constant-urea segment, \(\Delta\log Q_{it}=\Delta\log P_{C,it}\). The maize quotation supplies all recorded numerical movement in the ratio within that segment, while the unchanged urea level continues to determine its level. When that value also occupies part of the historical window, quotation persistence influences both the benchmark and the later comparison. Examining the two product histories therefore explains which observed adjustments underlie an index change.
+An unchanged urea quotation gives \(\Delta\log Q_{it}=\Delta\log P_{C,it}\): maize supplies the recorded movement in the exchange ratio, and the repeated urea quotation sets its level. Repeated urea values within the historical window also enter the benchmark. The product histories therefore link changes in the exchange ratio to both current price adjustments and the historical comparison level.
 
 ## 3 Data and measurement
 
@@ -76,9 +76,9 @@ Individual shortfall sums use all valid county pairs, including observed county 
 | B4 | Month-specific 2018–2020 | Twelve monthly county means, based on 108 dates |
 | Full12 | Original twelve counties | Original monitoring cohort |
 | Eleven counties | Exclude Jianping | Sensitivity and selected precision comparisons |
-| U10 | Exclude Jianping and Qingyuan | Low-update branch only |
-| S6 | Faku, Zhuanghe, Fengcheng, Dengta, Changtu, Kaiyuan | Retained by the complete low-update OR run-amplitude screen |
-| Individual B0 shortfalls | Full12 valid county pairs | 2,481 valid county-period pairs; distinct from aggregate-complete dates |
+| U10 | Exclude Jianping and Qingyuan | Group defined by the low-update branch |
+| S6 | Faku, Zhuanghe, Fengcheng, Dengta, Changtu, Kaiyuan | Counties passing the combined low-update or run-amplitude screen |
+| Individual B0 shortfalls | Full12 valid county pairs | 2,481 valid county-period pairs, including dates with an incomplete aggregate |
 
 *Note:* Monitoring periods refer to scheduled archive observations. Aggregate comparisons use the same 204 complete dates within the 207-slot later calendar. County benchmark means use the same historical dates for every group; changing membership recalculates the aggregate, attainment set and county residuals. The month-specific benchmark uses twelve monthly means per county.
 
@@ -88,7 +88,7 @@ County quotations are expressed in CNY per 500 g. Multiplication by two converts
 
 National Bureau of Statistics circulation-survey reports supply second-grade yellow-maize and small-/medium-small-particle urea quotations in CNY per tonne (National Bureau of Statistics of China, 2024a, 2024b). Their wholesale scope and specifications differ from the county fields. We compare proportional changes within each series, which places their movements on the same dimensionless scale. Endpoints are matched to nominal dekad dates, the fifth, fifteenth and twenty-fifth; unavailable national endpoints remain missing. Matching national endpoints to the middle of each reporting interval leaves all screening flags unchanged.
 
-We use the national series to identify wider market movement during an unchanged county quotation run. The screen measures proportional national price movement during each unchanged county quotation run. With partial national coverage, the observed maximum-to-minimum range is a lower bound on the full national range over that window. An observed national amplitude above 20% records substantial movement in the matched national series while the county quotation stays fixed.
+We use proportional national price movement to compare unchanged county quotations with the wider market. An observed national amplitude above 20% records substantial movement in the matched national series while the county quotation stays fixed. The maximum-to-minimum range across observed national prices is a lower bound on the full range over the run when national coverage is partial.
 
 The source archive contains 610 responses, including six original HTTP failures. Nineteen selected original-page checks link normalized records back to the reported cells. Additional commodities are grouped by source-local identity, exact specification and unit, with capture coverage recorded for each group. The complete observation records and date-level results accompany the analysis as replication materials.
 
@@ -110,7 +110,7 @@ H_t&=\frac{1}{N}\sum_{i=1}^{N}\mathbf{1}\{g_{it}<0\}.
 \end{aligned}\tag{2}
 $$
 
-For the month-specific benchmark, \(b_i\) takes the target month's value. Aggregate attainment means \(G_t\geq0\). Mean \(H_t\) on attainment dates measures the share of counties below their own benchmarks while their aggregate attains its benchmark. County shortfalls sum \(\max(-g_{it},0)\) across valid observations and have units of log-point monitoring periods. Attainment on an individual date defines the aggregate condition used here; the alert rule in Section 4.5 adds the requirement of three consecutive qualifying observations.
+For the month-specific benchmark, \(b_i\) takes the target month's value. Aggregate attainment means \(G_t\geq0\). Mean \(H_t\) on attainment dates measures the share of counties below their own benchmarks while their aggregate attains its benchmark. County shortfalls sum \(\max(-g_{it},0)\) across valid observations and have units of log-point monitoring periods. We classify aggregate attainment date by date; the alert rule in Section 4.5 starts after three consecutive qualifying observations.
 
 ## 4 Empirical strategy
 
@@ -150,15 +150,15 @@ We use 1,999 draws for every comparison in Table 3 and extend six selected compa
 
 The low-update branch flags counties with either product's update rate strictly below one-third of that product's median across the original twelve counties. Rates divide changes in recorded decimal values by positive, scheduled, same-source adjacent comparisons. The median remains tied to the original twelve-county group as counties are removed. The second branch flags source-specific constant runs longer than 36 observations with matched national price amplitude strictly above 20%. Amplitude is \(\max(P)/\min(P)-1\), evaluated from the original decimal prices.
 
-With partial national coverage, an observed range above the amplitude threshold confirms the run-amplitude branch; a lower observed range with unobserved periods leaves it unresolved. The two branches combine through a logical OR, so a low-update flag confirms the classification independently of national coverage. The threshold grid combines update-rate fractions of one-quarter, one-third, one-half and two-thirds; minimum run lengths strictly above 24, 36 and 48 observations; and national-amplitude thresholds strictly above 10%, 20% and 30%. These choices give 36 settings. We apply each setting to all twelve counties and recalculate the comparisons for each resulting county group.
+An observed national range exceeding the amplitude threshold flags the run-amplitude branch even with partial coverage. Lower observed ranges with unobserved periods receive an unresolved classification. Either screening branch flags a county, so the low-update branch classifies counties independently of national coverage. The threshold grid combines update-rate fractions of one-quarter, one-third, one-half and two-thirds; minimum run lengths strictly above 24, 36 and 48 observations; and national-amplitude thresholds strictly above 10%, 20% and 30%. These choices give 36 settings. We apply each setting to all twelve counties and recalculate the comparisons for each resulting county group.
 
 Below-benchmark spells under the 2018–2020 benchmark end at a changed classification, invalid price pair or source boundary. A spell of length \(\ell\) has \(\ell-1\) internal comparison opportunities. Updates compare quotations within the spell and exclude the entering transition. We group spells by length and calculate internal update rates and zero-update shares for spells containing at least two observations. County rates pool changes and eligible adjacent comparisons.
 
 ### 4.5 Monitoring consequences
 
-Rule i triggers from the third consecutive complete scheduled date with \(G_t<0\), then continues while that condition holds. Alert dates begin with the third qualifying observation. Rule ii triggers on \(3k_t\geq N\), where \(k_t\) counts below-benchmark counties. Its minimum counts are four for the original twelve-county group, four for the ten-county group and two for the six counties passing the combined screen. A common 50% sensitivity uses \(2k_t\geq N\), requiring six, five and three counties, respectively.
+Rule i starts on the third consecutive complete scheduled date with \(G_t<0\) and covers subsequent consecutive below-benchmark dates. Rule ii triggers on \(3k_t\geq N\), where \(k_t\) counts below-benchmark counties. Its minimum counts are four for the original twelve-county group, four for the ten-county group and two for the six counties passing the combined screen. A common 50% sensitivity uses \(2k_t\geq N\), requiring six, five and three counties, respectively.
 
-Missing scheduled observations reset the aggregate streak and end an active episode. Any false or missing date ends a trigger episode; episodes continue across a source boundary while the trigger condition holds. Trigger fractions use 204 complete dates, and the date-level records preserve all 207 slots.
+Missing scheduled observations reset the aggregate streak. A non-triggering or missing date ends an episode; consecutive triggering dates form an episode across source boundaries. Trigger fractions use 204 complete dates, and the date-level records include all 207 slots.
 
 ### 4.6 Monthly variation and quotation timing
 
@@ -201,7 +201,7 @@ Four of the six representative urea runs fall within or span the 2018–2020 ben
 
 ### 5.2 Benchmark and county membership change the distributional evidence
 
-Benchmark choice shifts aggregate attainment for all twelve counties between 34.31% (70 of 204 dates) under 2020 and 99.02% (202 of 204 dates) under 2018–2019 (Table 3; Figure 1). Conditional mean H ranges from 11.18% to 24.40%. The result under the three-year benchmark is 17.05%, compared with a fixed-reference mean of 13.38%. Its paired interval is [0.20, 5.12] percentage points. The original twelve-county group’s paired interval is strictly positive under each of the five benchmarks.
+Benchmark choice shifts aggregate attainment for all twelve counties between 34.31% (70 of 204 dates) under 2020 and 99.02% (202 of 204 dates) under 2018–2019 (Table 3; Figure 1). Among aggregate-attainment dates, mean county incidence H ranges from 11.18% to 24.40%. The result under the three-year benchmark is 17.05%, compared with a fixed-reference mean of 13.38%. Its paired interval is [0.20, 5.12] percentage points. The original twelve-county group’s paired interval is strictly positive under each of the five benchmarks.
 
 **Table 3. Five benchmarks and three county groups: six-period blocks and 1,999 draws.**
 
@@ -231,7 +231,7 @@ The six counties passing the combined screen have paired intervals including zer
 
 <!-- FIGURE:1 -->
 
-Figure 1. Benchmark dependence for all twelve counties, ten counties excluding Jianping and Qingyuan, and the six screened counties. Panels show aggregate attainment on the same 204 complete dates, conditional mean H and the fixed-reference 90% interval, the fixed-reference tail estimate with Monte Carlo uncertainty, and paired mean D with its 95% interval. Benchmarks are categorical; points are grouped by county membership. All panels use six-period blocks and 1,999 draws. H is a percent; D is in percentage points. Source: the five-benchmark comparisons summarized in Table 3.
+Figure 1. Benchmark dependence for all twelve counties, ten counties excluding Jianping and Qingyuan, and the six screened counties. Panels show aggregate attainment on the same 204 complete dates, mean county incidence H on aggregate-attainment dates and the fixed-reference 90% interval, the fixed-reference tail estimate with Monte Carlo uncertainty, and paired mean D with its 95% interval. Benchmarks are categorical; points are grouped by county membership. All panels use six-period blocks and 1,999 draws. H is a percent; D is in percentage points. Source: the five-benchmark comparisons summarized in Table 3.
 
 The selected 9,999-draw checks give intervals of [0.18, 5.12] percentage points for all twelve counties under the 2018–2020 benchmark and [3.04, 14.03] for the ten-county group under the 2020 benchmark. The six-county intervals are [−5.72, 0.09] and [−3.71, 8.07], respectively. In the former, the upper endpoint moves from exactly zero at 1,999 draws to above zero at 9,999 draws. The complete precision results include all six selected comparisons, including the eleven-county sensitivity cases.
 
@@ -370,7 +370,7 @@ The World Bank’s affordability indicator compares an input–output price rela
 
 ## 8 Measurement basis and screening interpretation
 
-We measure the quoted exchange terms between maize and urea in the twelve-county archive. At fixed fertilizer quantity and maize sales, a lower exchange ratio raises the fertilizer-expense share of maize revenue. The screen identifies county–product records for checking against sampling-enterprise, transaction-date and observation-status information. The inventory covers 31 exact product/specification/unit groups, with capture coverage recorded for each group and matched national comparisons for maize purchase and domestic urea. We compare proportional movement within each series to accommodate differences in product specifications and survey scope. Under partial coverage, the observed national amplitude provides a lower bound on the amplitude over the full matched window.
+We measure the quoted exchange terms between maize and urea in the twelve-county archive. Fertilizer expense as a share of maize revenue equals \((u/Y)/Q\); a lower exchange ratio raises this share for a given fertilizer-to-output ratio \(u/Y\). The screen identifies county–product records for checking against sampling-enterprise, transaction-date and observation-status information. The inventory covers 31 exact product/specification/unit groups, with capture coverage recorded for each group and matched national comparisons for maize purchase and domestic urea. We compare proportional movement within each series to accommodate differences in product specifications and survey scope. Under partial coverage, the observed national amplitude provides a lower bound on the amplitude over the full matched window.
 
 We developed the quotation screen after exploratory inspection of the data and applied the same rules to all twelve counties. The 36-setting grid quantifies the effect of threshold choice: Zhangwu is flagged at 10% and 20% amplitudes and remains unresolved at 30%. The 2020 benchmark uses 36 monitoring dates from the year immediately preceding the fertilizer-price surge. Its positive ten-county paired interval identifies excess incidence relative to that year’s exchange terms. Within-year resampling diagnostics and extended draws document the numerical precision of this comparison.
 
