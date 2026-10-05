@@ -1,0 +1,21 @@
+# Local environments and generated exports
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.prepare-*/
+reproduction/
+native/
+
+# Complete data and saved results are distributed in the project release.
+inputs/**
+!inputs/**/
+!inputs/**/*.js
+!inputs/**/*.cjs
+!inputs/**/*.mjs
+!inputs/**/*.py
+inputs/**/*.html
+results/
+
+# Analysis reports and independent figures are committed for direct viewing.
